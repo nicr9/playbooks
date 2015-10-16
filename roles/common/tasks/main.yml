@@ -18,7 +18,15 @@
   template: src=dotgitconfig dest={{ home }}/.gitconfig
 
 - name: config_files
-  file: src={{ res }}/{{ item.src }}
+  file: src={{ dotfiles }}/{{ item.src }}
       dest={{ home }}/{{ item.dest }}
       state=link
   with_items: config_files
+
+- name: install_fonts
+  copy: src={{ fonts }}/ dest={{ user_fonts }} mode=0755
+
+- name: reload_font_cache
+  become: yes
+  become_method: sudo
+  command: fc-cache -f -v

@@ -1,5 +1,7 @@
 home: "{{ lookup('env','HOME') }}"
-res: "{{ home }}/playbooks/dotfiles"
+dotfiles: "{{ home }}/playbooks/dotfiles"
+fonts: "{{ home }}/playbooks/fonts"
+user_fonts: /usr/share/fonts/truetype/user_fonts
 
 email: "{{ lookup('env','EMAIL') }}"
 full_name: "{{ lookup('env','FULL_NAME') }}"
