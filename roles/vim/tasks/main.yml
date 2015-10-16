@@ -1,0 +1,16 @@
+---
+# Assuming that this is run after the common role which calls `apt-get update`
+- name: install_vim_package
+  apt: name=vim state=present
+
+- name: checkout_vundle
+  git: repo=https://github.com/VundleVim/Vundle.vim.git
+       dest={{ home }}/.vim/bundle/Vundle.vim
+
+- name: install_vim_plugins
+  command: /usr/bin/vim +PluginInstall +qall
+
+- name: vim_config
+  file: src={{ dotfiles }}/dotvimrc
+      dest={{ home }}/.vimrc
+      state=link

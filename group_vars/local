@@ -30,12 +30,11 @@ apt_packages:
 - spotify-client
 - ssh
 - terminator
-- vim
+- wget
 
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
 - { src: 'dotgitignore', dest: '.gitignore' }
 - { src: 'doti3/config', dest: '.i3/config' }
 - { src: 'dotinputrc', dest: '.inputrc' }
-- { src: 'dotvimrc', dest: '.vimrc' }
 - { src: 'dotconfig/terminator/config', dest: '.config/terminator/config' }
