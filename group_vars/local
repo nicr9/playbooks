@@ -5,36 +5,3 @@ user_fonts: /usr/share/fonts/truetype/user_fonts
 
 email: "{{ lookup('env','EMAIL') }}"
 full_name: "{{ lookup('env','FULL_NAME') }}"
-
-apt_keys:
-- 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-
-apt_repos:
-- 'deb http://ppa.launchpad.net/evarlast/golang1.4/ubuntu vivid main'
-- 'deb http://dl.google.com/linux/chrome/deb/ stable main'
-
-apt_packages:
-- aptitude
-- dstat
-- feh
-- git
-- golang
-- google-chrome-stable
-- htop
-- iotop
-- lsof
-- make
-- pavucontrol
-- python-pip
-- screen
-- spotify-client
-- ssh
-- terminator
-- wget
-
-config_files:
-- { src: 'dotbashrc', dest: '.bashrc' }
-- { src: 'dotgitignore', dest: '.gitignore' }
-- { src: 'doti3/config', dest: '.i3/config' }
-- { src: 'dotinputrc', dest: '.inputrc' }
-- { src: 'dotconfig/terminator/config', dest: '.config/terminator/config' }
