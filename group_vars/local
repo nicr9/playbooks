@@ -1,3 +1,9 @@
+home: "{{ lookup('env','HOME') }}"
+res: "{{ home }}/playbooks/dotfiles"
+
+email: "{{ lookup('env','EMAIL') }}"
+full_name: "{{ lookup('env','FULL_NAME') }}"
+
 apt_keys:
 - 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
 

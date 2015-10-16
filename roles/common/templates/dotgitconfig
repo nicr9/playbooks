@@ -1,0 +1,11 @@
+[core]
+    editor = vim
+    excludesfile = {{ home }}/.gitignore_global
+[color]
+    ui = true
+[alias]
+    graph = log --oneline --graph --decorate
+    sb = show-branch
+[user]
+    email = {{ email }}
+    name = {{ full_name }}
