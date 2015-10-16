@@ -14,6 +14,7 @@ apt_packages:
 - golang
 - google-chrome-stable
 - htop
+- i3
 - iotop
 - lsof
 - make
