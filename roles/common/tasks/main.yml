@@ -16,3 +16,9 @@
 
 - name: configure_git
   template: src=dotgitconfig dest={{ home }}/.gitconfig
+
+- name: config_files
+  file: src={{ res }}/{{ item.src }}
+      dest={{ home }}/{{ item.dest }}
+      state=link
+  with_items: config_files

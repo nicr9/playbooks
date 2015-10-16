@@ -1,0 +1,90 @@
+" Setup Vundle
+set nocompatible
+filetype off
+set rtp^=~/.vim/bundle/Vundle.vim
+
+" Vim plugins
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-markdown'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-airline'
+Plugin 'file:///home/nic/workspace/vim-orca'
+Plugin 'davidhalter/jedi-vim'
+call vundle#end()
+
+" Syntax HL and indentation
+syntax on
+filetype plugin indent on
+set et bs=2 ts=4 sts=4 sw=4
+
+" Configure CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp
+
+" Configure NERDTree
+let NERDTreeIgnore = ['\.pyc$']
+nmap <F7> :NERDTreeToggle<CR>
+
+" Configure vim-airline
+let g:airline_powerline_fonts = 1
+set laststatus=2
+
+" Configure vim-orca
+let g:orca_debug = 0
+let g:orca_sudo = 0
+
+" Text colours and encoding
+set t_Co=256
+set encoding=utf-8
+
+" Extra settings
+set wildmenu
+set number
+set hlsearch
+set incsearch
+set colorcolumn=80
+
+" Keymappings
+nmap <F5> :set paste!
+nmap <F4> :set nu!
+nmap <F3> :!pygt <C-R><C-W> <CR>
+vmap <F3> "py:<C-W>!pygt <C-R>p <CR>
+nmap <F2> mm:%s/<C-R><C-W>//gc<LEFT><LEFT><LEFT>
+nmap <F1> :w !pandoc -c ~/css/github.css -o %:r.html<CR>
+
+" Centre view on next/previus search result
+nmap n nzz
+nmap N Nzz
+
+" Move between splits with CTRL+[hjkl]
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Autocmds
+if has("autocmd")
+    " Plugins
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+
+    " Filetypes
+    autocmd BufRead *.log set filetype=md
+
+    " Indentation rules
+    autocmd FileType yaml,yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+
+    " Python specific keymappings
+    autocmd BufRead *.py :nmap <buffer> <leader>c :!sudo python2.7 setup.py develop<CR>
+    autocmd BufRead *.py :nmap <buffer> <leader>r :!python2.7 %<CR>
+    autocmd BufRead *.py :nmap <buffer> <leader>R :!python2.7 % 
+    autocmd BufRead *.py :nmap <buffer> <leader>t :!python2.7 -m unittest discover<CR>
+
+    " Golang specific keymappings
+    autocmd BufRead *.go :nmap <buffer> <leader>r :!go run %<CR>
+    autocmd BufRead *.go :nmap <buffer> <leader>t :!go test<CR>
+    autocmd BufRead *.go :nmap <buffer> <leader>T :!go test 
+endif
