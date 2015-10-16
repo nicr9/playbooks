@@ -1,0 +1,8 @@
+---
+# This playbook applies my environment setup to localhost
+
+- name: base_desktop
+  hosts: local
+  sudo: yes
+  roles:
+  - common

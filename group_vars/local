@@ -1,0 +1,25 @@
+apt_keys:
+- 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
+
+apt_repos:
+- 'deb http://ppa.launchpad.net/evarlast/golang1.4/ubuntu vivid main'
+- 'deb http://dl.google.com/linux/chrome/deb/ stable main'
+
+apt_packages:
+- aptitude
+- dstat
+- feh
+- git
+- golang
+- google-chrome-stable
+- htop
+- iotop
+- lsof
+- make
+- pavucontrol
+- python-pip
+- screen
+- spotify-client
+- ssh
+- terminator
+- vim
