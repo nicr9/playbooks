@@ -15,6 +15,7 @@ Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
 Plugin 'file:///home/nic/workspace/vim-orca'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'MicahElliott/Rocannon'
 call vundle#end()
 
 " Syntax HL and indentation

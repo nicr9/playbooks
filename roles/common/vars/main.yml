@@ -1,3 +1,4 @@
+# vim:ft=ansible:
 apt_keys:
 - 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
 

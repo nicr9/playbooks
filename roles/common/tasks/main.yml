@@ -1,3 +1,4 @@
+# vim:ft=ansible:
 ---
 - name: add_apt_keys
   apt_key: url="{{ item }}" state=present

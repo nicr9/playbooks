@@ -1,3 +1,4 @@
+# vim:ft=ansible:
 ---
 # Assuming that this is run after the common role which calls `apt-get update`
 - name: install_vim_package

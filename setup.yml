@@ -1,3 +1,4 @@
+# vim:ft=ansible:
 ---
 # This playbook applies my environment setup to localhost
 
