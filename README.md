@@ -23,10 +23,12 @@ cd playbooks
 ## Upload key to github now!
 
 At this point, you'll want to add you're new key to you're github account so
-that ansible can checkout your git projects.
+that ansible can checkout your git projects. Then change the playbooks remote
+url scheme.
 
 ```
 https://github.com/settings/ssh
+git remote set-url origin git@github.com:nicr9/playbooks.git
 ```
 
 ## Run the playbook
