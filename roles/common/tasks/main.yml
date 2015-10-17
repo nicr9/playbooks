@@ -20,9 +20,19 @@
 
 - name: config_files
   file: src={{ dotfiles }}/{{ item.src }}
-      dest={{ home }}/{{ item.dest }}
-      state=link
+        dest={{ home }}/{{ item.dest }}
+        state=link
   with_items: config_files
+
+- name: checkout_pet_projects
+  git: repo=git@github.com:{{ item.repo }}.git
+       dest={{ src }}/{{ item.name }}
+  with_items: personal_gits
+
+- name: checkout_other_gits
+  git: repo=https://github.com/{{ item.repo }}.git
+       dest={{ src }}/{{ item.name }}
+  with_items: other_gits
 
 - name: install_fonts
   copy: src={{ fonts }}/ dest={{ user_fonts }} mode=0755

@@ -32,3 +32,14 @@ config_files:
 - { src: 'doti3/config', dest: '.i3/config' }
 - { src: 'dotinputrc', dest: '.inputrc' }
 - { src: 'dotconfig/terminator/config', dest: '.config/terminator/config' }
+
+personal_gits:
+- { repo: 'nicr9/daftpunk', name: 'daftpunk' }
+- { repo: 'nicr9/greptools', name: 'greptools' }
+- { repo: 'nicr9/lament', name: 'lament' }
+- { repo: 'nicr9/otto', name: 'otto' }
+- { repo: 'nicr9/pydialog', name: 'pydialog' }
+- { repo: 'nicr9/vim-orca', name: 'vim-orca' }
+
+other_gits:
+- { repo: 'larsenwork/monoid', name: 'monoid' }

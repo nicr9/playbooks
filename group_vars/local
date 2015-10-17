@@ -1,4 +1,5 @@
 home: "{{ lookup('env','HOME') }}"
+src: "{{ home }}/src"
 dotfiles: "{{ home }}/playbooks/dotfiles"
 fonts: "{{ home }}/playbooks/fonts"
 user_fonts: /usr/share/fonts/truetype/user_fonts
