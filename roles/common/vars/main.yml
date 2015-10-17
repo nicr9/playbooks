@@ -26,6 +26,10 @@ apt_packages:
 - terminator
 - wget
 
+dirs:
+- "{{ home }}/.i3"
+- "{{ home }}/.config/terminator"
+
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
 - { src: 'dotgitignore', dest: '.gitignore' }

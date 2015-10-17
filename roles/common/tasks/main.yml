@@ -21,6 +21,10 @@
 - name: configure_git
   template: src=dotgitconfig dest={{ home }}/.gitconfig
 
+- name: create_dirs
+  file: path={{ item }} state=directory
+  with_items: dirs
+
 - name: config_files
   file: src={{ dotfiles }}/{{ item.src }}
         dest={{ home }}/{{ item.dest }}
