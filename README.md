@@ -2,13 +2,14 @@
 
 ## Instructions
 
-### Checking out playbooks
+### Prerequisites
 
-Assuming you're starting from a blank slate, you'll need to install git before
-you get started.
+Assuming you're starting from a blank slate, you'll need to set a user password,
+install git, and check out this repo before you get started.
 
 ```
-sudo apt-get install git
+passwd $USER
+sudo apt-get install -y git
 git clone https://github.com/nicr9/playbooks
 ```
 
@@ -25,7 +26,9 @@ cd playbooks
 ### Add ssh keys to github account
 
 At this point, you'll want to add the new key to your github account so
-that ansible can checkout your git projects. You can do that [here](https://github.com/settings/ssh).
+that ansible can checkout your git projects. The bootstrap script above copied
+the public key to your clip board so you can visit the [SSH keys setting page](https://github.com/settings/ssh),
+press the "Add SSH key" and just paste it into the form.
 
 When that's set up you should change the playbooks remote url scheme so you can
 make changes and send them upstream.
