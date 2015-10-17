@@ -1,10 +1,12 @@
 # vim:ft=ansible:
 ---
 - name: add_apt_keys
+  sudo: yes
   apt_key: url="{{ item }}" state=present
   with_items: apt_keys
 
 - name: add_apt_repos
+  sudo: yes
   apt_repository: repo="{{ item }}" state=present
   with_items: apt_repos
 
@@ -12,6 +14,7 @@
   apt: update_cache=yes
 
 - name: install_package_list
+  sudo: yes
   apt: name={{ item }} state=present
   with_items: apt_packages
 
@@ -35,9 +38,9 @@
   with_items: other_gits
 
 - name: install_fonts
+  sudo: yes
   copy: src={{ fonts }}/ dest={{ user_fonts }} mode=0755
 
 - name: reload_font_cache
-  become: yes
-  become_method: sudo
+  sudo: yes
   command: fc-cache -f -v

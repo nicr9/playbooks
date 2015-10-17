@@ -4,7 +4,6 @@
 
 - name: base_desktop
   hosts: local
-  sudo: yes
   roles:
   - common
   - vim
