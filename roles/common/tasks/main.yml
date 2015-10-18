@@ -2,15 +2,16 @@
 ---
 - name: add_apt_keys
   sudo: yes
-  apt_key: url="{{ item }}" state=present
+  apt_key: url={{ item }} state=present
   with_items: apt_keys
 
 - name: add_apt_repos
   sudo: yes
-  apt_repository: repo="{{ item }}" state=present
+  apt_repository: repo={{ item }} state=present
   with_items: apt_repos
 
 - name: apt-get_update
+  sudo: yes
   apt: update_cache=yes
 
 - name: install_package_list
