@@ -22,6 +22,7 @@ call vundle#end()
 syntax on
 filetype plugin indent on
 set et bs=2 ts=4 sts=4 sw=4
+set bg=dark
 
 " Configure CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp
