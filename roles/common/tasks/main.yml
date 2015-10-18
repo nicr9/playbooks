@@ -34,6 +34,7 @@
 - name: checkout_pet_projects
   git: repo=git@github.com:{{ item.repo }}.git
        dest={{ src }}/{{ item.name }}
+       accept_hostkey=yes
   with_items: personal_gits
 
 - name: checkout_other_gits
