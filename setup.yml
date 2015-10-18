@@ -6,5 +6,6 @@
   hosts: local
   roles:
   - common
+  #- docker
   - i3
   - vim
