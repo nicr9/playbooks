@@ -8,15 +8,11 @@ apt_repos:
 
 apt_packages:
 - aptitude
-- dmenu
 - dstat
-- feh
 - git
 - golang
 - google-chrome-stable
 - htop
-- i3
-- i3status
 - iotop
 - lsof
 - make
@@ -29,13 +25,11 @@ apt_packages:
 - wget
 
 dirs:
-- "{{ home }}/.i3"
 - "{{ home }}/.config/terminator"
 
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
 - { src: 'dotgitignore', dest: '.gitignore' }
-- { src: 'doti3/config', dest: '.i3/config' }
 - { src: 'dotinputrc', dest: '.inputrc' }
 - { src: 'dotconfig/terminator/config', dest: '.config/terminator/config' }
 

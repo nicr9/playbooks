@@ -6,4 +6,5 @@
   hosts: local
   roles:
   - common
+  - i3
   - vim
