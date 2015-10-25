@@ -1,0 +1,20 @@
+# vim:ft=ansible:
+- name: add_salt_gpg
+  sudo: yes
+  apt_key: url='https://repo.saltstack.com/apt/ubuntu/ubuntu14/latest/SALTSTACK-GPG-KEY.pub'
+           state=present
+
+- name: add_salt_ppa
+  sudo: yes
+  apt_repository: repo='deb http://repo.saltstack.com/apt/ubuntu/ubuntu14/latest trusty main'
+                  state=present
+
+- name: apt-get_update
+  sudo: yes
+  apt: update_cache=yes
+
+- name: install_package_list
+  sudo: yes
+  apt: name={{ item }}
+       state=latest
+  with_items: apt_packages
