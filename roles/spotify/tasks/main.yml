@@ -10,7 +10,7 @@
 
 - name: add_spotify_ppa
   sudo: yes
-  apt_repository: repo='deb http://repository.spotify.com stable non-free'
+  apt_repository: repo='deb http://repository.spotify.com testing non-free'
                   state=present
 
 - name: apt-get update
