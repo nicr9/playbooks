@@ -6,7 +6,8 @@
   hosts: local
   roles:
   - common
-  #- docker
+  - docker
+  - spotify
   - i3
   - vim
   - saltstack
