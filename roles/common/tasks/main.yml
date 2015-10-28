@@ -7,7 +7,7 @@
 
 - name: add_apt_repos
   sudo: yes
-  apt_repository: repo={{ item }} state=present
+  apt_repository: repo="{{ item }}" state=present
   with_items: apt_repos
 
 - name: apt-get_update
