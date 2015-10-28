@@ -19,6 +19,8 @@
   apt: name={{ item }}
        state=latest
   with_items: apt_packages
+  notify:
+  - restart_docker
 
 - name: add_user_to_docker_group (requires user to log out/in)
   sudo: yes
