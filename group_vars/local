@@ -1,8 +1,13 @@
 home: "{{ lookup('env','HOME') }}"
 user: "{{ lookup('env','USER') }}"
+
 src: "{{ home }}/src"
+bin: "{{ home }}/bin"
+patches: "{{ home }}/patches"
+
 dotfiles: "{{ home }}/playbooks/dotfiles"
 fonts: "{{ home }}/playbooks/fonts"
+
 user_fonts: /usr/share/fonts/truetype/user_fonts
 
 email: "{{ lookup('env','EMAIL') }}"

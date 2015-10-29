@@ -25,6 +25,10 @@ apt_packages:
 
 dirs:
 - "{{ home }}/.config/terminator"
+- "{{ src }}
+- "{{ bin }}
+- "{{ home }}/pkg
+- "{{ patches }}
 
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
