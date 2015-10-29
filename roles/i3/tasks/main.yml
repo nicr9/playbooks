@@ -14,3 +14,7 @@
         dest={{ home }}/{{ item.dest }}
         state=link
   with_items: config_files
+
+- name: rotate_wallpapers
+  cron: name="rotate_wallpapers"
+        job='DISPLAY=:0.0 feh --bg-max "$(find ~/wallpaper/|shuf -n1)"'

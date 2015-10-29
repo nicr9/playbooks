@@ -27,8 +27,9 @@ dirs:
 - "{{ home }}/.config/terminator"
 - "{{ src }}
 - "{{ bin }}
-- "{{ home }}/pkg
 - "{{ patches }}
+- "{{ home }}/pkg
+- "{{ home }}/wallpapers
 
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
