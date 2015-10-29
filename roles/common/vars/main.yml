@@ -45,4 +45,8 @@ personal_gits:
 - 'nicr9/vim-orca'
 
 other_gits:
+- 'astaxie/bat'
 - 'hashicorp/vault'
+- 'GeertJohan/yubigo'
+- 'prometheus/prometheus'
+- 'syncthing/syncthing'
