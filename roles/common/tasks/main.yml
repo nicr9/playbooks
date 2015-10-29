@@ -44,11 +44,3 @@
        dest={{ src }}/github.com/{{ item }}
        state=latest
   with_items: other_gits
-
-- name: install_fonts
-  sudo: yes
-  copy: src={{ fonts }}/ dest={{ user_fonts }} mode=0755
-
-- name: reload_font_cache
-  sudo: yes
-  command: fc-cache -f -v
