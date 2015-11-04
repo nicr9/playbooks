@@ -7,6 +7,7 @@ apt_repos:
 
 apt_packages:
 - aptitude
+- dconf-editor
 - dstat
 - git
 - golang
