@@ -18,18 +18,18 @@ apt_packages:
 - pavucontrol
 - python-pip
 - screen
-#- spotify-client
 - ssh
 - terminator
 - wget
 
 dirs:
 - "{{ home }}/.config/terminator"
-- "{{ src }}
-- "{{ bin }}
-- "{{ patches }}
-- "{{ home }}/pkg
-- "{{ home }}/wallpapers
+- "{{ src }}"
+- "{{ bin }}"
+- "{{ patches }}"
+- "{{ home }}/pkg"
+- "{{ home }}/scripts"
+- "{{ home }}/wallpaper"
 
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }

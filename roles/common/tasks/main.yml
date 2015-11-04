@@ -36,11 +36,9 @@
   git: repo=git@github.com:{{ item }}.git
        dest={{ src }}/github.com/{{ item }}
        accept_hostkey=yes
-       state=present
   with_items: personal_gits
 
 - name: checkout_other_gits
   git: repo=https://github.com/{{ item }}.git
        dest={{ src }}/github.com/{{ item }}
-       state=latest
   with_items: other_gits
