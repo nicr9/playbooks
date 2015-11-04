@@ -90,3 +90,5 @@ if has("autocmd")
     autocmd BufRead *.go :nmap <buffer> <leader>t :!go test<CR>
     autocmd BufRead *.go :nmap <buffer> <leader>T :!go test 
 endif
+
+let g:rocannon_open_action = "vsplit"
