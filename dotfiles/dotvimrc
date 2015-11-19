@@ -13,7 +13,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
-Plugin 'file:///home/nic/workspace/vim-orca'
+Plugin 'file:///home/nic/src/github.com/nicr9/vim-orca'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'MicahElliott/Rocannon'
 call vundle#end()

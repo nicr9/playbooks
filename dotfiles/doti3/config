@@ -159,3 +159,8 @@ bindsym Control+mod1+l exec i3lock -c 00678c -n -d 1
 bindsym Control+mod1+s exec "i3-nagbar -t warning -m 'Shutdown?' -b 'Yup!' 'sudo shutdown -Ph now'"
 client.urgent #2f343a #900000 #ffffff #900000
 bindsym Print exec gnome-screenshot -i
+
+# Audio controls
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
