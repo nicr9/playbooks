@@ -40,6 +40,9 @@ set laststatus=2
 let g:orca_debug = 0
 let g:orca_sudo = 0
 
+" Configure Rocannon
+let g:rocannon_open_action = "vsplit"
+
 " Text colours and encoding
 set t_Co=256
 set encoding=utf-8
@@ -52,8 +55,8 @@ set incsearch
 set colorcolumn=80
 
 " Keymappings
-nmap <F5> :set paste!
-nmap <F4> :set nu!
+nmap <F5> :set paste!<CR>
+nmap <F4> :set nu!<CR>
 nmap <F3> :!pygt <C-R><C-W> <CR>
 vmap <F3> "py:<C-W>!pygt <C-R>p <CR>
 nmap <F2> mm:%s/<C-R><C-W>//gc<LEFT><LEFT><LEFT>
@@ -92,4 +95,15 @@ if has("autocmd")
     autocmd BufRead *.go :nmap <buffer> <leader>T :!go test 
 endif
 
-let g:rocannon_open_action = "vsplit"
+" Custom fugitive commands
+command! Gadd exec "Git add -p"
+command! -nargs=* Ggraph exec "Git graph " . <q-args>
+command! -nargs=? Gpush exec join(["Git push", len(<q-args>)==0?"origin":<q-args>, system("git rev-parse --abbrev-ref HEAD")], " ")[0:-2]
+command! Gdiscard exec "Git checkout -p"
+command! Gamend exec "Gcommit --amend"
+command! Gpatch exec "Git diff --no-prefix"
+
+" highlights
+highlight Pmenu ctermbg=blue
+highlight PmenuSel ctermbg=darkblue
+highlight Search ctermbg=blue
