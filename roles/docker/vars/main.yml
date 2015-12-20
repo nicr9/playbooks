@@ -1,4 +1,5 @@
 # vim:ft=ansible:
+---
 apt_packages:
   - docker-engine
   - python-pip
