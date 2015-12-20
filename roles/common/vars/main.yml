@@ -9,6 +9,7 @@ apt_packages:
 - aptitude
 - dconf-editor
 - dstat
+- gimp
 - git
 - golang
 - google-chrome-stable
