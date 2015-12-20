@@ -1,0 +1,29 @@
+# vim:ft=ansible:
+---
+- name: apt-get_update
+  sudo: yes
+  apt: update_cache=yes
+
+- name: install_package_list
+  sudo: yes
+  apt: name={{ item }} state=present
+  with_items:
+      - openssl
+      - libcurl4-openssl-dev
+      - libxml2
+      - libssl-dev
+      - libxml2-dev
+      - pinentry-curses
+      - xclip
+
+- name: checkout_lpass
+  git: repo=git@github.com:lastpass/lastpass-cli.git
+       dest={{ src }}/github.com/lastpass/lastpass-cli
+       accept_hostkey=yes
+
+- name: build_lpass
+  command: chdir={{ src }}/github.com/lastpass/lastpass-cli /usr/bin/make
+
+- name: install_lpass
+  sudo: yes
+  command: chdir={{ src }}/github.com/lastpass/lastpass-cli /usr/bin/make install
