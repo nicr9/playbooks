@@ -5,6 +5,7 @@
 - name: base_desktop
   hosts: local
   roles:
+  - lpass
   - common
   - docker
   - spotify
