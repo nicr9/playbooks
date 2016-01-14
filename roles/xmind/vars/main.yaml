@@ -1,0 +1,3 @@
+# vim:ft=ansible:
+---
+deb: xmind7-linux-3.6.0.R-201511090408_amd64.deb

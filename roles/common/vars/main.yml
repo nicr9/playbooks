@@ -29,6 +29,8 @@ dirs:
 - "{{ src }}"
 - "{{ bin }}"
 - "{{ patches }}"
+- "{{ home }}/debs"
+- "{{ home }}/rpms"
 - "{{ home }}/pkg"
 - "{{ home }}/scripts"
 - "{{ home }}/wallpaper"
