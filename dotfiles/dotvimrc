@@ -51,6 +51,8 @@ set incsearch
 set colorcolumn=80
 
 " Keymappings
+nmap <F6> :!xclip -sel clip < %<CR>
+vmap <F6> "+y
 nmap <F5> :set paste!<CR>
 nmap <F4> :set nu!<CR>
 nmap <F3> :!pygt <C-R><C-W> <CR>
