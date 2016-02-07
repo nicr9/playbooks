@@ -19,6 +19,8 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'MicahElliott/Rocannon'
 call vundle#end()
 
+set rtp+=~/.fzf
+
 " Syntax HL and indentation
 syntax on
 filetype plugin indent on

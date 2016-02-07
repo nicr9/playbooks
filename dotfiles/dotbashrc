@@ -125,3 +125,5 @@ PS1="\`if [ \$? = 0 ]; then echo \[\e[36m\]\(^_^\)[\u@\h:\W]\\ $ \[\e[0m\]; else
 if [ -f ~/.extras ]; then
     . ~/.extras
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
