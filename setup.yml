@@ -8,6 +8,7 @@
   - lpass
   - common
   - docker
+  - fzf
   - spotify
   - i3
   - vim
