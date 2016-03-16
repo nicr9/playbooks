@@ -31,6 +31,11 @@
         state=link
   with_items: config_files
 
+- name: download_css
+  get_url: url=https://gist.githubusercontent.com/dashed/6714393/raw/ae966d9d0806eb1e24462d88082a0264438adc50/github-pandoc.css
+        dest={{ home }}/css
+        mode=0640
+
 - name: checkout_pet_projects
   git: repo=git@github.com:{{ item }}.git
        dest={{ src }}/github.com/{{ item }}

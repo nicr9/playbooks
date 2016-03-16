@@ -16,6 +16,7 @@ apt_packages:
 - iotop
 - lsof
 - make
+- pandoc
 - pavucontrol
 - python-pip
 - screen
@@ -33,6 +34,7 @@ dirs:
 - "{{ home }}/pkg"
 - "{{ home }}/scripts"
 - "{{ home }}/wallpaper"
+- "{{ home }}/css"
 
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }

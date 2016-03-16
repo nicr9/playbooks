@@ -55,7 +55,7 @@ nmap <F4> :set nu!<CR>
 nmap <F3> :!pygt <C-R><C-W> <CR>
 vmap <F3> "py:<C-W>!pygt <C-R>p <CR>
 nmap <F2> mm:%s/<C-R><C-W>//gc<LEFT><LEFT><LEFT>
-nmap <F1> :w !pandoc -c ~/css/github.css -o %:r.html<CR>
+nmap <F1> :w !pandoc -c ~/css/github-pandoc.css -f markdown_github -o %:r.html<CR>:!google-chrome %:r.html<CR>
 
 " Centre view on next/previus search result
 nmap n nzz
