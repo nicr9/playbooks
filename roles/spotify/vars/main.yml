@@ -1,3 +1,2 @@
-# vim:ft=ansible:
 apt_packages:
   - spotify-client

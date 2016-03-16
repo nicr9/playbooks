@@ -15,8 +15,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
 Plugin 'file:///home/nic/src/github.com/nicr9/vim-orca'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'MicahElliott/Rocannon'
 call vundle#end()
 
 set rtp+=~/.fzf
@@ -37,9 +35,6 @@ nmap <F7> :NERDTreeToggle<CR>
 " Configure vim-airline
 let g:airline_powerline_fonts = 1
 set laststatus=2
-
-" Configure Rocannon
-let g:rocannon_open_action = "vsplit"
 
 " Text colours and encoding
 set t_Co=256

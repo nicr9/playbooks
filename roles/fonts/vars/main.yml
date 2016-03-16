@@ -1,4 +1,3 @@
-# vim:ft=ansible:
 ---
 gits_fonts:
   - { 'repo': 'larsenwork/monoid', 'file': 'Monoisome/Monoisome-Regular.ttf' }
