@@ -1,0 +1,11 @@
+---
+- name: install_package_list
+  sudo: yes
+  yum: name={{ item }} state=present update_cache=yes
+  with_items:
+      - openssl-devel
+      - libcurl-devel
+      - libxml2-devel
+      - pinentry-curses
+      - xclip
+      - gcc

@@ -1,0 +1,12 @@
+---
+- name: install_package_list
+  sudo: yes
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+      - openssl
+      - libcurl4-openssl-dev
+      - libxml2
+      - libssl-dev
+      - libxml2-dev
+      - pinentry-curses
+      - xclip
