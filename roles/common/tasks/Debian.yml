@@ -1,0 +1,22 @@
+---
+- name: install_package_list
+  sudo: yes
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+  - aptitude
+  - dconf-editor
+  - dstat
+  - gimp
+  - git
+  - golang
+  - htop
+  - iotop
+  - lsof
+  - make
+  - pandoc
+  - pavucontrol
+  - python-pip
+  - tmux
+  - ssh
+  - terminator
+  - wget

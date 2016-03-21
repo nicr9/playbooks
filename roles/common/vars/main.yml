@@ -1,39 +1,8 @@
-apt_keys:
-- 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-
-apt_repos:
-- 'deb http://dl.google.com/linux/chrome/deb/ stable main'
-
-apt_packages:
-- aptitude
-- dconf-editor
-- dstat
-- gimp
-- git
-- golang
-- google-chrome-stable
-- htop
-- iotop
-- lsof
-- make
-- pandoc
-- pavucontrol
-- python-pip
-- screen
-- ssh
-- terminator
-- wget
-
 dirs:
 - "{{ home }}/.config/terminator"
 - "{{ src }}"
 - "{{ bin }}"
 - "{{ patches }}"
-- "{{ home }}/debs"
-- "{{ home }}/rpms"
-- "{{ home }}/pkg"
-- "{{ home }}/scripts"
-- "{{ home }}/wallpaper"
 - "{{ home }}/css"
 
 config_files:
@@ -49,10 +18,9 @@ personal_gits:
 - 'nicr9/otto'
 - 'nicr9/pydialog'
 - 'nicr9/vim-orca'
+- 'nicr9/cloudctl'
 
 other_gits:
 - 'astaxie/bat'
-- 'hashicorp/vault'
-- 'GeertJohan/yubigo'
-- 'prometheus/prometheus'
+- 'kubernetes/kubernetes'
 - 'syncthing/syncthing'

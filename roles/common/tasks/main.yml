@@ -1,22 +1,8 @@
 ---
-- name: add_apt_keys
-  sudo: yes
-  apt_key: url={{ item }} state=present
-  with_items: apt_keys
-
-- name: add_apt_repos
-  sudo: yes
-  apt_repository: repo="{{ item }}" state=present
-  with_items: apt_repos
-
-- name: apt-get_update
-  sudo: yes
-  apt: update_cache=yes
-
-- name: install_package_list
-  sudo: yes
-  apt: name={{ item }} state=present
-  with_items: apt_packages
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
 
 - name: configure_git
   template: src=dotgitconfig dest={{ home }}/.gitconfig
@@ -33,7 +19,7 @@
 
 - name: download_css
   get_url: url=https://gist.githubusercontent.com/dashed/6714393/raw/ae966d9d0806eb1e24462d88082a0264438adc50/github-pandoc.css
-        dest={{ home }}/css
+        dest={{ home }}/css/github-pandoc.css
         mode=0640
 
 - name: checkout_pet_projects

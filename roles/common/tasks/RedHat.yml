@@ -1,0 +1,22 @@
+---
+- name: install_package_list
+  sudo: yes
+  yum: name={{ item }} state=present update_cache=yes
+  with_items:
+  - dconf-editor
+  - dstat
+  - gimp
+  - git
+  - golang
+  - htop
+  - iotop
+  - lsof
+  - make
+  - pandoc
+  - python-pip
+  - tmux
+  - terminator
+  - wget
+
+- name: remove_bashrc
+  file: path={{ home }}/.bashrc state=absent

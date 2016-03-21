@@ -9,7 +9,8 @@ install `git`, and check out this repo before you get started.
 
 ```
 passwd $USER
-sudo apt-get install -y git
+sudo apt-get install -y git # sudo yum install -y git
+mkdir -p src/github.com/nicr9; cd !$
 git clone https://github.com/nicr9/playbooks
 ```
 
