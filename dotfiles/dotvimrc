@@ -61,6 +61,9 @@ nmap <F1> :w !pandoc -c ~/css/github-pandoc.css -f markdown_github -o %:r.html<C
 nmap n nzz
 nmap N Nzz
 
+" quick key to disable highlight of previous search results
+nmap <leader>n :noh<CR>
+
 " Move between splits with CTRL+[hjkl]
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -88,6 +91,9 @@ if has("autocmd")
     autocmd BufRead *.go :nmap <buffer> <leader>r :!go run %<CR>
     autocmd BufRead *.go :nmap <buffer> <leader>t :!go test<CR>
     autocmd BufRead *.go :nmap <buffer> <leader>T :!go test 
+
+    " Ansible specific keymappings
+    autocmd FileType yaml,yml :nmap <buffer> K :!ansible-doc <C-r><C-w><CR>
 endif
 
 " Custom fugitive commands
