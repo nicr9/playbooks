@@ -1,7 +1,10 @@
 ---
 - name: install_package_list
-  sudo: yes
-  apt: name={{ item }} state=present update_cache=yes
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
   with_items:
   - aptitude
   - dconf-editor

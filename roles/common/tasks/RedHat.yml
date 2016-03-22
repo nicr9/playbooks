@@ -1,7 +1,10 @@
 ---
 - name: install_package_list
-  sudo: yes
-  yum: name={{ item }} state=present update_cache=yes
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
   with_items:
   - dconf-editor
   - dstat
@@ -19,4 +22,6 @@
   - wget
 
 - name: remove_bashrc
-  file: path={{ home }}/.bashrc state=absent
+  file:
+    path: "{{ home }}/.bashrc"
+    state: absent

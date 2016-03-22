@@ -1,19 +1,24 @@
 - name: checkout_git_fonts
-  git: repo=https://github.com/{{ item.repo }}.git
-       dest={{ src }}/github.com/{{ item.repo }}
+  git:
+    repo: https://github.com/{{ item.repo }}.git
+    dest: {{ src }}/github.com/{{ item.repo }}
   with_items: gits_fonts
 
 - name: install_git_fonts
-  sudo: yes
-  copy: src="{{ src }}/github.com/{{ item.repo }}/{{ item.file }}"
-        dest={{ user_fonts }}
-        mode=0755
+  become: yes
+  copy:
+    src: "{{ src }}/github.com/{{ item.repo }}/{{ item.file }}"
+    dest: {{ user_fonts }}
+    mode: 0755
   with_items: gits_fonts
 
 - name: install_bundled_fonts
-  sudo: yes
-  copy: src={{ fonts }}/ dest={{ user_fonts }} mode=0755
+  become: yes
+  copy:
+    src: {{ fonts }}/
+    dest: {{ user_fonts }}
+    mode: 0755
 
 - name: reload_font_cache
-  sudo: yes
+  become: yes
   command: fc-cache -f -v
