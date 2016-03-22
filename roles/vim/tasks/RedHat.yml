@@ -1,0 +1,6 @@
+---
+- name: install_w_yum
+  yum:
+    name: vim
+    state: present
+    update_cache: yes
