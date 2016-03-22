@@ -20,7 +20,7 @@
     src: "{{ dotfiles }}/{{ item.src }}"
     dest: "{{ home }}/{{ item.dest }}"
     state: link
-  with_items: config_files
+  with_items: "{{ config_files }}"
 
 - name: download_css
   get_url:

@@ -1,0 +1,3 @@
+bind R source-file ~/.tmux.conf \; display-message "Config reloaded!"
+bind-key C-b last-window
+set -s escape-time 0
