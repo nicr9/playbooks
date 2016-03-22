@@ -1,3 +1,4 @@
+---
 home: "{{ lookup('env','HOME') }}"
 user: "{{ lookup('env','USER') }}"
 playbooks: "{{ lookup('env','PLAYBOOKS') }}"

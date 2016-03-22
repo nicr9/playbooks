@@ -24,3 +24,4 @@ other_gits:
 - 'astaxie/bat'
 - 'kubernetes/kubernetes'
 - 'syncthing/syncthing'
+- 'ansible/ansible'
