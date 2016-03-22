@@ -1,0 +1,21 @@
+- name: add_yum_repo
+  become: yes
+  yum_repository:
+    name: docker
+    description: "Docker's official yum repo."
+    baseurl: 'https://yum.dockerproject.org/repo/main/centos/$releasever/'
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: 'https://yum.dockerproject.org/gpg'
+
+- name: install_rpms
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items:
+  - docker-engine
+  - python-pip
+  notify:
+  - restart_docker

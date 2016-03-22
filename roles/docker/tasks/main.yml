@@ -1,40 +1,27 @@
-- name: add_docker_gpg
-  sudo: yes
-  apt_key: keyserver='pgp.mit.edu'
-           id='2C52609D'
-           state=present
-
-- name: add_docker_ppa
-  sudo: yes
-  apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-wily main'
-                  state=present
-
-- name: apt-get update
-  sudo: yes
-  apt: update_cache=yes
-
-- name: install_docker_packages
-  sudo: yes
-  apt: name={{ item }}
-       state=latest
-  with_items: apt_packages
-  notify:
-  - restart_docker
+---
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
 
 - name: add_user_to_docker_group (requires user to log out/in)
-  sudo: yes
+  become: yes
   user: name={{ user }}
         groups=docker
         append=yes
 
+- name: get_sys_arch
+  shell: uname -m
+  register: arch
+
 - name: install_docker-machine
-  sudo: yes
-  get_url: url=https://github.com/docker/machine/releases/download/v0.4.1/docker-machine_linux-amd64
+  become: yes
+  get_url: url=https://github.com/docker/machine/releases/download/v0.6.0/docker-machine-Linux-{{ arch['stdout_lines'][0] }}
            dest=/usr/local/bin/docker-machine
            mode=0755
-           sha256sum="95b14234d6d90c232ca50edce8d145e5186a5209a1290a03303dcee98f5d586e"
+           sha256sum="6c383c4716985db2d7ae7e1689cc4acee0b23284e6e852d6bc59011696ca734a"
 
 - name: install_docker-compose
-  sudo: yes
+  become: yes
   pip: name=docker-compose
        state=latest

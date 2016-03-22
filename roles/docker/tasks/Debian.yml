@@ -1,0 +1,25 @@
+---
+- name: add_apt_gpg
+  become: yes
+  apt_key:
+    keyserver: 'pgp.mit.edu'
+    id: '2C52609D'
+    state: present
+
+- name: add_apt_ppa
+  become: yes
+  apt_repository:
+    repo: 'deb https://apt.dockerproject.org/repo ubuntu-wily main'
+    state: present
+
+- name: install_docker_packages
+  become: yes
+  apt:
+    name: {{ item }}
+    state: latest
+    update_cache: yes
+  with_items:
+  - docker-engine
+  - python-pip
+  notify:
+  - restart_docker

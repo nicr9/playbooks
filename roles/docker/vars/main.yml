@@ -1,5 +1,0 @@
----
-apt_packages:
-  - docker-engine
-  - python-pip
-  - python-virtualenv
