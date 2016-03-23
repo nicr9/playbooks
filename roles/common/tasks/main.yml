@@ -60,6 +60,7 @@
   pip:
     name: "{{ item }}"
   with_items:
+    - awscli
     - boto
     - botocore
     - boto3
