@@ -13,5 +13,5 @@
   command: chdir={{ src }}/github.com/lastpass/lastpass-cli /usr/bin/make
 
 - name: install_lpass
-  sudo: yes
+  become: yes
   command: chdir={{ src }}/github.com/lastpass/lastpass-cli /usr/bin/make install

@@ -46,3 +46,22 @@
   with_items:
     - "/org/gnome/desktop/background/draw-background"
     - "/org/gnome/desktop/background/show-desktop-icons"
+
+- name: upgrade_pip
+  become: yes
+  pip:
+    name: pip
+    extra_args: --upgrade
+  tags:
+    - pip
+
+- name: install_pip_packages
+  become: yes
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - boto
+    - botocore
+    - boto3
+  tags:
+    - pip
