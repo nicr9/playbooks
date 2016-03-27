@@ -1,18 +1,15 @@
-# vim:ft=ansible:
 ---
-# This playbook applies my environment setup to localhost
-
 - name: base_desktop
   hosts: local
   roles:
-  - lpass
-  - common
-  - docker
-  - fzf
-  - spotify
-  - i3
-  - vim
-  - saltstack
-  - syncthing
-  - fonts
-  - xmind
+  - { role: lpass, tags:["lpass"] }
+  - { role: common, tags:["common"] }
+  - { role: docker, tags:["docker"] }
+  - { role: fzf, tags:["fzf"] }
+  - { role: spotify, tags:["spotify"] }
+  - { role: i3, tags:["i3"] }
+  - { role: vim, tags:["vim"] }
+  - { role: saltstack, tags:["saltstack"] }
+  - { role: syncthing, tags:["syncthing"] }
+  - { role: fonts, tags:["fonts"] }
+  - { role: xmind, tags:["xmind"] }
