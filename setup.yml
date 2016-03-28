@@ -4,6 +4,7 @@
   roles:
   - { role: lpass, tags:["lpass"] }
   - { role: common, tags:["common"] }
+  - { role: chrome, tags:["chrome"] }
   - { role: docker, tags:["docker"] }
   - { role: fzf, tags:["fzf"] }
   - { role: spotify, tags:["spotify"] }
