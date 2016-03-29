@@ -15,6 +15,7 @@
   - iotop
   - lsof
   - make
+  - mercurial
   - pandoc
   - python-pip
   - tmux

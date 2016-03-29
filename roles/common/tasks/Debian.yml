@@ -16,6 +16,7 @@
   - iotop
   - lsof
   - make
+  - mercurial
   - pandoc
   - pavucontrol
   - python-pip
