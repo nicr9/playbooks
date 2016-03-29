@@ -1,0 +1,17 @@
+---
+- name: add_yum_repo
+  become: yes
+  yum_repository:
+    name: 'google-chrome'
+    description: 'Official Chrome YUM repo.'
+    baseurl: 'http://dl.google.com/linux/chrome/rpm/stable/$basearch'
+    state: present
+    gpgcheck: yes
+    gpgkey: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
+
+- name: install_chrome_stable
+  become: yes
+  yum:
+    name: google-chrome-stable
+    state: present
+    update_cache: yes

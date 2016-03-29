@@ -21,6 +21,8 @@
     dest: "{{ home }}/{{ item.dest }}"
     state: link
   with_items: "{{ config_files }}"
+  tags:
+    - config
 
 - name: download_css
   get_url:

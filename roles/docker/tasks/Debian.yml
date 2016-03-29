@@ -15,7 +15,7 @@
 - name: install_docker_packages
   become: yes
   apt:
-    name: {{ item }}
+    name: "{{ item }}"
     state: latest
     update_cache: yes
   with_items:
