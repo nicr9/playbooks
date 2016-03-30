@@ -1,19 +1,30 @@
 ---
 - name: install_package_list
-  sudo: yes
-  apt: name={{ item }} state=present
-  with_items: apt_packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - dmenu
+    - feh
+    - i3
+    - i3status
 
 - name: create_dirs
-  file: path={{ item }} state=directory
-  with_items: dirs
+  file:
+    path: "{{ home }}/{{ item }}"
+    state: directory
+  with_items:
+    - .i3
+    - wallpaper
 
 - name: config_files
-  file: src={{ dotfiles }}/{{ item.src }}
-        dest={{ home }}/{{ item.dest }}
-        state=link
-  with_items: config_files
+  file:
+    src: "{{ dotfiles }}/doti3/config"
+    dest: "{{ home }}/.i3/config"
+    state: link
 
 - name: rotate_wallpapers
-  cron: name="rotate_wallpapers"
-        job='DISPLAY=:0.0 feh --bg-max "$(find ~/wallpaper/|shuf -n1)"'
+  cron:
+    name: "rotate_wallpapers"
+    job: 'DISPLAY=:0.0 feh --bg-max "$(find ~/wallpaper/|shuf -n1)"'
