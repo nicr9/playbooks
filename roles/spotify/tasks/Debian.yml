@@ -1,0 +1,24 @@
+- name: add_spotify_gpg
+  become: yes
+  apt_key: keyserver='keyserver.ubuntu.com'
+           id={{ item }}
+           state=present
+  with_items:
+  - '94558F59'
+  - 'D2C19886'
+
+- name: add_spotify_ppa
+  become: yes
+  apt_repository: repo='deb http://repository.spotify.com testing non-free'
+                  state=present
+
+- name: apt-get update
+  become: yes
+  apt: update_cache=yes
+
+- name: Install package list
+  become: yes
+  apt: name=spotify-client
+       state=latest
+  with_items:
+  - spotify-client

@@ -1,23 +1,5 @@
-- name: add_spotify_gpg
-  sudo: yes
-  apt_key: keyserver='keyserver.ubuntu.com'
-           id={{ item }}
-           state=present
-  with_items:
-  - '94558F59'
-  - 'D2C19886'
-
-- name: add_spotify_ppa
-  sudo: yes
-  apt_repository: repo='deb http://repository.spotify.com testing non-free'
-                  state=present
-
-- name: apt-get update
-  sudo: yes
-  apt: update_cache=yes
-
-- name: Install package list
-  sudo: yes
-  apt: name=spotify-client
-       state=latest
-  with_items: apt_packages
+---
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
