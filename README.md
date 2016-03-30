@@ -50,5 +50,5 @@ git remote set-url origin git@github.com:nicr9/playbooks.git
 This should take care of everything else:
 
 ```
-ansible-playbook -i hosts --ask-sudo-pass setup.yml
+ansible-playbook -i hosts --ask-become-pass setup.yml
 ```
