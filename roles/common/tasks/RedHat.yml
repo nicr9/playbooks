@@ -17,6 +17,7 @@
   - make
   - mercurial
   - pandoc
+  - python-devel
   - python-pip
   - tmux
   - terminator
