@@ -1,3 +1,6 @@
 bind R source-file ~/.tmux.conf \; display-message "Config reloaded!"
 bind-key C-b last-window
 set -s escape-time 0
+set-option -g history-limit 4000
+set-window-option -g mode-keys vi
+bind C-l clear-history
