@@ -94,6 +94,9 @@ if has("autocmd")
 
     " Ansible specific keymappings
     autocmd FileType yaml,yml :nmap <buffer> K :!ansible-doc <C-r><C-w><CR>
+
+    " Markdown specific keymappings
+    autocmd FileType markdown :vmap <buffer> <leader>- :s/_/\\_/g<CR>
 endif
 
 " Custom fugitive commands
