@@ -121,7 +121,10 @@ fi
 ## User changes
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/src/android-studio/bin
+export PATH=$PATH:$HOME/kubernetes/platforms/linux/amd64
+export PATH=/usr/local/go/bin:$PATH
 export GOPATH=$HOME
+export SRC=$HOME/src/github.com/nicr9
 
 ## PS1
 PS1="\`if [ \$? = 0 ]; then echo \[\e[36m\]\(^_^\)[\u@\h:\W]\\ $ \[\e[0m\]; else echo \[\e[31m\]\(ಠ_ಠ\)[\u@\h:\W]\\ $ \[\e[0m\]; fi\`"
