@@ -19,7 +19,6 @@ personal_gits:
 - 'nicr9/otto'
 - 'nicr9/pydialog'
 - 'nicr9/vim-orca'
-- 'nicr9/cloudctl'
 
 other_gits:
 - 'astaxie/bat'
