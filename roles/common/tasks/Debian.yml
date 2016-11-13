@@ -16,6 +16,8 @@
   - iotop
   - lsof
   - make
+  - mercurial
+  - openvpn
   - pandoc
   - pavucontrol
   - python-pip

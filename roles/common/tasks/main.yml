@@ -66,5 +66,7 @@
     - boto
     - botocore
     - boto3
+    - ffind
+    - shade
   tags:
     - pip

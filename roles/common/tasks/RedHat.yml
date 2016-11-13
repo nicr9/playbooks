@@ -15,7 +15,10 @@
   - iotop
   - lsof
   - make
+  - mercurial
+  - openvpn
   - pandoc
+  - python-devel
   - python-pip
   - tmux
   - terminator
