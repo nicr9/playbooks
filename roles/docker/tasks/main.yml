@@ -16,10 +16,9 @@
 
 - name: install_docker-machine
   become: yes
-  get_url: url=https://github.com/docker/machine/releases/download/v0.6.0/docker-machine-Linux-{{ arch['stdout_lines'][0] }}
+  get_url: url=https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-Linux-{{ arch['stdout_lines'][0] }}
            dest=/usr/local/bin/docker-machine
            mode=0755
-           sha256sum="6c383c4716985db2d7ae7e1689cc4acee0b23284e6e852d6bc59011696ca734a"
 
 - name: install_docker-compose
   become: yes
