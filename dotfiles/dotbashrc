@@ -121,7 +121,12 @@ fi
 ## User changes
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/src/android-studio/bin
+export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:$HOME/src/github.com/kubernetes/kubernetes/_output/dockerized/bin/linux/amd64
 export GOPATH=$HOME
+export EDITOR='vim'
+export VAULT_ADDR='http://127.0.0.1:8200'
+export SRC=$HOME/src/github.com/nicr9
 
 ## PS1
 PS1="\`if [ \$? = 0 ]; then echo \[\e[36m\]\(^_^\)[\u@\h:\W]\\ $ \[\e[0m\]; else echo \[\e[31m\]\(ಠ_ಠ\)[\u@\h:\W]\\ $ \[\e[0m\]; fi\`"
