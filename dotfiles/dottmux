@@ -1,6 +1,10 @@
-bind R source-file ~/.tmux.conf \; display-message "Config reloaded!"
+# key binds
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded!"
 bind-key C-b last-window
+bind-key R respawn-pane -k \; display 'Respawned Pane!'
+bind C-l clear-history
+
+# Other misc options
 set -s escape-time 0
 set-option -g history-limit 4000
 set-window-option -g mode-keys vi
-bind C-l clear-history

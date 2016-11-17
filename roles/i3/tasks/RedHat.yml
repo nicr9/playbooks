@@ -1,0 +1,47 @@
+---
+- name: checkout_source
+  git:
+    repo: "https://github.com/i3/i3.git"
+    dest: "{{ src }}/github.com/i3/i3"
+    version: "4.12"
+
+- name: install_package_list
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - dmenu
+    - pkgconfig
+    - libxcb
+    - libxcb-devel
+    - xcb-util
+    - xcb-util-devel
+    - libxkbcommon
+    - libxkbcommon-devel
+    - xcb-util-cursor
+    - xcb-util-cursor-devel
+    - xcb-util-wm
+    - xcb-util-wm-devel
+    - xcb-util-keysyms
+    - xcb-util-keysyms-devel
+    - libev
+    - libev-devel
+    - yajl
+    - yajl-devel
+    - asciidoc
+    - perl-Pod-Simple
+      #- docbook-style-xsl
+    - pcre
+    - startup-notification
+    - startup-notification-devel
+    - pango
+    - pango-devel
+    - cairo
+
+- name: make
+  command: chdir="{{ src }}/github.com/i3/i3" /usr/bin/make
+
+- name: make_install
+  become: yes
+  command: chdir="{{ src }}/github.com/i3/i3" /usr/bin/make install

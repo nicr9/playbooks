@@ -114,16 +114,18 @@ highlight PmenuSel ctermbg=darkblue
 highlight Search ctermbg=blue
 
 " Work log mappings
-vmap <leader>t :s/^\( [↳]\)\\|[*☑∅]/☐/<CR>:noh<CR>:w<CR> " ☐ : <C-R>u2610
-nmap <leader>t :.s/^\( [↳]\)\\|[*☑∅]/☐/<CR>:noh<CR>:w<CR>
-vmap <leader>d :s/^\( [↳]\)\\|[*☐∅]/☑/<CR>:noh<CR>:w<CR> " ☑ : <C-R>u2611
-nmap <leader>d :.s/^\( [↳]\)\\|[*☐∅]/☑/<CR>:noh<CR>:w<CR>
-vmap <leader>s :s/^\( [↳]\)\\|[☑☐∅]/*/<CR>:noh<CR>:w<CR> " * : <S-8>
-nmap <leader>s :.s/^\( [↳]\)\\|[☑☐∅]/*/<CR>:noh<CR>:w<CR>
-vmap <leader>n :s/^\( [↳]\)\\|[☑☐*]/∅/<CR>:noh<CR>:w<CR> " ∅ : <C-R>u2205
-nmap <leader>n :.s/^\( [↳]\)\\|[☑☐*]/∅/<CR>:noh<CR>:w<CR>
-vmap <leader>r :s/^[☑☐*∅]/ ↳/<CR>:noh<CR>:w<CR> " ↳ : <C-R>u21b3
-nmap <leader>r :.s/^[☑☐*∅]/ ↳/<CR>:noh<CR>:w<CR>
+vmap <leader>t :s/^\( [↳]\)\\|[*☑∅💡]/☐/<CR>:noh<CR>:w<CR> " ☐ : <C-R>u2610
+nmap <leader>t :.s/^\( [↳]\)\\|[*☑∅💡]/☐/<CR>:noh<CR>:w<CR>
+vmap <leader>d :s/^\( [↳]\)\\|[*☐∅💡]/☑/<CR>:noh<CR>:w<CR> " ☑ : <C-R>u2611
+nmap <leader>d :.s/^\( [↳]\)\\|[*☐∅💡]/☑/<CR>:noh<CR>:w<CR>
+vmap <leader>s :s/^\( [↳]\)\\|[☑☐∅💡]/*/<CR>:noh<CR>:w<CR> " * : <S-8>
+nmap <leader>s :.s/^\( [↳]\)\\|[☑☐∅💡]/*/<CR>:noh<CR>:w<CR>
+vmap <leader>n :s/^\( [↳]\)\\|[☑☐*💡]/∅/<CR>:noh<CR>:w<CR> " ∅ : <C-R>u2205
+nmap <leader>n :.s/^\( [↳]\)\\|[☑☐*💡]/∅/<CR>:noh<CR>:w<CR>
+vmap <leader>r :s/^[☑☐*∅💡]/ ↳/<CR>:noh<CR>:w<CR> " ↳ : <C-R>u21b3
+nmap <leader>r :.s/^[☑☐*∅💡]/ ↳/<CR>:noh<CR>:w<CR>
+vmap <leader>l :s/^\( [↳]\)\\|[☑☐*∅]/💡/<CR>:noh<CR>:w<CR> " 💡 : <C-R>U0001f4a1
+nmap <leader>l :.s/^\( [↳]\)\\|[💡☐*∅]/💡/<CR>:noh<CR>:w<CR>
 
 nmap <leader><space> :.s/^/\r# \r\r## Goals\r/<CR>:noh<CR>kkk$"=strftime("%d/%m/%y")<CR>p
 

@@ -20,7 +20,9 @@
   - pandoc
   - python-devel
   - python-pip
+  - telnet
   - tmux
+  - tree
   - terminator
   - wget
 

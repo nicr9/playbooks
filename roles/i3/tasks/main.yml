@@ -1,14 +1,8 @@
 ---
-- name: install_package_list
-  become: yes
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - dmenu
-    - feh
-    - i3
-    - i3status
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
 
 - name: create_dirs
   file:
