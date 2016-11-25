@@ -1,5 +1,6 @@
 dirs:
 - "{{ home }}/.config/terminator"
+- "{{ home }}/.config/i3status"
 - "{{ src }}"
 - "{{ bin }}"
 - "{{ patches }}"
