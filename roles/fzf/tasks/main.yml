@@ -1,9 +1,9 @@
 ---
-- name: checkout_fzf
+- name: checkout fzf repo
   git:
     repo: https://github.com/junegunn/fzf.git
     depth: 1
     dest: "{{ home }}/.fzf"
 
-- name: install_fzf
+- name: install fzf
   command: "{{ home }}/.fzf/install"
