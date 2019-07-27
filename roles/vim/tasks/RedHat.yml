@@ -1,6 +1,6 @@
 ---
-- name: install_w_yum
-  yum:
-    name: vim
+- name: install vim
+  become: yes
+  dnf:
+    name: vim-enhanced
     state: present
-    update_cache: yes

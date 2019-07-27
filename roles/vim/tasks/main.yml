@@ -10,10 +10,9 @@
     dest: "{{ home }}/.vim/bundle/Vundle.vim"
 
 - name: vim_config
-  file:
-    src: "{{ dotfiles }}/dotvimrc"
+  template:
+    src: dotvimrc
     dest: "{{ home }}/.vimrc"
-    state: link
 
 - name: install_vim_plugins
   command: /usr/bin/vim +PluginInstall +qall

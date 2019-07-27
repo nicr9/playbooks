@@ -3,13 +3,14 @@
   hosts: local
   roles:
   - { role: fzf, tags: ["fzf"] }
+  - pip
+  - vim
   #- { role: lpass, tags: ["lpass"] }
   #- { role: common, tags: ["common"] }
   #- { role: chrome, tags: ["chrome"] }
   #- { role: docker, tags: ["docker"] }
   #- { role: spotify, tags: ["spotify"] }
   #- { role: i3, tags: ["i3"] }
-  #- { role: vim, tags: ["vim"] }
   #- { role: saltstack, tags: ["saltstack"] }
   #- { role: syncthing, tags: ["syncthing"] }
   #- { role: fonts, tags: ["fonts"] }
