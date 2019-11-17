@@ -1,0 +1,25 @@
+---
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
+
+- name: Create autoload dir
+  file:
+    path: "{{ home }}/.local/share/nvim/site/autoload/"
+    state: directory
+    mode: 0750
+
+- name: Install vim-plug
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "{{ home }}/.local/share/nvim/site/autoload/plug.vim"
+    mode: 0664
+
+- name: Neovim config file
+  template:
+    src: init.vim
+    dest: "{{ xdg_config }}/nvim/init.vim"
+
+- name: Install plugins
+  command: /usr/bin/nvim +PlugInstall +qall

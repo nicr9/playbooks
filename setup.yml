@@ -4,7 +4,7 @@
   roles:
   - fzf
   - pip
-  - vim
+  - nvim
   - ansible
   - terraform
   #- docker

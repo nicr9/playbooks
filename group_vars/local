@@ -6,6 +6,7 @@ playbooks: "{{ lookup('env','PLAYBOOKS') }}"
 src: "{{ home }}/src"
 bin: "{{ home }}/bin"
 patches: "{{ home }}/patches"
+xdg_config: "{{ home }}/.config"
 
 dotfiles: "{{ playbooks }}/dotfiles"
 fonts: "{{ playbooks }}/fonts"

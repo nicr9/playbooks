@@ -1,0 +1,10 @@
+---
+- name: install nvim from package
+  become: yes
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop:
+  - neovim
+  - python2-neovim
+  - python3-neovim
