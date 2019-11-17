@@ -1,2 +1,2 @@
 setup:
-	ansible-playbook --ask-sudo-pass playbooks/setup.yml
+	ansible-playbook --ask-sudo-pass setup.yml

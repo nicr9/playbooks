@@ -2,15 +2,17 @@
 - name: base_desktop
   hosts: local
   roles:
-  - { role: lpass, tags: ["lpass"] }
-  - { role: common, tags: ["common"] }
-  - { role: chrome, tags: ["chrome"] }
-  - { role: docker, tags: ["docker"] }
-  - { role: fzf, tags: ["fzf"] }
-  - { role: spotify, tags: ["spotify"] }
-  - { role: i3, tags: ["i3"] }
-  - { role: vim, tags: ["vim"] }
-  - { role: saltstack, tags: ["saltstack"] }
-  - { role: syncthing, tags: ["syncthing"] }
-  - { role: fonts, tags: ["fonts"] }
-  - { role: xmind, tags: ["xmind"] }
+  - fzf
+  - pip
+  - vim
+  - ansible
+  - terraform
+  #- docker
+  #- { role: common, tags: ["common"] }
+  #- { role: chrome, tags: ["chrome"] }
+  #- { role: spotify, tags: ["spotify"] }
+  #- { role: i3, tags: ["i3"] }
+  #- { role: saltstack, tags: ["saltstack"] }
+  #- { role: syncthing, tags: ["syncthing"] }
+  #- { role: fonts, tags: ["fonts"] }
+  #- { role: xmind, tags: ["xmind"] }
