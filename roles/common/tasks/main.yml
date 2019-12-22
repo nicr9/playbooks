@@ -4,11 +4,6 @@
 - include: "Debian.yml"
   when: ansible_os_family == "Debian"
 
-- name: configure_git
-  template:
-    src: dotgitconfig
-    dest: "{{ home }}/.gitconfig"
-
 - name: create_dirs
   file:
     path: "{{ item }}"
@@ -29,19 +24,6 @@
     url: https://gist.githubusercontent.com/dashed/6714393/raw/ae966d9d0806eb1e24462d88082a0264438adc50/github-pandoc.css
     dest: "{{ home }}/css/github-pandoc.css"
     mode: 0640
-
-- name: checkout_pet_projects
-  git:
-    repo: git@github.com:{{ item }}.git
-    dest: "{{ src }}/github.com/{{ item }}"
-    accept_hostkey: yes
-  with_items: "{{ personal_gits }}"
-
-- name: checkout_other_gits
-  git:
-    repo: "https://github.com/{{ item }}.git"
-    dest: "{{ src }}/github.com/{{ item }}"
-  with_items: "{{ other_gits }}"
 
 - name: dconf_disable_desktop
   command: "dconf write {{ item }} false"

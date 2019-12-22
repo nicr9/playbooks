@@ -1,17 +1,35 @@
 ---
-home: "{{ lookup('env','HOME') }}"
+# User info
 user: "{{ lookup('env','USER') }}"
-playbooks: "{{ lookup('env','PLAYBOOKS') }}"
+editor: "{{ lookup('env','EDITOR') }}"
 
+# Quick paths
+home: "{{ lookup('env','HOME') }}"
 src: "{{ home }}/src"
 bin: "{{ home }}/bin"
 patches: "{{ home }}/patches"
 xdg_config: "{{ home }}/.config"
 
+playbooks: "{{ lookup('env','PLAYBOOKS') }}"
 dotfiles: "{{ playbooks }}/dotfiles"
 fonts: "{{ playbooks }}/fonts"
 
 user_fonts: /usr/share/fonts/truetype/user_fonts
 
-email: "{{ lookup('env','EMAIL') }}"
-full_name: "{{ lookup('env','FULL_NAME') }}"
+# Git details
+git_full_name: "Nic Roland"
+git_email: "nicroland9@gmail.com"
+
+git_repos_ssh:
+- 'nicr9/daftpunk'
+- 'nicr9/greptools'
+- 'nicr9/lament'
+- 'nicr9/otto'
+- 'nicr9/pydialog'
+- 'nicr9/vim-orca'
+
+git_repos_https:
+- 'astaxie/bat'
+- 'kubernetes/kubernetes'
+- 'syncthing/syncthing'
+- 'ansible/ansible'
