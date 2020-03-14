@@ -1,0 +1,7 @@
+---
+- name: install terminator deb
+  become: yes
+  apt:
+    name: terminator
+    state: present
+    update_cache: yes

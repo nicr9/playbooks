@@ -1,0 +1,7 @@
+---
+- name: install terminator rpm
+  become: yes
+  yum:
+    name: terminator
+    state: present
+    update_cache: yes

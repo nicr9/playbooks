@@ -1,0 +1,15 @@
+---
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
+
+- name: create terminator config dir
+  file:
+    path: "{{ home }}/.config/terminator"
+    state: directory
+
+- name: copy terminator config into place
+  template:
+    src: "config.j2"
+    dest: "{{ home }}/.config/terminator/config"

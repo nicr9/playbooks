@@ -1,5 +1,4 @@
 dirs:
-- "{{ home }}/.config/terminator"
 - "{{ home }}/.config/i3status"
 - "{{ src }}"
 - "{{ bin }}"
@@ -10,5 +9,4 @@ config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
 - { src: 'dottmux', dest: '.tmux.conf' }
 - { src: 'dotinputrc', dest: '.inputrc' }
-- { src: 'dotconfig/terminator/config', dest: '.config/terminator/config' }
 - { src: 'dotconfig/i3status/config', dest: '.config/i3status/config' }
