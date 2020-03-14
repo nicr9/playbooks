@@ -5,6 +5,7 @@
   - fzf
   - pip
   - nvim
+  - git
   - ansible
   - terraform
   #- docker
