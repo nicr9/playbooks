@@ -13,7 +13,5 @@
   #- { role: chrome, tags: ["chrome"] }
   #- { role: spotify, tags: ["spotify"] }
   #- { role: i3, tags: ["i3"] }
-  #- { role: saltstack, tags: ["saltstack"] }
-  #- { role: syncthing, tags: ["syncthing"] }
   #- { role: fonts, tags: ["fonts"] }
   #- { role: xmind, tags: ["xmind"] }

@@ -1,8 +1,0 @@
-apt_packages:
-  - salt-common
-  - salt-master
-  - salt-minion
-  - salt-ssh
-  - salt-syndic
-  - python-tornado
-  - python-mako
