@@ -1,0 +1,4 @@
+- pip:
+    name: awscli
+    executable: pip3
+    extra_args: "-U"
