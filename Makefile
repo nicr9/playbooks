@@ -1,2 +1,2 @@
 setup:
-	ansible-playbook --ask-sudo-pass setup.yml
+	ansible-playbook --ask-become-pass setup.yml
