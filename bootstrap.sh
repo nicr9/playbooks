@@ -1,7 +1,8 @@
 #! /bin/bash
 
 # Install prerequisites
-sudo apt-get install -y ansible ssh vim xclip
+sudo apt install -y xclip python3-pip
+sudo pip3 install -r requirements.txt
 
 # Install .extras file and fill it out before executing it
 cp ./dotfiles/dotextras.template $HOME/.extras
