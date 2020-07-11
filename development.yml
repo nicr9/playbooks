@@ -1,0 +1,11 @@
+---
+- name: set up development tools
+  hosts: all
+  roles:
+  - pip
+  - awscli
+  - fzf
+  - nvim
+  - git
+  - terraform
+  #- docker

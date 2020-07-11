@@ -1,0 +1,12 @@
+---
+- name: Install desktop environment + applications
+  hosts: all
+  roles:
+  - fonts
+  - terminator
+  #- signal
+  #- { role: common, tags: ["common"] }
+  #- { role: chrome, tags: ["chrome"] }
+  #- { role: spotify, tags: ["spotify"] }
+  #- { role: i3, tags: ["i3"] }
+  #- { role: xmind, tags: ["xmind"] }

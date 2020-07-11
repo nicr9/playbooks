@@ -1,17 +1,9 @@
 ---
-- name: base_desktop
-  hosts: local
-  roles:
-  - fzf
-  - pip
-  - nvim
-  - git
-  - ansible
-  - terraform
-  #- docker
-  #- { role: common, tags: ["common"] }
-  #- { role: chrome, tags: ["chrome"] }
-  #- { role: spotify, tags: ["spotify"] }
-  #- { role: i3, tags: ["i3"] }
-  #- { role: fonts, tags: ["fonts"] }
-  #- { role: xmind, tags: ["xmind"] }
+- name: system setup; prepare ansible environment
+  import_playbook: system.yml
+
+- name: install developer tooling
+  import_playbook: development.yml
+
+- name: install desktop environment
+  import_playbook: desktop.yml
