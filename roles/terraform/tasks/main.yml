@@ -2,6 +2,6 @@
 - name: Download zip, unarchive into /usr/local/bin
   become: yes
   unarchive:
-    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_{{ terraform_arch }}.zip"
     dest: "/usr/local/bin"
     remote_src: yes
