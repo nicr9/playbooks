@@ -1,15 +1,5 @@
-- name: upgrade_pip
+- name: upgrade pip to latest
   become: yes
   pip:
     name: pip
     extra_args: --upgrade
-
-- name: install_pip_packages
-  become: yes
-  pip:
-    name: "{{ item }}"
-  with_items:
-    - awscli
-    - boto
-    - botocore
-    - boto3
