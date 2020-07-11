@@ -1,4 +1,8 @@
 ---
-gits_fonts:
-  - { 'repo': 'larsenwork/monoid', 'file': 'Monoisome/Monoisome-Regular.ttf' }
-  - { 'repo': 'chrissimpkins/Hack', 'file': 'build/ttf/Hack-Regular.ttf' }
+git_fonts:
+  - repo: 'larsenwork/monoid'
+    file: 'Monoisome/Monoisome-Regular.ttf'
+  - repo: 'chrissimpkins/Hack'
+    file: 'build/ttf/Hack-Regular.ttf'
+
+fonts_install_path: /usr/share/fonts/truetype/user_fonts

@@ -1,23 +1,25 @@
-- name: checkout_git_fonts
+- name: clone repos with interesting fonts
   git:
     repo: https://github.com/{{ item.repo }}.git
     dest: "{{ src }}/github.com/{{ item.repo }}"
-  with_items: gits_fonts
+  with_items: git_fonts
 
-- name: install_git_fonts
+- name: "copy git repo fonts to {{ fonts_install_path }}"
   become: yes
   copy:
     src: "{{ src }}/github.com/{{ item.repo }}/{{ item.file }}"
-    dest: "{{ user_fonts }}"
+    dest: "{{ fonts_install_path }}"
     mode: 0755
-  with_items: gits_fonts
+  with_items: git_fonts
 
 - name: install_bundled_fonts
   become: yes
   copy:
-    src: "{{ fonts }}/"
-    dest: "{{ user_fonts }}"
+    src: "{{ item }}"
+    dest: "{{ fonts_install_path }}"
     mode: 0755
+  loop:
+  - monofur.otf
 
 - name: reload_font_cache
   become: yes
