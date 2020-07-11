@@ -1,10 +1,10 @@
 ---
-- name: install neovim from package
+- name: install neovim packages w/ apt
+  become: yes
   apt:
     name: "{{ item }}"
     state: present
     update_cache: yes
   loop:
     - neovim
-    - python-neovim
     - python3-neovim

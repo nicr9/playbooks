@@ -4,22 +4,27 @@
 - include: "Debian.yml"
   when: ansible_os_family == "Debian"
 
-- name: Create autoload dir
+- name: create autoload dir
   file:
     path: "{{ home }}/.local/share/nvim/site/autoload/"
     state: directory
     mode: 0750
 
-- name: Install vim-plug
+- name: install vim-plug package manager into autoload
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: "{{ home }}/.local/share/nvim/site/autoload/plug.vim"
     mode: 0664
 
-- name: Neovim config file
+- name: ensure directory for nvim config exists
+  file:
+    path: "{{ xdg_config }}/nvim"
+    state: directory
+
+- name: copy nvim config file
   template:
     src: init.vim
     dest: "{{ xdg_config }}/nvim/init.vim"
 
-- name: Install plugins
+- name: install plugins
   command: /usr/bin/nvim +PlugInstall +qall

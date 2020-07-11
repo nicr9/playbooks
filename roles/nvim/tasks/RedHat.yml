@@ -1,5 +1,5 @@
 ---
-- name: install nvim from package
+- name: install nvim packages w/ yum
   become: yes
   yum:
     name: "{{ item }}"
