@@ -6,6 +6,7 @@
   - awscli
   - fzf
   - nvim
+  - ssh
   - git
   - terraform
   #- docker

@@ -1,0 +1,28 @@
+---
+- name: ensure ~/.ssh exists
+  file:
+    path: "{{ home }}/.ssh"
+    state: directory
+
+- name: ensure keypair exists
+  openssh_keypair:
+    path: "{{ home }}/.ssh/{{ ssh_key_name }}"
+    type : "{{ ssh_key_type }}"
+    size: 4096
+    comment: "{{ git_email }}"
+  register: keypair
+
+# TODO: copy ssh config template
+
+- debug:
+        msg: "{{ keypair }}"
+
+- name: authorize key with GitHub
+  github_key:
+    name: "access Key for {{ ansible_host }}"
+    token: '{{ github_access_token }}'
+    pubkey: '{{ keypair.public_key }}'
+  when:
+  - github_access_token is defined
+  - github_access_token != ''
+  - keypair.changed
