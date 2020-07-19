@@ -1,0 +1,8 @@
+---
+- name: install tmux from yum package
+  become: yes
+  yum:
+    name:
+    - tmux
+    state: present
+    update_cache: yes

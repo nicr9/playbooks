@@ -1,0 +1,10 @@
+---
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
+
+- name: install ~/.tmux.conf
+  copy:
+    src: "dottmux.conf"
+    dest: "{{ home }}/.tmux.conf"

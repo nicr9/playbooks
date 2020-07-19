@@ -9,4 +9,5 @@
   - ssh
   - git
   - terraform
+  - tmux
   #- docker
