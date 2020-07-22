@@ -1,0 +1,8 @@
+---
+- name: install golang from deb package
+  become: yes
+  apt:
+    name:
+      - golang
+    state: present
+    update_cache: yes

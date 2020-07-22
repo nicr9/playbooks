@@ -10,4 +10,5 @@
   - git
   - terraform
   - tmux
+  - golang
   #- docker

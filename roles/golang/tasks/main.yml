@@ -1,0 +1,13 @@
+---
+- include: "RedHat.yml"
+  when: ansible_os_family == "RedHat"
+- include: "Debian.yml"
+  when: ansible_os_family == "Debian"
+
+- name: Insert/Update .bash with golang env vars
+  blockinfile:
+    path: "{{ home }}/.bashrc"
+    marker: "# {mark} golang"
+    block: |
+      export GOPATH=$HOME
+      export PATH=$PATH:/usr/local/go/bin:$HOME/bin
