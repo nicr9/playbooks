@@ -11,4 +11,5 @@
   - terraform
   - tmux
   - golang
+  - pandoc
   #- docker

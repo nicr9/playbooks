@@ -1,0 +1,11 @@
+---
+- name: install pandoc + dependancies
+  become: yes
+  apt:
+    name:
+    - pandoc
+    - texlive-latex-recommended
+    - texlive-latex-extra
+    - librsvg2-bin
+    state: present
+    update_cache: yes

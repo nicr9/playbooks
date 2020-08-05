@@ -1,0 +1,8 @@
+---
+- name: install pandoc + dependancies
+  become: yes
+  yum:
+    name:
+    - pandoc
+    state: present
+    update_cache: yes
