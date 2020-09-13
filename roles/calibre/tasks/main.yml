@@ -1,0 +1,53 @@
+---
+- name: create calibre system group
+  become: true
+  group:
+    name: calibre
+    system: true
+    state: present
+
+- name: create calibre system user
+  become: true
+  user:
+    name: calibre
+    system: true
+    shell: "/usr/sbin/nologin"
+    group: calibre
+    createhome: false
+    home: "{{ calibre_library_dir }}"
+
+- name: create calibre data directory
+  become: true
+  file:
+    path: "{{ calibre_library_dir }}"
+    state: directory
+    owner: calibre
+    group: calibre
+    mode: 0755
+
+- name: install Calibre
+  become: true
+  become: yes
+  package:
+    name:
+    - calibre
+    state: present
+
+- name: create systemd service unit
+  become: true
+  template:
+    src: calibre.service.j2
+    dest: /etc/systemd/system/calibre.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart calibre
+
+- name: ensure calibre service is started and enabled
+  become: true
+  systemd:
+    daemon_reload: true
+    name: calibre
+    state: started
+    enabled: true

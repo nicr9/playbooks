@@ -2,6 +2,7 @@
 - name: Install desktop environment + applications
   hosts: all
   roles:
+  - calibre
   - fonts
   - terminator
   #- signal
