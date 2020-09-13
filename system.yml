@@ -17,5 +17,13 @@
     - zip
     - unzip
     when: ansible_os_family == "Debian"
+  - name: set misc environment variables
+    blockinfile:
+      path: ~/.bashrc
+      block: |-
+        {% for key, val in bashrc_variables.items() %}
+        export {{ key }}={{ val }}
+        {% endfor %}
+      marker: "# {mark} misc environment variables"
   roles: []
   #- ansible

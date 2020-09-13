@@ -1,4 +1,0 @@
-export FULL_NAME=""
-export EMAIL=""
-
-export ANSIBLE_NOCOWS=1

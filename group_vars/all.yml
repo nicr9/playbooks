@@ -16,6 +16,11 @@ fonts: "{{ playbooks }}/fonts"
 
 user_fonts: /usr/share/fonts/truetype/user_fonts
 
+# Bashrc
+bashrc_variables:
+  PATH: '$PATH:$HOME/bin'
+  ANSIBLE_NOCOWS: 1
+
 # Git details
 git_full_name: "Nic Roland"
 git_email: "nicroland9@gmail.com"
