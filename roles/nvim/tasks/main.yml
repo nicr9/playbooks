@@ -28,3 +28,11 @@
 
 - name: install plugins
   command: /usr/bin/nvim +PlugInstall +qall
+
+- name: set nvim as default editor
+  blockinfile:
+    path: ~/.bashrc
+    block: |-
+      export EDITOR=nvim
+      alias vim="nvim"
+    marker: "# {mark} set nvim as default editor"

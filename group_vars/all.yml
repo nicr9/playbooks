@@ -1,7 +1,6 @@
 ---
 # User info
 user: "{{ lookup('env','USER') }}"
-editor: "{{ lookup('env','EDITOR') }}"
 
 # Quick paths
 home: "{{ lookup('env','HOME') }}"
