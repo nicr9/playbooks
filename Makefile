@@ -1,5 +1,5 @@
 ENV?=local
-RUN_PLAYBOOK=ansible-playbook --ask-become-pass -i inventory -l ${ENV}
+RUN_PLAYBOOK=ansible-playbook --ask-become-pass -l ${ENV}
 
 setup:
 	${RUN_PLAYBOOK} setup.yml
