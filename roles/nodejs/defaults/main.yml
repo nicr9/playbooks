@@ -1,0 +1,6 @@
+---
+nodejs_default_packages:
+  - nodejs
+  - npm
+
+nodejs_packages: []
