@@ -1,11 +1,10 @@
 - name: install awscli + boto pip packages
   become: yes
   pip:
-    name: "{{ item }}"
-    executable: pip3
-    extra_args: "-U"
-  with_items:
+    name:
     - awscli
     - boto
     - botocore
     - boto3
+    executable: pip3
+    extra_args: "-U"
