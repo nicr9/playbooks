@@ -9,7 +9,7 @@
     path: "{{ home }}/.ssh/{{ ssh_key_name }}"
     type : "{{ ssh_key_type }}"
     size: 4096
-    comment: "{{ git_email }}"
+    comment: "{{ ssh_key_comment }}"
   register: keypair
 
 # TODO: copy ssh config template
@@ -19,7 +19,7 @@
 
 - name: authorize key with GitHub
   github_key:
-    name: "access Key for {{ ansible_host }}"
+    name: "access key for {{ ansible_host }}"
     token: '{{ github_access_token }}'
     pubkey: '{{ keypair.public_key }}'
   when:

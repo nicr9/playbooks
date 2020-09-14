@@ -30,3 +30,6 @@ git_repos_ssh: []
 
 git_repos_https:
 - 'ansible/ansible'
+
+# SSH
+ssh_key_comment: "{{ git_email }}"
