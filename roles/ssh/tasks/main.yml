@@ -14,8 +14,12 @@
 
 # TODO: copy ssh config template
 
-- debug:
-        msg: "{{ keypair }}"
+- name: "add {{ item.key }} to known_hosts"
+  known_hosts:
+    name: "{{ item.key }}"
+    key: "{% if item.value != '' %}{{ item.value }}{% else %}{{ lookup('pipe', 'ssh-keyscan -t rsa ' + item.key | quote) }}{% endif %}"
+    hash_host: yes
+  loop: "{{ lookup('dict', ssh_pubkey_defaults | combine(ssh_pubkeys) ) }}"
 
 - name: authorize key with GitHub
   github_key:
