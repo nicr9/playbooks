@@ -1,0 +1,10 @@
+---
+- name: install system utilities
+  package:
+    name:
+    - dstat
+    - htop
+    - iotop
+    - lsof
+    - tree
+    - wget

@@ -7,12 +7,8 @@
     update_cache: yes
   with_items:
   - dconf-editor
-  - dstat
   - gimp
   - golang
-  - htop
-  - iotop
-  - lsof
   - make
   - mercurial
   - openvpn
@@ -20,10 +16,6 @@
   - python-devel
   - python-pip
   - telnet
-  - tmux
-  - tree
-  - terminator
-  - wget
 
 - name: remove_bashrc
   file:
