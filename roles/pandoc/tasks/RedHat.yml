@@ -1,4 +1,5 @@
 ---
+// TODO: Determine the dependancies needed to do PDF generation
 - name: install pandoc + dependancies
   become: yes
   yum:

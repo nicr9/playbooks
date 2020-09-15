@@ -6,6 +6,9 @@
     - pandoc
     - texlive-latex-recommended
     - texlive-latex-extra
+    - texlive-latex-bin
+    - texlive-cm-super
+    - texlive-collection-fontsrecommended
     - librsvg2-bin
     state: present
     update_cache: yes
