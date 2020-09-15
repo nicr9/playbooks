@@ -1,2 +1,6 @@
 ---
 bashrc_variables: {}
+
+# Don't forget to include '.'
+bashrc_cdpath:
+  - .

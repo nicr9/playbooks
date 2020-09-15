@@ -6,4 +6,5 @@
       {% for key, val in bashrc_variables.items() %}
       export {{ key }}={{ val }}
       {% endfor %}
+      export CDPATH={{ bashrc_cdpath | join(':') }}
     marker: "# {mark} misc environment variables"

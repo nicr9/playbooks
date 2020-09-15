@@ -19,6 +19,9 @@ user_fonts: /usr/share/fonts/truetype/user_fonts
 bashrc_variables:
   PATH: '$PATH:$HOME/bin'
   ANSIBLE_NOCOWS: 1
+bashrc_cdpath:
+  - .
+  - ~/src/github.com/nicr9
 
 # Git details
 git_full_name: "Nic Roland"
