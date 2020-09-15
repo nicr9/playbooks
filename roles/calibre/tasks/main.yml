@@ -1,13 +1,13 @@
 ---
 - name: create calibre system group
-  become: true
+  become: yes
   group:
     name: calibre
     system: true
     state: present
 
 - name: create calibre system user
-  become: true
+  become: yes
   user:
     name: calibre
     system: true
@@ -17,7 +17,7 @@
     home: "{{ calibre_library_dir }}"
 
 - name: create calibre data directory
-  become: true
+  become: yes
   file:
     path: "{{ calibre_library_dir }}"
     state: directory
@@ -26,7 +26,6 @@
     mode: 0755
 
 - name: install Calibre
-  become: true
   become: yes
   package:
     name:
@@ -34,7 +33,7 @@
     state: present
 
 - name: create systemd service unit
-  become: true
+  become: yes
   template:
     src: calibre.service.j2
     dest: /etc/systemd/system/calibre.service
@@ -45,7 +44,7 @@
     - restart calibre
 
 - name: ensure calibre service is started and enabled
-  become: true
+  become: yes
   systemd:
     daemon_reload: true
     name: calibre
