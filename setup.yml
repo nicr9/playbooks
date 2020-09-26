@@ -1,9 +1,58 @@
 ---
 - name: system setup; prepare ansible environment
-  import_playbook: system.yml
+  become: yes
+  hosts: all
+  pre_tasks:
+  - name: install yum packages required by Ansible modules
+    yum:
+      name: "{{ item }}"
+    loop:
+    - zip
+    - unzip
+    when: ansible_os_family == "RedHat"
+  - name: install apt packages required by Ansible modules
+    apt:
+      name: "{{ item }}"
+    loop:
+    - zip
+    - unzip
+    when: ansible_os_family == "Debian"
+  roles:
+  - bashrc
+  - utilities
+  #- ansible
+  tags:
+  - system
 
-- name: install developer tooling
-  import_playbook: development.yml
+- name: set up development tools
+  hosts: all
+  roles:
+  - pip
+  - awscli
+  - fzf
+  - nvim
+  - ssh
+  - git
+  - terraform
+  - tmux
+  - golang
+  - pandoc
+  - nodejs
+  #- docker
+  tags:
+  - development
 
-- name: install desktop environment
-  import_playbook: desktop.yml
+- name: Install desktop environment + applications
+  hosts: all
+  roles:
+  - calibre
+  - fonts
+  - terminator
+  #- signal
+  #- { role: common, tags: ["common"] }
+  #- { role: chrome, tags: ["chrome"] }
+  #- { role: spotify, tags: ["spotify"] }
+  #- { role: i3, tags: ["i3"] }
+  #- { role: xmind, tags: ["xmind"] }
+  tags:
+  - desktop
