@@ -4,6 +4,8 @@
   tasks:
   - name: "load vars from {{ lookup('env', 'HOME') }}/.playbooks.yml"
     include_vars: "{{ lookup('env', 'HOME') }}/.playbooks.yml"
+  tags:
+  - always
 
 - name: system setup; prepare ansible environment
   become: yes
