@@ -54,6 +54,7 @@
   - calibre
   - fonts
   - terminator
+  - firefox
   #- signal
   #- { role: common, tags: ["common"] }
   #- { role: chrome, tags: ["chrome"] }
