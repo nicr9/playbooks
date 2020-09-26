@@ -1,4 +1,10 @@
 ---
+- name: preflight
+  hosts: all
+  tasks:
+  - name: "load vars from {{ lookup('env', 'HOME') }}/.playbooks.yml"
+    include_vars: "{{ lookup('env', 'HOME') }}/.playbooks.yml"
+
 - name: system setup; prepare ansible environment
   become: yes
   hosts: all
