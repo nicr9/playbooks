@@ -1,5 +1,5 @@
 [core]
-    excludesfile = {{ home }}/.gitignore_global
+    excludesfile = {{ lookup('env', 'HOME') }}/.gitignore_global
 [color]
     ui = true
 [alias]

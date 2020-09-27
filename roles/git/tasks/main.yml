@@ -1,13 +1,15 @@
 ---
-- include: "RedHat.yml"
-  when: ansible_os_family == "RedHat"
-- include: "Debian.yml"
-  when: ansible_os_family == "Debian"
+- name: Install packages
+  become: yes
+  package:
+    name:
+    - git
+    state: present
 
 - name: Configure git
   template:
     src: "{{ item.src }}"
-    dest: "{{ home }}/{{ item.dest }}"
+    dest: "{{ lookup('env', 'HOME') }}/{{ item.dest }}"
   loop:
   - { src: 'dotgitconfig.j2', dest: '.gitconfig' }
   - { src: 'dotgitignore.j2', dest: '.gitignore' }
@@ -15,12 +17,11 @@
 - name: Checkout git repos - SSH
   git:
     repo: git@github.com:{{ item }}.git
-    dest: "{{ src }}/github.com/{{ item }}"
-    accept_hostkey: yes
+    dest: "{{ lookup('env', 'HOME') }}/src/github.com/{{ item }}"
   loop: "{{ git_repos_ssh }}"
 
 - name: Checkout git repos - HTTPS
   git:
     repo: "https://github.com/{{ item }}.git"
-    dest: "{{ src }}/github.com/{{ item }}"
+    dest: "{{ lookup('env', 'HOME') }}/src/github.com/{{ item }}"
   loop: "{{ git_repos_https }}"
