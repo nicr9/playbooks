@@ -40,7 +40,9 @@
   - awscli
   - fzf
   - nvim
-  - ssh
+  - name: ssh
+    vars:
+      ssh_key_comment: "{{ personal_email }}"
   - name: git
     vars:
       git_config_user:
