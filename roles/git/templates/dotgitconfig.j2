@@ -6,6 +6,9 @@
     graph = log --oneline --graph --decorate
     sb = show-branch
     last = log --stat -n 1 --
+{% if git_config_user is defined and git_config_user != {} %}
 [user]
-    email = {{ git_email }}
-    name = {{ git_full_name }}
+{% for key, val in git_config_user.items() %}
+    {{ key }} = {{ val }}
+{% endfor %}
+{% endif %}

@@ -1,5 +1,6 @@
 ---
 - name: preflight
+  gather_facts: no
   hosts: all
   tasks:
   - name: "load vars from {{ lookup('env', 'HOME') }}/.playbooks.yml"
@@ -40,7 +41,11 @@
   - fzf
   - nvim
   - ssh
-  - git
+  - name: git
+    vars:
+      git_config_user:
+        name: "{{ personal_full_name }}"
+        email: "{{ personal_email }}"
   - terraform
   - tmux
   - golang

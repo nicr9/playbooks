@@ -24,13 +24,8 @@ bashrc_cdpath:
   - ~/src/github.com/nicr9
 
 # Git details
-git_full_name: "Nic Roland"
-git_email: "nicroland9@gmail.com"
-
 github_access_token: ''
-
 git_repos_ssh: []
-
 git_repos_https:
 - 'ansible/ansible'
 
