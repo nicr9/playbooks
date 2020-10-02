@@ -1,0 +1,1 @@
+ssh_keypair_combined: "{{ ssh_keypair_defaults | combine(ssh_keypair) }}"

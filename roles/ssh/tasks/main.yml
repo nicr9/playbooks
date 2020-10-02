@@ -6,10 +6,10 @@
 
 - name: ensure keypair exists
   openssh_keypair:
-    path: "{{ home }}/.ssh/{{ ssh_key_name }}"
-    type : "{{ ssh_key_type }}"
-    size: 4096
-    comment: "{{ ssh_key_comment }}"
+    path: "{{ home }}/.ssh/{{ ssh_keypair_combined.name }}"
+    type : "{{ ssh_keypair_combined.type }}"
+    size: "{{ ssh_keypair_combined.size }}"
+    comment: "{{ ssh_keypair_combined.comment }}"
   register: keypair
 
 # TODO: copy ssh config template

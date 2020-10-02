@@ -42,7 +42,8 @@
   - nvim
   - name: ssh
     vars:
-      ssh_key_comment: "{{ personal_email }}"
+      ssh_keypair:
+        comment: "{{ personal_email }}"
   - name: git
     vars:
       git_config_user:
