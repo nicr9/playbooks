@@ -2,10 +2,14 @@
     excludesfile = {{ lookup('env', 'HOME') }}/.gitignore_global
 [color]
     ui = true
+
+{% if git_config_aliases is defined and git_config_aliases != {} %}
 [alias]
-    graph = log --oneline --graph --decorate
-    sb = show-branch
-    last = log --stat -n 1 --
+{% for key, val in git_config_aliases.items() %}
+    {{ key }} = {{ val }}
+{% endfor %}
+{% endif %}
+
 {% if git_config_user is defined and git_config_user != {} %}
 [user]
 {% for key, val in git_config_user.items() %}
