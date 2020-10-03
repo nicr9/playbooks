@@ -1,12 +1,12 @@
 ---
 - name: ensure ~/.ssh exists
   file:
-    path: "{{ home }}/.ssh"
+    path: "{{ ssh_path }}"
     state: directory
 
 - name: ensure keypair exists
   openssh_keypair:
-    path: "{{ home }}/.ssh/{{ ssh_keypair_combined.name }}"
+    path: "{{ ssh_path }}/{{ ssh_keypair_combined.name }}"
     type : "{{ ssh_keypair_combined.type }}"
     size: "{{ ssh_keypair_combined.size }}"
     comment: "{{ ssh_keypair_combined.comment }}"
@@ -14,7 +14,7 @@
 
 - name: configure ssh
   blockinfile:
-    path: "{{ lookup('env', 'HOME') }}/.ssh/config"
+    path: "{{ ssh_path }}/config"
     create: yes
     mode: 0600
     marker: '# {mark} misc ssh targets'
