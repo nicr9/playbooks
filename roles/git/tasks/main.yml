@@ -13,15 +13,3 @@
   loop:
   - { src: 'dotgitconfig.j2', dest: '.gitconfig' }
   - { src: 'dotgitignore.j2', dest: '.gitignore' }
-
-- name: Checkout git repos - SSH
-  git:
-    repo: git@github.com:{{ item }}.git
-    dest: "{{ lookup('env', 'HOME') }}/src/github.com/{{ item }}"
-  loop: "{{ git_repos_ssh }}"
-
-- name: Checkout git repos - HTTPS
-  git:
-    repo: "https://github.com/{{ item }}.git"
-    dest: "{{ lookup('env', 'HOME') }}/src/github.com/{{ item }}"
-  loop: "{{ git_repos_https }}"

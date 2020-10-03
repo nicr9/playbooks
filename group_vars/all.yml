@@ -28,7 +28,7 @@ git_config_aliases:
   graph: log --oneline --graph --decorate
   last: log --stat -n 1 --
   sb: show-branch
-github_access_token: ''
-git_repos_ssh: []
-git_repos_https:
+
+# GitHub details
+github_repos_https:
 - 'ansible/ansible'

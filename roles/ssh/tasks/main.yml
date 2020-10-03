@@ -32,12 +32,3 @@
     key: "{% if item.value != '' %}{{ item.value }}{% else %}{{ lookup('pipe', 'ssh-keyscan -t rsa ' + item.key | quote) }}{% endif %}"
     hash_host: yes
   loop: "{{ ssh_pubkeys_combined }}"
-
-- name: authorize key with GitHub
-  github_key:
-    name: "access key for {{ ansible_host }}"
-    token: '{{ github_access_token }}'
-    pubkey: '{{ keypair.public_key }}'
-  when:
-  - github_access_token is defined
-  - github_access_token != ''
