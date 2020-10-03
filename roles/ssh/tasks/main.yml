@@ -12,14 +12,26 @@
     comment: "{{ ssh_keypair_combined.comment }}"
   register: keypair
 
-# TODO: copy ssh config template
+- name: configure ssh
+  blockinfile:
+    path: "{{ lookup('env', 'HOME') }}/.ssh/config"
+    create: yes
+    mode: 0600
+    marker: '# {mark} misc ssh targets'
+    block: |-
+      {% for host, item in ssh_config_combined.items() %}
+      host {{ host }}
+      {% for key, val in item.items() %}
+       {{ key }} {{ val }}
+      {% endfor %}
+      {% endfor %}
 
-- name: "add {{ item.key }} to known_hosts"
+- name: populate known_hosts
   known_hosts:
     name: "{{ item.key }}"
     key: "{% if item.value != '' %}{{ item.value }}{% else %}{{ lookup('pipe', 'ssh-keyscan -t rsa ' + item.key | quote) }}{% endif %}"
     hash_host: yes
-  loop: "{{ lookup('dict', ssh_pubkey_defaults | combine(ssh_pubkeys) ) }}"
+  loop: "{{ ssh_pubkeys_combined }}"
 
 - name: authorize key with GitHub
   github_key:

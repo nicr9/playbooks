@@ -1,1 +1,3 @@
+ssh_config_combined: "{{ ssh_config_defaults | combine(ssh_config) }}"
 ssh_keypair_combined: "{{ ssh_keypair_defaults | combine(ssh_keypair) }}"
+ssh_pubkeys_combined: "{{ ssh_pubkey_defaults | combine(ssh_pubkeys) }}"
