@@ -1,0 +1,45 @@
+---
+- name: "add {{ github_domain }} to known_hosts"
+  known_hosts:
+    name: "{{ github_domain }}"
+    key: "{{ github_public_key }}"
+    hash_host: yes
+
+- name: create github specific keypair
+  openssh_keypair:
+    path: "{{ github_ssh_path }}/{{ github_keypair.name }}"
+    type : "{{ github_keypair.type }}"
+    size: "{{ github_keypair.size }}"
+    comment: "{{ github_keypair.comment }}"
+  register: keypair
+
+- name: "add {{ github_domain }} to ssh config"
+  blockinfile:
+    path: "{{ github_ssh_path }}/config"
+    marker: '# {mark} {{ github_domain }}'
+    block: |-
+      host {{ github_domain }}
+       HostName {{ github_domain }}
+       IdentityFile {{ github_keypair.name }}
+       IdentitiesOnly yes
+
+- name: "authorize ssh key on {{ github_domain }}"
+  github_key:
+    name: "access key for {{ ansible_host }}"
+    token: '{{ github_access_token }}'
+    pubkey: '{{ keypair.public_key }}'
+  when:
+  - github_access_token is defined
+  - github_access_token != ''
+
+- name: Checkout git repos - SSH
+  git:
+    repo: git@{{ github_domain }}:{{ item }}.git
+    dest: "{{ github_src_path }}/{{ item }}"
+  loop: "{{ github_repos_ssh }}"
+
+- name: Checkout git repos - HTTPS
+  git:
+    repo: "https://{{ github_domain }}/{{ item }}.git"
+    dest: "{{ github_src_path }}/{{ item }}"
+  loop: "{{ github_repos_https }}"
