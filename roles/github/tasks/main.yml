@@ -7,10 +7,10 @@
 
 - name: create github specific keypair
   openssh_keypair:
-    path: "{{ github_ssh_path }}/{{ github_keypair.name }}"
-    type : "{{ github_keypair.type }}"
-    size: "{{ github_keypair.size }}"
-    comment: "{{ github_keypair.comment }}"
+    path: "{{ github_ssh_path }}/{{ github_keypair_combined.name }}"
+    type : "{{ github_keypair_combined.type }}"
+    size: "{{ github_keypair_combined.size }}"
+    comment: "{{ github_keypair_combined.comment }}"
   register: keypair
 
 - name: "add {{ github_domain }} to ssh config"
@@ -20,7 +20,7 @@
     block: |-
       host {{ github_domain }}
        HostName {{ github_domain }}
-       IdentityFile {{ github_keypair.name }}
+       IdentityFile {{ github_ssh_path }}/{{ github_keypair_combined.name }}
        IdentitiesOnly yes
 
 - name: "authorize ssh key on {{ github_domain }}"
@@ -32,13 +32,13 @@
   - github_access_token is defined
   - github_access_token != ''
 
-- name: Checkout git repos - SSH
+- name: checkout github repos over SSH
   git:
     repo: git@{{ github_domain }}:{{ item }}.git
     dest: "{{ github_src_path }}/{{ item }}"
   loop: "{{ github_repos_ssh }}"
 
-- name: Checkout git repos - HTTPS
+- name: checkout github repos over HTTPS
   git:
     repo: "https://{{ github_domain }}/{{ item }}.git"
     dest: "{{ github_src_path }}/{{ item }}"

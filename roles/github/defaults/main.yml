@@ -4,7 +4,7 @@ github_access_token: ''
 
 github_keypair: {}
 github_keypair_defaults:
-  name: id_rsa.github
+  name: "id_rsa.{{ github_domain }}"
   type: rsa
   size: 4096
   comment: "{{ lookup('template', 'ansible_managed') | trim }}"
