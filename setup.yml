@@ -49,7 +49,10 @@
       git_config_user:
         name: "{{ personal_full_name }}"
         email: "{{ personal_email }}"
-  - github
+  - name: github
+    vars:
+      github_keypair:
+        comment: "{{ personal_email }}"
   - terraform
   - tmux
   - golang
