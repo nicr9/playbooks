@@ -3,7 +3,10 @@
   git:
     repo: https://github.com/junegunn/fzf.git
     depth: 1
-    dest: "{{ home }}/.fzf"
+    dest: "{{ fzf_path }}"
+  register: fzf
 
-- name: install fzf
-  command: "{{ home }}/.fzf/install"
+- name: install/update fzf
+  command:
+    cmd: "{{ fzf_path }}/install"
+  when: fzf.before != fzf.after

@@ -1,0 +1,2 @@
+---
+fzf_path: "{{ lookup('env', 'HOME') }}/.fzf"
