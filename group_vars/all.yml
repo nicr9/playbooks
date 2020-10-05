@@ -11,9 +11,6 @@ xdg_config: "{{ home }}/.config"
 
 playbooks: "{{ lookup('env','PLAYBOOKS') }}"
 dotfiles: "{{ playbooks }}/dotfiles"
-fonts: "{{ playbooks }}/fonts"
-
-user_fonts: /usr/share/fonts/truetype/user_fonts
 
 # Bashrc
 bashrc_variables:

@@ -2,7 +2,7 @@
   git:
     repo: "https://github.com/{{ item.repo }}.git"
     dest: "{{ src }}/github.com/{{ item.repo }}"
-  loop: "{{ git_fonts }}"
+  loop: "{{ fonts_git }}"
 
 - name: "copy git repo fonts to {{ fonts_install_path }}"
   become: yes
@@ -10,7 +10,7 @@
     src: "{{ src }}/github.com/{{ item.repo }}/{{ item.file }}"
     dest: "{{ fonts_install_path }}"
     mode: 0755
-  loop: "{{ git_fonts }}"
+  loop: "{{ fonts_git }}"
 
 - name: install_bundled_fonts
   become: yes
