@@ -17,7 +17,8 @@ user_fonts: /usr/share/fonts/truetype/user_fonts
 
 # Bashrc
 bashrc_variables:
-  PATH: '$PATH:$HOME/bin'
+  PS1: |-
+    "\`if [ \$? = 0 ]; then echo \[\e[36m\]\(^_^\)[\u@\h:\W]\\ $ \[\e[0m\]; else echo \[\e[31m\]\(ಠ_ಠ\)[\u@\h:\W]\\ $ \[\e[0m\]; fi\`"
   ANSIBLE_NOCOWS: 1
 bashrc_cdpath:
   - .
