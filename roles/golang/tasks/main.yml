@@ -6,7 +6,7 @@
 
 - name: Insert/Update .bash with golang env vars
   blockinfile:
-    path: "{{ home }}/.bashrc"
+    path: "{{ lookup('env', 'HOME') }}/.bashrc"
     marker: "# {mark} golang"
     block: |
       export GOPATH=$HOME
