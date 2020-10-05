@@ -1,0 +1,2 @@
+---
+nvim_autoload_path: "{{ lookup('env', 'HOME') }}/.local/share/nvim/site/autoload"
