@@ -1,7 +1,18 @@
 ---
+- name: determine which version is the latest
+  block:
+  - github_release:
+      user: hashicorp
+      repo: terraform
+      action: latest_release
+    register: terraform
+  - set_fact:
+      terraform_version: "{{ terraform.tag | regex_replace('^v', '') }}"
+  when: terraform_version in ['', 'latest']
+
 - name: Download zip, unarchive into /usr/local/bin
   become: yes
   unarchive:
-    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_{{ terraform_arch }}.zip"
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_{{ terraform_arch[ansible_architecture] }}.zip"
     dest: "/usr/local/bin"
     remote_src: yes
