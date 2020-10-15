@@ -1,4 +1,4 @@
-ENV?=local
+ENV?=
 FLAGS_ENV= ${if ${ENV},-l ${ENV}}
 
 TAGS?=
