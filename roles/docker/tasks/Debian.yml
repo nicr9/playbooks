@@ -1,25 +1,12 @@
 ---
-- name: add_apt_gpg
+- name: add the docker apt gpg key
   become: yes
   apt_key:
-    keyserver: 'pgp.mit.edu'
-    id: '2C52609D'
+    url: "https://download.docker.com/linux/ubuntu/gpg"
     state: present
 
-- name: add_apt_ppa
+- name: add the docker apt ppa
   become: yes
   apt_repository:
-    repo: 'deb https://apt.dockerproject.org/repo ubuntu-wily main'
+    repo: 'deb [arch={{ docker_arch[ansible_architecture] }}] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable'
     state: present
-
-- name: install_docker_packages
-  become: yes
-  apt:
-    name: "{{ item }}"
-    state: latest
-    update_cache: yes
-  with_items:
-  - docker-engine
-  - python-pip
-  notify:
-  - restart_docker
