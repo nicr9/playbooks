@@ -18,13 +18,13 @@
 
 - name: ensure directory for nvim config exists
   file:
-    path: "{{ xdg_config }}/nvim"
+    path: "{{ nvim_config_path }}"
     state: directory
 
 - name: copy nvim config file
   template:
     src: init.vim
-    dest: "{{ xdg_config }}/nvim/init.vim"
+    dest: "{{ nvim_config_path }}/init.vim"
 
 - name: install plugins
   command: /usr/bin/nvim +PlugInstall +qall

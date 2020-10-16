@@ -4,7 +4,6 @@ home: "{{ ansible_user_dir }}"
 src: "{{ home }}/src"
 bin: "{{ home }}/bin"
 patches: "{{ home }}/patches"
-xdg_config: "{{ home }}/.config"
 
 dotfiles: "{{ playbook_dir }}/dotfiles"
 
