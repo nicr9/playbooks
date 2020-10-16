@@ -6,8 +6,7 @@ bin: "{{ home }}/bin"
 patches: "{{ home }}/patches"
 xdg_config: "{{ home }}/.config"
 
-playbooks: "{{ lookup('env','PLAYBOOKS') }}"
-dotfiles: "{{ playbooks }}/dotfiles"
+dotfiles: "{{ playbook_dir }}/dotfiles"
 
 # Bashrc
 bashrc_variables:
