@@ -1,7 +1,4 @@
 ---
-# User info
-user: "{{ lookup('env','USER') }}"
-
 # Quick paths
 home: "{{ lookup('env','HOME') }}"
 src: "{{ home }}/src"
