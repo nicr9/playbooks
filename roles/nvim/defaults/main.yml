@@ -1,2 +1,2 @@
 ---
-nvim_autoload_path: "{{ lookup('env', 'HOME') }}/.local/share/nvim/site/autoload"
+nvim_autoload_path: "{{ ansible_user_dir }}/.local/share/nvim/site/autoload"
