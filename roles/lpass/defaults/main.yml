@@ -1,0 +1,1 @@
+lpass_src_path: "{{ ansible_user_dir }}/src/github.com/lastpass/lastpass-cli"

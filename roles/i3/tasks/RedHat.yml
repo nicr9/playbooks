@@ -1,16 +1,14 @@
 ---
-- name: checkout_source
+- name: checkout source
   git:
     repo: "https://github.com/i3/i3.git"
-    dest: "{{ src }}/github.com/i3/i3"
+    dest: "{{ i3_src_path }}"
     version: "4.12"
 
-- name: install_package_list
+- name: install packages for building i3 from source
   become: yes
   yum:
-    name: "{{ item }}"
-    state: present
-  with_items:
+    name:
     - dmenu
     - pkgconfig
     - libxcb
@@ -38,10 +36,15 @@
     - pango
     - pango-devel
     - cairo
+    state: present
 
 - name: make
-  command: chdir="{{ src }}/github.com/i3/i3" /usr/bin/make
+  command:
+    chdir: "{{ i3_src_path }}"
+    command: /usr/bin/make
 
-- name: make_install
+- name: make install
   become: yes
-  command: chdir="{{ src }}/github.com/i3/i3" /usr/bin/make install
+  command:
+    chdir: "{{ i3_src_path }}"
+    command: /usr/bin/make install

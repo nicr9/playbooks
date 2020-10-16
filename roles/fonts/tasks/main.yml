@@ -1,13 +1,13 @@
 - name: clone repos with interesting fonts
   git:
     repo: "https://github.com/{{ item.repo }}.git"
-    dest: "{{ src }}/github.com/{{ item.repo }}"
+    dest: "{{ ansible_user_dir }}/src/github.com/{{ item.repo }}"
   loop: "{{ fonts_git }}"
 
 - name: "copy git repo fonts to {{ fonts_install_path }}"
   become: yes
   copy:
-    src: "{{ src }}/github.com/{{ item.repo }}/{{ item.file }}"
+    src: "{{ ansible_user_dir }}/src/github.com/{{ item.repo }}/{{ item.file }}"
     dest: "{{ fonts_install_path }}"
     mode: 0755
   loop: "{{ fonts_git }}"

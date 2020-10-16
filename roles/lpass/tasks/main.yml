@@ -5,13 +5,18 @@
   when: ansible_os_family == "Debian"
 
 - name: checkout_latest_lpass
-  git: repo=git@github.com:lastpass/lastpass-cli.git
-       dest={{ src }}/github.com/lastpass/lastpass-cli
-       accept_hostkey=yes update=yes
+  git:
+    repo: git@github.com:lastpass/lastpass-cli.git
+    dest: "{{ lpass_src_path }}"
+    update: yes
 
 - name: build_lpass
-  command: chdir={{ src }}/github.com/lastpass/lastpass-cli /usr/bin/make
+  command:
+    chdir: "{{ lpass_src_path }}"
+    command: /usr/bin/make
 
 - name: install_lpass
   become: yes
-  command: chdir={{ src }}/github.com/lastpass/lastpass-cli /usr/bin/make install
+  command:
+    chdir: "{{ lpass_src_path }}"
+    command: /usr/bin/make install
