@@ -58,7 +58,7 @@
   - golang
   - pandoc
   - nodejs
-  #- docker
+  - docker
   tags:
   - development
 

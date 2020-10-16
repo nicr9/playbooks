@@ -4,23 +4,46 @@
 - include: "Debian.yml"
   when: ansible_os_family == "Debian"
 
-- name: add_user_to_docker_group (requires user to log out/in)
+- name: install docker packages
   become: yes
-  user: name={{ user }}
-        groups=docker
-        append=yes
+  package:
+    name:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    state: latest
+    update_cache: yes
+  notify:
+  - restart_docker
 
-- name: get_sys_arch
-  shell: uname -m
-  register: arch
-
-- name: install_docker-machine
+- name: add user to docker group (requires user to log out/in)
   become: yes
-  get_url: url=https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-Linux-{{ arch['stdout_lines'][0] }}
-           dest=/usr/local/bin/docker-machine
-           mode=0755
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
 
-- name: install_docker-compose
+- block:
+  - name: determine latest version of docker-machine
+    github_release:
+      user: docker
+      repo: machine
+      action: latest_release
+    register: machine
+  - set_fact:
+      docker_machine_version: "{{ machine.tag }}"
+  when: docker_machine_version in ['', 'latest']
+
+- name: install docker-machine
   become: yes
-  pip: name=docker-compose
-       state=latest
+  get_url:
+    url: "https://github.com/docker/machine/releases/download/{{ docker_machine_version }}/docker-machine-Linux-{{ ansible_architecture }}"
+    dest: /usr/local/bin/docker-machine
+    mode: 0755
+
+- name: install docker-compose
+  become: yes
+  pip:
+    name:
+    - docker-compose
+    state: latest
