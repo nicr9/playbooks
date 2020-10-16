@@ -2,7 +2,6 @@ dirs:
 - "{{ home }}/.config/i3status"
 - "{{ src }}"
 - "{{ bin }}"
-- "{{ patches }}"
 - "{{ home }}/css"
 
 config_files:
