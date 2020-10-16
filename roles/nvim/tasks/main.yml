@@ -31,7 +31,7 @@
 
 - name: set nvim as default editor
   blockinfile:
-    path: "{{ lookup('env', 'HOME') }}/.bashrc"
+    path: "{{ ansible_user_dir }}/.bashrc"
     block: |-
       export EDITOR=nvim
       alias vim="nvim"

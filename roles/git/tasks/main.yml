@@ -9,7 +9,7 @@
 - name: Configure git
   template:
     src: "{{ item.src }}"
-    dest: "{{ lookup('env', 'HOME') }}/{{ item.dest }}"
+    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
   loop:
   - { src: 'dotgitconfig.j2', dest: '.gitconfig' }
   - { src: 'dotgitignore.j2', dest: '.gitignore' }

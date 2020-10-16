@@ -1,6 +1,6 @@
 ---
 # Quick paths
-home: "{{ lookup('env','HOME') }}"
+home: "{{ ansible_user_dir }}"
 src: "{{ home }}/src"
 bin: "{{ home }}/bin"
 patches: "{{ home }}/patches"

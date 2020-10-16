@@ -1,2 +1,2 @@
 ---
-fzf_path: "{{ lookup('env', 'HOME') }}/.fzf"
+fzf_path: "{{ ansible_user_dir }}/.fzf"

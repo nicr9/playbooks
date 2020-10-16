@@ -1,4 +1,4 @@
 github_keypair_combined: "{{ github_keypair_defaults | combine(github_keypair) }}"
 
-github_ssh_path: "{{ lookup('env', 'HOME') }}/.ssh"
-github_src_path: "{{ lookup('env', 'HOME') }}/src/{{ github_domain }}"
+github_ssh_path: "{{ ansible_user_dir }}/.ssh"
+github_src_path: "{{ ansible_user_dir }}/src/{{ github_domain }}"
