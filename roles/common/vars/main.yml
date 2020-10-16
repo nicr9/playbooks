@@ -1,6 +1,5 @@
 dirs:
 - "{{ home }}/.config/i3status"
-- "{{ src }}"
 - "{{ home }}/css"
 
 config_files:

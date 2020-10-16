@@ -1,0 +1,2 @@
+---
+i3_src_path: "{{ ansible_user_dir }}/src/github.com/i3/i3"

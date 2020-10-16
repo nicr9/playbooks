@@ -1,7 +1,6 @@
 ---
 # Quick paths
 home: "{{ ansible_user_dir }}"
-src: "{{ home }}/src"
 
 dotfiles: "{{ playbook_dir }}/dotfiles"
 
