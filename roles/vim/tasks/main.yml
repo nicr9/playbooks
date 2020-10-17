@@ -7,12 +7,12 @@
 - name: checkout_vundle
   git:
     repo: https://github.com/VundleVim/Vundle.vim.git
-    dest: "{{ home }}/.vim/bundle/Vundle.vim"
+    dest: "{{ ansible_user_dir }}/.vim/bundle/Vundle.vim"
 
 - name: vim_config
   template:
     src: dotvimrc
-    dest: "{{ home }}/.vimrc"
+    dest: "{{ ansible_user_dir }}/.vimrc"
 
 - name: install_vim_plugins
   command: /usr/bin/vim +PluginInstall +qall

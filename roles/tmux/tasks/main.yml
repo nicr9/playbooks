@@ -7,4 +7,4 @@
 - name: install ~/.tmux.conf
   copy:
     src: "dottmux.conf"
-    dest: "{{ home }}/.tmux.conf"
+    dest: "{{ ansible_user_dir }}/.tmux.conf"

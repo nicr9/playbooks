@@ -1,7 +1,5 @@
 ---
 # Quick paths
-home: "{{ ansible_user_dir }}"
-
 dotfiles: "{{ playbook_dir }}/dotfiles"
 
 # Bashrc

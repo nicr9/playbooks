@@ -1,10 +1,10 @@
 ---
 - name: download_xmind_deb
   get_url: url=https://www.xmind.net/xmind/downloads/{{ deb }}
-           dest={{ home }}/debs/{{ deb }}
+           dest={{ ansible_user_dir }}/debs/{{ deb }}
            mode=0540
            sha256sum="71552d36c7d297a60f39c57c9f60f80916cc2d5b4205b7db4196ea915a3eff96"
 
 - name: install_xmind
   sudo: yes
-  apt: deb={{ home }}/debs/{{ deb }}
+  apt: deb={{ ansible_user_dir }}/debs/{{ deb }}
