@@ -1,9 +1,9 @@
 ---
 - name: preflight
-  gather_facts: no
+  gather_facts: yes
   hosts: all
   tasks:
-  - name: "load vars from {{ ansible_user_dir }}/.playbooks.yml"
+  - name: "load vars from ~/.playbooks.yml"
     include_vars: "{{ ansible_user_dir }}/.playbooks.yml"
   tags:
   - always
