@@ -4,28 +4,27 @@
 - include: "Debian.yml"
   when: ansible_os_family == "Debian"
 
-- name: create_dirs
-  file:
-    path: "{{ item }}"
-    state: directory
-  with_items: "{{ dirs }}"
-
-- name: config_files
+- name: install config files
   file:
     src: "{{ dotfiles }}/{{ item.src }}"
-    dest: "{{ home }}/{{ item.dest }}"
+    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
     state: link
   with_items: "{{ config_files }}"
   tags:
     - config
 
-- name: download_css
+- name: create dir for css
+  file:
+    path: "{{ ansible_user_dir }}/css"
+    state: directory
+
+- name: download github css
   get_url:
     url: https://gist.githubusercontent.com/dashed/6714393/raw/ae966d9d0806eb1e24462d88082a0264438adc50/github-pandoc.css
-    dest: "{{ home }}/css/github-pandoc.css"
+    dest: "{{ ansible_user_dir }}/css/github-pandoc.css"
     mode: 0640
 
-- name: dconf_disable_desktop
+- name: disable desktop settings in dconf
   command: "dconf write {{ item }} false"
   with_items:
     - "/org/gnome/desktop/background/draw-background"

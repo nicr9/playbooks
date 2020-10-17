@@ -6,10 +6,10 @@
 
 - name: create terminator config dir
   file:
-    path: "{{ home }}/.config/terminator"
+    path: "{{ terminator_config_path }}"
     state: directory
 
 - name: copy terminator config into place
   template:
     src: "config.j2"
-    dest: "{{ home }}/.config/terminator/config"
+    dest: "{{ terminator_config_path }}/config"

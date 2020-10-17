@@ -4,21 +4,22 @@
 - include: "Debian.yml"
   when: ansible_os_family == "Debian"
 
-- name: create_dirs
+- name: create i3 directories
   file:
-    path: "{{ home }}/{{ item }}"
+    path: "{{ ansible_user_dir }}/{{ item }}"
     state: directory
   with_items:
     - .i3
+    - .config/i3status
     - wallpaper
 
-- name: config_files
+- name: install i3 config
   file:
     src: "{{ dotfiles }}/doti3/config"
-    dest: "{{ home }}/.i3/config"
+    dest: "{{ ansible_user_dir }}/.i3/config"
     state: link
 
-- name: rotate_wallpapers
+- name: setup rotating wallpapers
   cron:
     name: "rotate_wallpapers"
     job: 'DISPLAY=:0.0 feh --bg-max "$(find ~/wallpaper/|shuf -n1)"'

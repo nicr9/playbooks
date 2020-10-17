@@ -1,7 +1,3 @@
-dirs:
-- "{{ home }}/.config/i3status"
-- "{{ home }}/css"
-
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
 - { src: 'dottmux', dest: '.tmux.conf' }
