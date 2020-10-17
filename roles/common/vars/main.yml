@@ -1,4 +1,3 @@
 config_files:
 - { src: 'dotbashrc', dest: '.bashrc' }
-- { src: 'dottmux', dest: '.tmux.conf' }
 - { src: 'dotinputrc', dest: '.inputrc' }
