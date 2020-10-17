@@ -14,10 +14,12 @@
     - wallpaper
 
 - name: install i3 config
-  file:
-    src: "{{ dotfiles }}/doti3/config"
-    dest: "{{ ansible_user_dir }}/.i3/config"
-    state: link
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
+  loop:
+  - { src: 'doti3config', dest: '.i3/config' }
+  - { src: 'doti3statusconfig', dest: '.config/i3status/config' }
 
 - name: setup rotating wallpapers
   cron:
