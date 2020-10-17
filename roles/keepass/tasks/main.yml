@@ -1,0 +1,8 @@
+---
+- name: install keepass2 + kpcli
+  become: yes
+  package:
+    name:
+    - keepass2
+    - kpcli
+    state: present

@@ -62,6 +62,14 @@
   tags:
   - development
 
+- name: Install privacy tools
+  hosts: all
+  roles:
+  - keepass
+  #- signal
+  tags:
+  - privacy
+
 - name: Install desktop environment + applications
   hosts: all
   roles:
@@ -69,7 +77,6 @@
   - fonts
   - terminator
   - firefox
-  #- signal
   #- { role: common, tags: ["common"] }
   #- { role: chrome, tags: ["chrome"] }
   #- { role: spotify, tags: ["spotify"] }
