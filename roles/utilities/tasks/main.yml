@@ -8,3 +8,6 @@
     - lsof
     - tree
     - wget
+    - telnet
+    - make
+    state: present
