@@ -11,6 +11,7 @@ dotfiles: "{{ playbook_dir }}/dotfiles"
 
 # Bashrc
 bashrc_variables:
+  HISTCONTROL: ignoreboth
   PS1: |-
     "\`if [ \$? = 0 ]; then echo \[\e[36m\]\(^_^\)[\u@\h:\W]\\ $ \[\e[0m\]; else echo \[\e[31m\]\(ಠ_ಠ\)[\u@\h:\W]\\ $ \[\e[0m\]; fi\`"
   ANSIBLE_NOCOWS: 1

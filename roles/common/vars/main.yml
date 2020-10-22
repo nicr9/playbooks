@@ -1,3 +1,2 @@
 config_files:
-- { src: 'dotbashrc', dest: '.bashrc' }
 - { src: 'dotinputrc', dest: '.inputrc' }
