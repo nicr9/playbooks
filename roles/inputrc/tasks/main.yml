@@ -1,5 +1,5 @@
 ---
-- name:
+- name: install .inputrc config file
   copy:
     src: dotinputrc.j2
     dest: "{{ ansible_user_dir }}/.inputrc"
