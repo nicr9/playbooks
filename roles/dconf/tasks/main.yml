@@ -1,0 +1,13 @@
+---
+- name: install dconf-editor
+  package:
+    name:
+    - dconf
+    - dconf-editor
+    state: present
+
+- name: modify misc dconf settings
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop: "{{ dconf_config }}"

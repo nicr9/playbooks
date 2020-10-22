@@ -73,6 +73,7 @@
 - name: Install desktop environment + applications
   hosts: all
   roles:
+  - dconf
   - calibre
   - fonts
   - terminator

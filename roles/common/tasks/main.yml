@@ -7,9 +7,3 @@
   with_items: "{{ config_files }}"
   tags:
     - config
-
-- name: disable desktop settings in dconf
-  command: "dconf write {{ item }} false"
-  with_items:
-    - "/org/gnome/desktop/background/draw-background"
-    - "/org/gnome/desktop/background/show-desktop-icons"
