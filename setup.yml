@@ -28,6 +28,7 @@
     when: ansible_os_family == "Debian"
   roles:
   - bashrc
+  - inputrc
   - utilities
   #- ansible
   tags:
