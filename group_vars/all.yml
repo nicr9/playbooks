@@ -1,7 +1,4 @@
 ---
-# Quick paths
-dotfiles: "{{ playbook_dir }}/dotfiles"
-
 # Dconf updates
 #dconf_config:
 #- key: "/org/gnome/desktop/background/draw-background"
