@@ -1,2 +1,0 @@
-config_files:
-- { src: 'dotinputrc', dest: '.inputrc' }

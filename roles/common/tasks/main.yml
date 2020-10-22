@@ -1,9 +1,0 @@
----
-- name: install config files
-  file:
-    src: "{{ dotfiles }}/{{ item.src }}"
-    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-    state: link
-  with_items: "{{ config_files }}"
-  tags:
-    - config
