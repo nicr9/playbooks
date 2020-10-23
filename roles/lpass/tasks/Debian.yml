@@ -1,12 +1,13 @@
 ---
-- name: install_package_list
+- name: install packages for building lpass from source
   become: yes
-  apt: name={{ item }} state=present update_cache=yes
-  with_items:
-      - openssl
-      - libcurl4-openssl-dev
-      - libxml2
-      - libssl-dev
-      - libxml2-dev
-      - pinentry-curses
-      - xclip
+  apt:
+    name:
+    - openssl
+    - libcurl4-openssl-dev
+    - libxml2
+    - libssl-dev
+    - libxml2-dev
+    - pinentry-curses
+    - xclip
+    state: present

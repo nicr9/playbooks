@@ -4,18 +4,18 @@
 - include: "Debian.yml"
   when: ansible_os_family == "Debian"
 
-- name: checkout_latest_lpass
+- name: clone latest lastpass-cli
   git:
     repo: git@github.com:lastpass/lastpass-cli.git
     dest: "{{ lpass_src_path }}"
     update: yes
 
-- name: build_lpass
+- name: build lpass from source
   command:
     chdir: "{{ lpass_src_path }}"
     command: /usr/bin/make
 
-- name: install_lpass
+- name: install lpass
   become: yes
   command:
     chdir: "{{ lpass_src_path }}"
