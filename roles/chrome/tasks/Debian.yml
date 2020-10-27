@@ -1,17 +1,17 @@
 ---
-- name: add_apt_keys
+- name: add chrome apt keys
   become: yes
   apt_key:
     url: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
     state: present
 
-- name: add_apt_repos
+- name: add chrome apt repo
   become: yes
   apt_repository:
     repo: 'deb http://dl.google.com/linux/chrome/deb/ stable main'
     state: present
 
-- name: install_chrome_stable
+- name: install chrome stable
   become: yes
   apt:
     name: google-chrome-stable

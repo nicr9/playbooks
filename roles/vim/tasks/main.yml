@@ -4,7 +4,7 @@
 - include: "Debian.yml"
   when: ansible_os_family == "Debian"
 
-- name: checkout_vundle
+- name: checkout vundle
   git:
     repo: https://github.com/VundleVim/Vundle.vim.git
     dest: "{{ ansible_user_dir }}/.vim/bundle/Vundle.vim"
@@ -20,10 +20,10 @@
     dest: "{{ ansible_user_dir }}/css/github-pandoc.css"
     mode: 0640
 
-- name: vim_config
+- name: configure vim
   template:
     src: dotvimrc
     dest: "{{ ansible_user_dir }}/.vimrc"
 
-- name: install_vim_plugins
+- name: install latest vim plugins
   command: /usr/bin/vim +PluginInstall +qall

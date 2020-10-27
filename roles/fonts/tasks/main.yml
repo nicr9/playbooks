@@ -12,7 +12,7 @@
     mode: 0755
   loop: "{{ fonts_git }}"
 
-- name: install_bundled_fonts
+- name: install bundled fonts
   become: yes
   copy:
     src: "{{ item }}"
@@ -21,6 +21,6 @@
   loop:
   - monofur.otf
 
-- name: reload_font_cache
+- name: reload font cache
   become: yes
   command: fc-cache -f -v

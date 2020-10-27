@@ -1,5 +1,5 @@
 ---
-- name: install_package_list
+- name: install i3 packages
   become: yes
   apt:
     name:

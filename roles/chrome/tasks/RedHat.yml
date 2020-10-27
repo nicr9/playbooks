@@ -1,5 +1,5 @@
 ---
-- name: add_yum_repo
+- name: add chrome yum repo
   become: yes
   yum_repository:
     name: 'google-chrome'
@@ -9,7 +9,7 @@
     gpgcheck: yes
     gpgkey: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
 
-- name: install_chrome_stable
+- name: install chrome stable
   become: yes
   yum:
     name: google-chrome-stable
