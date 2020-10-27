@@ -1,14 +1,5 @@
-- name: del_yum_repo
-  become: yes
-  yum_repository:
-    name: "spotify"
-    description: "3rd party yum repo for installing Spotify."
-    baseurl: "http://negativo17.org/repos/spotify/fedora-$releasever/$basearch/"
-    gpgcheck: yes
-    gpgkey: "http://negativo17.org/repos/RPM-GPG-KEY-slaanesh"
-    state: absent
-
-- name: add_yum_repo
+---
+- name: add spotify yum repo
   become: yes
   yum_repository:
     name: "spotify"
@@ -17,7 +8,7 @@
     gpgcheck: yes
     gpgkey: "http://negativo17.org/repos/RPM-GPG-KEY-slaanesh"
 
-- name: install_rpm
+- name: install spotify rpm
   become: yes
   yum:
     name: spotify-client
