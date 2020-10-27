@@ -1,17 +1,13 @@
 - name: add the spotify apt gpg keys
   become: yes
   apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: "{{ item }}"
+    url: "https://download.spotify.com/debian/pubkey_0D811D58.gpg"
     state: present
-  loop:
-  - '94558F59'
-  - 'D2C19886'
 
 - name: add the spotify ppa
   become: yes
   apt_repository:
-    repo: 'deb http://repository.spotify.com testing non-free'
+    repo: 'deb http://repository.spotify.com stable non-free'
     state: present
 
 - name: Install package list
