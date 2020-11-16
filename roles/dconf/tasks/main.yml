@@ -2,7 +2,8 @@
 - name: install dconf-editor
   package:
     name:
-    - dconf
+    - dconf-service
+    - dconf-cli
     - dconf-editor
     state: present
 
