@@ -25,3 +25,39 @@ git_config_aliases:
 # GitHub details
 github_repos_https:
 - 'ansible/ansible'
+
+# Grafana details
+grafana_security:
+  admin_user: admin
+  admin_password: admin
+grafana_datasources:
+- name: prometheus
+  type: prometheus
+  access: proxy
+  url: 'http://{{ prometheus_web_listen_address }}'
+  basicAuth: false
+grafana_dashboards:
+- dashboard_id: 6014
+  revision_id: 1
+  datasource: prometheus
+
+# Prometheus details
+prometheus_web_listen_address: 0.0.0.0:9090
+prometheus_scrape_configs:
+  - job_name: "prometheus"
+    metrics_path: "{{ prometheus_metrics_path }}"
+    static_configs:
+      - targets:
+          - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:9090"
+  - job_name: "node"
+    static_configs:
+      - targets:
+          - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:9100"
+    file_sd_configs:
+      - files:
+          - "{{ prometheus_config_dir }}/file_sd/node.yml"
+  - job_name: "grafana"
+    metrics_path: "{{ prometheus_metrics_path }}"
+    static_configs:
+      - targets:
+          - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:3000"

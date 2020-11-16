@@ -63,6 +63,17 @@
   tags:
   - development
 
+- name: set up monitoring tool
+  hosts: all
+  roles:
+  - role: cloudalchemy.node-exporter
+  - role: cloudalchemy.prometheus
+  - role: cloudalchemy.grafana
+  - role: ansible-promtail
+  - role: ansible-loki
+  tags:
+  - monitoring
+
 - name: Install privacy tools
   hosts: all
   roles:
