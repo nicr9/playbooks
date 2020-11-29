@@ -16,15 +16,26 @@
     dest: "{{ nvim_autoload_path }}/plug.vim"
     mode: 0664
 
-- name: ensure directory for nvim config exists
+- name: ensure nvim config directories exists
   file:
-    path: "{{ nvim_config_path }}"
+    path: "{{ item }}"
     state: directory
+  loop:
+  - '{{ nvim_config_path }}'
+  - '{{ nvim_config_path }}/ftplugin'
 
 - name: copy nvim config file
   template:
     src: init.vim
     dest: "{{ nvim_config_path }}/init.vim"
+
+- name: copy nvim ftplugin config
+  copy:
+    src: '{{ item }}'
+    dest: "{{ nvim_config_path }}/ftplugin/{{ item | basename }}"
+  with_fileglob:
+  - 'ftplugin/*.vim'
+  - 'nvim/ftplugin/*.vim'
 
 - name: install plugins
   command: /usr/bin/nvim +PlugInstall +qall
