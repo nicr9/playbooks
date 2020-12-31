@@ -47,3 +47,12 @@
     name:
     - docker-compose
     state: latest
+
+- name: set aliases for long docker commands
+  blockinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    block: |-
+      {% for key, val in docker_aliases.items() %}
+      alias {{ key }}={{ val | regex_replace("^(.*)$", '"\1"') }}
+      {% endfor %}
+    marker: "# {mark} docker aliases"
