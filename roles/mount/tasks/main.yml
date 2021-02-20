@@ -1,0 +1,10 @@
+---
+- name: Mount storage devices
+  become: yes
+  mount:
+    path: "{{ item.path }}"
+    src: "{% if item.label is defined %}LABEL={{ item.label }}{% endif %}{% if item.uuid is defined %}UUID={{ item.uuid }}{% endif %}"
+    fstype: "{{ item.fstype | default('ext4') }}"
+    opts: "{{ item.opts | default('defaults') }}"
+    state: mounted
+  loop: "{{ mount_details }}"
