@@ -1,11 +1,11 @@
 [Unit]
-Description=calibre content server
+Description=Calibre Content Server
 After=network.target
 
 [Service]
 Type=simple
-User=calibre
-Group=calibre
+User={{ calibre_user }}
+Group={{ calibre_user }}
 ExecStart=/usr/bin/calibre-server "{{ calibre_library_dir }}"
 
 [Install]

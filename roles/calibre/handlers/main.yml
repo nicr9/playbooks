@@ -5,3 +5,4 @@
     daemon_reload: true
     name: calibre
     state: restarted
+    enabled: true
