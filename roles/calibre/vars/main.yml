@@ -1,0 +1,5 @@
+---
+calibre_user: "{{ calibre_system_user | ternary('calibre', ansible_user) }}"
+calibre_group: "{{ calibre_system_user | ternary('calibre', ansible_user) }}"
+
+calibre_import_dir: "{{ calibre_system_user | ternary(_calibre_import_dir_system, _calibre_import_dir_user) }}"

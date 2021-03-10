@@ -1,0 +1,13 @@
+---
+- name: create system calibre-import units
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ calibre_group }}"
+    mode: 0640
+  loop:
+  - calibre-import.service
+  - calibre-import.path
+  notify:
+  - restart calibre-import.path

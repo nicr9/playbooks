@@ -1,0 +1,13 @@
+[Unit]
+Description=Calibre File Import
+
+[Service]
+Type=oneshot
+User={{ calibre_user }}
+Group={{ calibre_user }}
+Environment="CALIBRE_LIBRARY_DIR={{ calibre_library_dir }}" "CALIBRE_IMPORT_DIR={{ calibre_import_dir }}"
+ExecStart=/usr/local/bin/calibre-import.py "{{ calibre_import_dir }}"
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

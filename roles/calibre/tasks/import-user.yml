@@ -1,0 +1,21 @@
+---
+- name: create user service directory
+  file:
+    path: "{{ ansible_user_dir }}/.config/systemd/user"
+    state: directory
+    owner: "{{ ansible_user }}" # Use of ansible_user prevents tampering via calibre_user
+    group: "{{ ansible_user }}"
+    mode: 0700
+
+- name: create user calibre-import units
+  template:
+    src: "{{ item }}.j2"
+    dest: "/{{ ansible_user_dir }}/.config/systemd/user/{{ item }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0600
+  loop:
+  - calibre-import.service
+  - calibre-import.path
+  notify:
+  - restart user calibre-import.path

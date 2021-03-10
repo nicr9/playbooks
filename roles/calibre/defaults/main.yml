@@ -1,3 +1,6 @@
 ---
-calibre_user: calibre
+calibre_system_user: true
 calibre_library_dir: /opt/calibre/library
+
+_calibre_import_dir_system: /opt/calibre/import
+_calibre_import_dir_user: "{{ ansible_user_dir }}/calibre-import"

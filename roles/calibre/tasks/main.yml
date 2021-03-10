@@ -1,14 +1,7 @@
 ---
 - name: user/group setup
-  when: calibre_user == "calibre"
+  when: calibre_system_user
   block:
-  - name: create calibre system group
-    become: yes
-    group:
-      name: calibre
-      system: true
-      state: present
-
   - name: create calibre system user
     become: yes
     user:
@@ -26,14 +19,17 @@
       groups: calibre
       append: yes
 
-- name: create calibre data directory
+- name: create calibre data directories
   become: yes
   file:
-    path: "{{ calibre_library_dir }}"
+    path: "{{ item }}"
     state: directory
     owner: "{{ calibre_user }}"
-    group: "{{ calibre_user }}"
-    mode: 0755
+    group: "{{ calibre_group }}"
+    mode: 0770
+  loop:
+  - "{{ calibre_library_dir }}"
+  - "{{ calibre_import_dir }}"
 
 - name: install Calibre
   become: yes
@@ -42,13 +38,27 @@
     - calibre
     state: present
 
-- name: create systemd service unit
+- name: install book import script
+  become: yes
+  copy:
+    src: "calibre-import.py"
+    dest: "/usr/local/bin/calibre-import.py"
+    owner: root
+    group: "{{ calibre_group }}"
+    mode: 0750
+
+- name: create calibre.service unit
   become: yes
   template:
     src: calibre.service.j2
     dest: /etc/systemd/system/calibre.service
     owner: root
-    group: root
-    mode: 0644
+    group: "{{ calibre_group }}"
+    mode: 0640
   notify:
-    - restart calibre
+  - restart calibre.service
+
+- include: "import-system.yml"
+  when: calibre_system_user
+- include: "import-user.yml"
+  when: not calibre_system_user

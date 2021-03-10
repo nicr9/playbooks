@@ -1,8 +1,24 @@
 ---
-- name: restart calibre
+- name: restart calibre.service
   become: true
   systemd:
     daemon_reload: true
-    name: calibre
+    unit: calibre.service
+    state: restarted
+    enabled: true
+
+- name: restart calibre-import.path
+  become: true
+  systemd:
+    daemon_reload: true
+    unit: calibre-import.path
+    state: restarted
+    enabled: true
+
+- name: restart user calibre-import.path
+  systemd:
+    daemon_reload: true
+    unit: calibre-import.path
+    scope: user
     state: restarted
     enabled: true
