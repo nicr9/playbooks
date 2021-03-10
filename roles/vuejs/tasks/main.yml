@@ -1,0 +1,6 @@
+---
+- name: install Vue.js CLI
+  become: yes
+  npm:
+    name: '@vue/cli'
+    global: yes
