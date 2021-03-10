@@ -1,0 +1,7 @@
+- name: install jsonnet
+  become: yes
+  pip:
+    name:
+    - jsonnet
+    executable: pip3
+    extra_args: "-U"
