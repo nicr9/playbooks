@@ -6,15 +6,16 @@
 #- key: "/org/gnome/desktop/background/show-desktop-icons"
 #  value: false
 
-# Bashrc
+# Bashrc details
+bashrc_cdpath:
+  - .
+  - ~/src/github.com/nicr9
 bashrc_variables:
+  TERM: screen-256color
   HISTCONTROL: ignoreboth
   PS1: |-
     "\`if [ \$? = 0 ]; then echo \[\e[36m\]\(^_^\)[\u@\h:\W]\\ $ \[\e[0m\]; else echo \[\e[31m\]\(ಠ_ಠ\)[\u@\h:\W]\\ $ \[\e[0m\]; fi\`"
   ANSIBLE_NOCOWS: 1
-bashrc_cdpath:
-  - .
-  - ~/src/github.com/nicr9
 
 # Git details
 git_config_aliases:
