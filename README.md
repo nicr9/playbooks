@@ -8,7 +8,7 @@ Assuming you're starting from a blank slate, you'll need the following to get st
 
 * set a strong user password
 * install `git`
-* cloen this repo
+* clone this repo
 
 ```bash
 $ passwd $USER
