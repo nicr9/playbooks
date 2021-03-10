@@ -1,6 +1,7 @@
 ---
+bashrc_path: []
+bashrc_cdpath: []
 bashrc_variables: {}
 
-# Don't forget to include '.'
-bashrc_cdpath:
-  - .
+_bashrc_path_prepends: ['$PATH']
+_bashrc_cdpath_prepends: ['.']
