@@ -3,7 +3,7 @@
   become: yes
   yum:
     name: "{{ item }}"
-    state: present
+    state: latest
   loop:
   - neovim
   - python2-neovim
