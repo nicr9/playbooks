@@ -12,8 +12,9 @@ Plug 'pelodelfuego/vim-swoop'
 
 call plug#end()
 
-" Terminal mode mappings
+" Terminal mappings
 tnoremap <Esc> <C-\><C-n>
+nmap <leader>s :term<CR>a
 
 " Centre view on next/previus search result
 nmap n nzz
