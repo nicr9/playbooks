@@ -1,6 +1,6 @@
 ---
 - name: install .inputrc config file
   copy:
-    src: dotinputrc.j2
+    src: dotinputrc
     dest: "{{ ansible_user_dir }}/.inputrc"
     mode: 0644

@@ -1,5 +1,6 @@
 ---
 - name: install system utilities
+  become: yes
   package:
     name:
     - dstat
@@ -10,4 +11,7 @@
     - wget
     - telnet
     - make
-    state: present
+    - zip
+    - unzip
+    - net-tools
+    state: latest
