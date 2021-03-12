@@ -9,6 +9,9 @@ RUN_PLAYBOOK=ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS_TAGS}
 all: ~/.playbooks.yml
 	${RUN_PLAYBOOK} setup.yml
 
+roles: ~/.playbooks.yml
+	${RUN_PLAYBOOK} roles.yml
+
 init:
 	ansible-galaxy install -r requirements.yml --force
 
