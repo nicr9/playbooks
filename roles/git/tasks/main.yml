@@ -4,7 +4,7 @@
   package:
     name:
     - git
-    state: present
+    state: latest
 
 - name: Configure git
   template:

@@ -34,7 +34,7 @@
 
 - name: checkout github repos over SSH
   git:
-    repo: git@{{ github_domain }}:{{ item }}.git
+    repo: "git@{{ github_domain }}:{{ item }}.git"
     dest: "{{ github_src_path }}/{{ item }}"
   loop: "{{ github_repos_ssh }}"
 
