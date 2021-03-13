@@ -1,8 +1,11 @@
 ---
-- include: "RedHat.yml"
-  when: ansible_os_family == "RedHat"
-- include: "Debian.yml"
-  when: ansible_os_family == "Debian"
+- name: install golang package
+  become: yes
+  package:
+    name:
+      - golang
+    state: latest
+    update_cache: yes
 
 - name: Insert/Update .bash with golang env vars
   blockinfile:

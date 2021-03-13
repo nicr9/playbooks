@@ -1,8 +1,0 @@
----
-- name: install golang from yum package
-  become: yes
-  yum:
-    name:
-    - golang
-    state: present
-    update_cache: yes
