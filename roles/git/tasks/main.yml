@@ -1,15 +1,8 @@
 ---
-- name: Install packages
+- name: install git
   become: yes
   package:
     name:
     - git
     state: latest
 
-- name: Configure git
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ ansible_user_dir }}/{{ item.dest }}"
-  loop:
-  - { src: 'dotgitconfig.j2', dest: '.gitconfig' }
-  - { src: 'dotgitignore.j2', dest: '.gitignore' }
