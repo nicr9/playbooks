@@ -1,0 +1,9 @@
+---
+dependencies:
+- role: ssh
+  vars:
+    ssh_keypair:
+      comment: "{{ personal_email }}"
+  tags:
+  - development
+  - ssh
