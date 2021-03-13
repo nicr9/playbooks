@@ -1,0 +1,8 @@
+---
+- name: install zip/unzip
+  become: yes
+  package:
+    name:
+    - zip
+    - unzip
+    state: latest

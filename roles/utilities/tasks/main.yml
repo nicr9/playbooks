@@ -11,7 +11,5 @@
     - wget
     - telnet
     - make
-    - zip
-    - unzip
     - net-tools
     state: latest
