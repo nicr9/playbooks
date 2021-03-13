@@ -1,5 +1,8 @@
+---
 - name: upgrade pip to latest
   become: yes
   pip:
-    name: pip
+    name:
+    - pip
+    executable: pip3
     extra_args: --upgrade

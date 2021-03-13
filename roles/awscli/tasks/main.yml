@@ -1,3 +1,4 @@
+---
 - name: install awscli + boto pip packages
   become: yes
   pip:
