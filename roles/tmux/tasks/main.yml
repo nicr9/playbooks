@@ -1,8 +1,11 @@
 ---
-- include: "RedHat.yml"
-  when: ansible_os_family == "RedHat"
-- include: "Debian.yml"
-  when: ansible_os_family == "Debian"
+- name: install tmux package
+  become: yes
+  package:
+    name:
+    - tmux
+    state: latest
+    update_cache: yes
 
 - name: install ~/.tmux.conf
   copy:
