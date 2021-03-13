@@ -1,0 +1,8 @@
+---
+- name: upgrade github3.py to latest
+  become: yes
+  pip:
+    name:
+    - github3.py
+    executable: pip3
+    extra_args: --upgrade
