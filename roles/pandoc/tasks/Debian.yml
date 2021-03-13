@@ -10,5 +10,4 @@
     - cm-super
     - texlive-fonts-recommended
     - librsvg2-bin
-    state: present
-    update_cache: yes
+    state: latest

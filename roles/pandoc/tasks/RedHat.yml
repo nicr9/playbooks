@@ -5,5 +5,4 @@
   yum:
     name:
     - pandoc
-    state: present
-    update_cache: yes
+    state: latest
