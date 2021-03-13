@@ -1,3 +1,7 @@
 ---
 dependencies:
 - role: github_release
+- role: pip
+  tags:
+  - pip
+  - development
