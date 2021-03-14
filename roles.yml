@@ -1,15 +1,13 @@
 ---
-- name: preflight
+- name: execute one/more/all roles
   gather_facts: yes
   hosts: all
-  tasks:
+  pre_tasks:
   - name: "load vars from ~/.playbooks.yml"
     include_vars: "{{ ansible_user_dir }}/.playbooks.yml"
-  tags:
-  - always
+    tags:
+    - always
 
-- name: execute one/more/all roles
-  hosts: all
   roles:
   - {'name': 'utilities', 'tags': ['utilities', 'system']}
   - {'name': 'bashrc', 'tags': ['bashrc', 'system']}

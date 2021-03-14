@@ -22,4 +22,4 @@ facts:
 	python3 scripts/configure.py
 	chmod 600 ~/.playbooks.yml
 
-.PHONY: facts
+.PHONY: facts roles
