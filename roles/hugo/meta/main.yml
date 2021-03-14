@@ -1,0 +1,4 @@
+---
+dependencies:
+- role: zip
+- role: github_release

@@ -1,0 +1,21 @@
+---
+- name: determine latest hugo version
+  block:
+  - github_release:
+      user: gohugoio
+      repo: hugo
+      action: latest_release
+    register: hugo
+  - set_fact:
+      hugo_version: "{{ hugo.tag | regex_replace('^v', '') }}"
+  when: hugo_version in ['', 'latest']
+
+- name: download hugo release
+  become: yes
+  unarchive:
+    src: "https://github.com/gohugoio/hugo/releases/download/v{{ hugo_version }}/hugo_{{ hugo_version }}_Linux-{{ hugo_arch[ansible_architecture] }}.tar.gz"
+    dest: "/usr/local/bin"
+    remote_src: yes
+    extra_opts:
+    - --wildcards
+    - 'hugo'

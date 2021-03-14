@@ -1,0 +1,5 @@
+---
+hugo_version: latest
+hugo_arch:
+  x86_64: 64bit
+  aarch64: ARM64
