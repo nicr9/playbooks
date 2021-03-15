@@ -13,4 +13,4 @@
     marker: "# {mark} golang"
     block: |
       export GOPATH=$HOME
-      export PATH=$PATH:/usr/local/go/bin:$HOME/bin
+      export PATH=$HOME/bin:$PATH
