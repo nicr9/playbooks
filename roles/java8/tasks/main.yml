@@ -1,0 +1,16 @@
+---
+- name: install java and maven
+  become: yes
+  package:
+    name:
+    - openjdk-8-jdk
+    - maven
+    state: latest
+
+- name: Insert/Update .bashrc with java env vars
+  blockinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    marker: "# {mark} java 8"
+    block: |
+      export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-{{ java8_arch[ansible_architecture] }}
+      export PATH=$PATH:$JAVA_HOME/bin
