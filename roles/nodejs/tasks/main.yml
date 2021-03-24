@@ -3,4 +3,4 @@
   become: yes
   package:
     name: "{{ nodejs_default_packages | union(nodejs_packages) }}"
-    state: present
+    state: latest
