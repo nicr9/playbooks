@@ -62,3 +62,13 @@ prometheus_scrape_configs:
     static_configs:
       - targets:
           - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:3000"
+
+# Jupyter deatils
+jupyter_host: 0.0.0.0
+jupyter_port: 8890
+jupyter_packages:
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - sympy

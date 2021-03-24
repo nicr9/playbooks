@@ -1,0 +1,8 @@
+---
+- name: restart jupyter.service
+  become: true
+  systemd:
+    daemon_reload: true
+    unit: jupyter.service
+    state: restarted
+    enabled: true

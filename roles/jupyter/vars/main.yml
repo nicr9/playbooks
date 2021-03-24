@@ -1,0 +1,8 @@
+---
+jupyter_user: "{{ jupyter_system_user | ternary('jupyter', ansible_user) }}"
+jupyter_group: "{{ jupyter_system_user | ternary('jupyter', ansible_user) }}"
+
+jupyter_dir: "{{ jupyter_system_user | ternary(_jupyter_dir_system, _jupyter_dir_user) }}"
+
+jupyter_venv: "{{ jupyter_dir }}/venvs/jupyter"
+jupyter_exe: "{{ jupyter_venv }}/bin/jupyter"

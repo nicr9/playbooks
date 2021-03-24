@@ -1,0 +1,10 @@
+---
+jupyter_system_user: true
+
+jupyter_host: localhost
+jupyter_port: 8888
+
+jupyter_packages: []
+
+_jupyter_dir_system: /opt/jupyter
+_jupyter_dir_user: "{{ ansible_user_dir }}/jupyter"
