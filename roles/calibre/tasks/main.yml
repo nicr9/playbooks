@@ -1,22 +1,27 @@
 ---
 - name: user/group setup
+  become: yes
   when: calibre_system_user
   block:
+  - name: create calibre system group
+    group:
+      name: "{{ calibre_group }}"
+      system: true
+      state: present
+
   - name: create calibre system user
-    become: yes
     user:
-      name: calibre
+      name: "{{ calibre_user }}"
       system: true
       shell: "/usr/sbin/nologin"
-      group: calibre
+      group: "{{ calibre_group }}"
       createhome: false
       home: /opt/home/calibre
 
   - name: add user to calibre group (requires user to log out/in)
-    become: yes
     user:
       name: "{{ ansible_user }}"
-      groups: calibre
+      groups: "{{ calibre_group }}"
       append: yes
 
 - name: create calibre data directories

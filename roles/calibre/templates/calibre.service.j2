@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User={{ calibre_user }}
-Group={{ calibre_user }}
+Group={{ calibre_group }}
 ExecStart=/usr/bin/calibre-server "{{ calibre_library_dir }}"
 
 [Install]
