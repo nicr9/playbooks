@@ -1,0 +1,8 @@
+---
+- name: install poetry pip package
+  become: yes
+  pip:
+    name:
+    - poetry
+    executable: pip3
+    extra_args: "-U"
