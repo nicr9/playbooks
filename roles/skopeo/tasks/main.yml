@@ -1,0 +1,8 @@
+---
+- name: install skopeo package
+  become: yes
+  package:
+    name:
+      - skopeo
+    state: latest
+    update_cache: yes
