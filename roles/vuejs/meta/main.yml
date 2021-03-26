@@ -1,0 +1,6 @@
+---
+dependencies:
+- role: nodejs
+  tags:
+  - nodejs
+  - development
