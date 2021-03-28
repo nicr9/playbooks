@@ -12,3 +12,42 @@
   - {'name': 'utilities', 'tags': ['utilities', 'system']}
   - {'name': 'bashrc', 'tags': ['bashrc', 'system']}
   - {'name': 'inputrc', 'tags': ['inputrc', 'system']}
+  - {'name': 'pip', 'tags': ['pip', 'development']}
+  - {'name': 'awscli', 'tags': ['awscli', 'development']}
+  - {'name': 'fzf', 'tags': ['fzf', 'development']}
+  - {'name': 'nvim', 'tags': ['nvim', 'development']}
+  - name: ssh
+    vars:
+      ssh_keypair:
+        comment: "{{ personal_email }}"
+    tags:
+    - development
+    - ssh
+  - name: git_config
+    vars:
+      git_config_user:
+        name: "{{ personal_full_name }}"
+        email: "{{ personal_email }}"
+    tags:
+    - development
+    - git
+  - name: github
+    vars:
+      github_config_user:
+        name: "{{ personal_full_name }}"
+        email: "{{ personal_email }}"
+      github_keypair:
+        comment: "{{ personal_email }}"
+    tags:
+    - development
+    - github
+  - {'name': 'terraform', 'tags': ['terraform', 'development']}
+  - {'name': 'tmux', 'tags': ['tmux', 'development']}
+  - {'name': 'golang', 'tags': ['golang', 'development']}
+  - {'name': 'pandoc', 'tags': ['pandoc', 'development']}
+  - {'name': 'nodejs', 'tags': ['nodejs', 'development']}
+  - {'name': 'docker', 'tags': ['docker', 'development']}
+  - {'name': 'semgrep', 'tags': ['semgrep', 'development']}
+  - {'name': 'poetry', 'tags': ['poetry', 'development']}
+  - {'name': 'java8', 'tags': ['java8', 'development']}
+  - {'name': 'skopeo', 'tags': ['skopeo', 'development']}
