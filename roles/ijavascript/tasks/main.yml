@@ -1,0 +1,16 @@
+---
+- name: install IJavascript package
+  become: yes
+  npm:
+    name: 'ijavascript'
+    global: yes
+    unsafe_perm: yes
+
+- name: install IJavascript kernel in Jupyter venv
+  become: yes
+  command:
+    argv:
+    - ijsinstall
+    - --install=global
+  environment:
+    PATH: "{{ jupyter_venv }}/bin:{{ lookup('env', 'PATH') }}"
