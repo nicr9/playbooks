@@ -1,0 +1,8 @@
+---
+nginx_user: root
+nginx_group: root
+
+nginx_access_log: combined
+nginx_error_log: ''
+
+nginx_server_name: ''

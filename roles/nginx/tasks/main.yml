@@ -1,0 +1,35 @@
+---
+- name: install nginx
+  become: yes
+  package:
+    name:
+    - nginx
+    state: latest
+
+- name: disable default site
+  become: yes
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: override the default nginx.service
+  become: yes
+  template:
+    src: nginx.service.j2
+    dest: /etc/systemd/system/nginx.service
+    owner: root
+    group: "{{ nginx_group }}"
+    mode: 0640
+  notify:
+  - restart nginx.service
+
+- name: install default nginx conf
+  become: yes
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"
+    mode: 0640
+  notify:
+  - restart nginx.service
