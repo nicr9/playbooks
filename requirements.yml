@@ -1,12 +1,17 @@
 - src: cloudalchemy.prometheus
+  name: prometheus
   version: 2.16.1
 - src: cloudalchemy.node-exporter
+  name: node_exporter
   version: 0.22.0
 - src: cloudalchemy.grafana
+  name: grafana
   version: 0.18.0
 - src: git@github.com:nicr9/ansible-loki.git
+  name: loki
   scm: git
   version: master
 - src: git@github.com:nicr9/ansible-promtail.git
+  name: promtail
   scm: git
   version: master

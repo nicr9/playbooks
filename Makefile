@@ -13,7 +13,7 @@ roles: ~/.playbooks.yml
 	${RUN_PLAYBOOK} roles.yml
 
 init:
-	ansible-galaxy install -r requirements.yml --force
+	ansible-galaxy install -r requirements.yml --force --ignore-errors
 
 facts:
 	@ansible -m setup localhost | less
