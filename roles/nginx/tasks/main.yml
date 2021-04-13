@@ -23,6 +23,28 @@
   notify:
   - restart nginx.service
 
+- name: install new default site
+  become: yes
+  template:
+    src: default.j2
+    dest: /etc/nginx/sites-available/ansible
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"
+    mode: 0640
+  notify:
+  - restart nginx.service
+
+- name: enable new default site
+  become: yes
+  file:
+    src: /etc/nginx/sites-available/ansible
+    dest: /etc/nginx/sites-enabled/ansible
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"
+    state: link
+  notify:
+  - restart nginx.service
+
 - name: install default nginx conf
   become: yes
   template:

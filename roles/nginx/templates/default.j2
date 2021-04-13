@@ -1,0 +1,24 @@
+{{ ansible_managed | comment }}
+server {
+{% if nginx_default_site.tls.enabled %}
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+
+    gzip off;
+
+#    ssl_certificate /etc/ssl/certs/ssl-cert-snakeoil.pem;
+#    ssl_certificate_key /etc/ssl/private/ssl-cert-snakeoil.key;
+{% else %}
+    listen 80 default_server;
+    listen [::]:80 default_server;
+{% endif %}
+
+    root {{ nginx_default_site.root }};
+    index {{ nginx_default_site.index }};
+
+    server_name {{ nginx_default_site.server_name }};
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
