@@ -1,0 +1,7 @@
+---
+- name: install android debug bridge
+  become: yes
+  package:
+    name:
+      - android-tools-adb
+    state: latest
