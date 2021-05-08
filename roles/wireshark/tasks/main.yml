@@ -1,0 +1,7 @@
+---
+- name: install wireshark
+  become: yes
+  package:
+    name:
+    - wireshark
+    state: latest
