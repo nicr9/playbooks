@@ -1,0 +1,7 @@
+---
+- name: install kicad
+  become: yes
+  package:
+    name:
+      - kicad
+    state: latest
