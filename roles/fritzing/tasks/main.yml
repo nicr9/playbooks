@@ -1,0 +1,7 @@
+---
+- name: install fritzing
+  become: yes
+  package:
+    name:
+      - fritzing
+    state: latest
