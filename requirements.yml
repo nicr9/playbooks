@@ -4,6 +4,9 @@
 - src: cloudalchemy.node-exporter
   name: node_exporter
   version: 0.22.0
+- src: cloudalchemy.blackbox-exporter
+  name: blackbox_exporter
+  version: 1.0.0
 - src: cloudalchemy.grafana
   name: grafana
   version: 0.18.0
