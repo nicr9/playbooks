@@ -8,6 +8,8 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'pelodelfuego/vim-swoop'
+Plug 'davidhalter/jedi-vim'
+Plug 'vim-syntastic/syntastic'
 "Plug 'inkarkat/vim-mark'
 
 call plug#end()
@@ -31,9 +33,6 @@ syntax on
 filetype plugin indent on
 set et bs=2 ts=4 sts=4 sw=4
 set bg=dark
-
-" Indentation overrides
-autocmd FileType yaml,yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " Configure ctrlpvim/ctrlp.vim
 set runtimepath^=~/.vim/bundle/ctrlp
