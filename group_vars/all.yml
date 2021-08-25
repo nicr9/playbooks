@@ -62,6 +62,30 @@ prometheus_scrape_configs:
     static_configs:
       - targets:
           - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:3000"
+  - job_name: "blackbox"
+    metrics_path: "/probe"
+    params:
+      module:
+        - http_2xx
+    static_configs:
+      - targets:
+          - "localhost:8080"
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: "localhost:9115"
+
+# Blackbox exporter details
+blackbox_exporter_configuration_modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      method: GET
+      valid_status_codes: []
 
 # Jupyter deatils
 jupyter_host: 0.0.0.0
