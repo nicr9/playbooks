@@ -23,11 +23,17 @@
   loop:
   - '{{ nvim_config_path }}'
   - '{{ nvim_config_path }}/ftplugin'
+  - '{{ nvim_config_path }}/ansible-managed'
 
 - name: copy nvim config file
   template:
-    src: init.vim
+    src: init.vim.j2
     dest: "{{ nvim_config_path }}/init.vim"
+
+- name: touch decoupled declarations config for vim-plug
+  file:
+    path: "{{ nvim_config_path }}/plug.vim"
+    state: touch
 
 - name: copy nvim ftplugin config
   copy:

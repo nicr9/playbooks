@@ -1,16 +1,16 @@
+{# vim: set ft=vim: #}
+{{ ansible_managed | comment(decoration='"') }}
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'pelodelfuego/vim-swoop'
-Plug 'davidhalter/jedi-vim'
-Plug 'vim-syntastic/syntastic'
-"Plug 'inkarkat/vim-mark'
+
+{# Add plugins installed by other roles #}
+source {{ nvim_config_path }}/plug.vim
 
 call plug#end()
 
@@ -60,3 +60,6 @@ set laststatus=2
 
 " Make
 command! -nargs=* Make :vs term://make <args>
+
+" Configure ansible-managed plugins
+runtime ansible-managed/*
