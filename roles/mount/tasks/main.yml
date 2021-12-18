@@ -8,3 +8,5 @@
     opts: "{{ item.opts | default('defaults') }}"
     state: mounted
   loop: "{{ mount_details }}"
+  loop_control:
+    label: "{{ item.path }}"
