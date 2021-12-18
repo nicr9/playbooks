@@ -1,0 +1,14 @@
+---
+- name: create arbitrary groups
+  become: yes
+  group:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ group_add }}"
+
+- name: add arbitrary groups to current user
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    groups: "{{ group_add }}"
+    append: yes
