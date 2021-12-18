@@ -1,5 +1,6 @@
 ---
 calibre_system_user: true
+calibre_system_user_groups: []
 calibre_library_dir: /opt/calibre/library
 
 _calibre_import_dir_system: /opt/calibre/import

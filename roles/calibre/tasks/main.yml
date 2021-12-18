@@ -15,6 +15,7 @@
       system: true
       shell: "/usr/sbin/nologin"
       group: "{{ calibre_group }}"
+      groups: "{{ calibre_system_user_groups }}"
       createhome: false
       home: /opt/home/calibre
 
