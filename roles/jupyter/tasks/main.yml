@@ -41,7 +41,9 @@
 - name: Install jupyter in venv
   become: yes
   pip:
-    name: jupyter
+    name:
+    - jupyter
+    - jupyterthemes
     virtualenv: "{{ jupyter_venv }}"
 
 - name: install python packages to use inside of jupyter
