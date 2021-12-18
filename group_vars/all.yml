@@ -41,6 +41,9 @@ grafana_dashboards:
 - dashboard_id: 6014
   revision_id: 1
   datasource: prometheus
+grafana_plugins:
+- marcusolsson-dynamictext-panel
+- simpod-json-datasource
 
 # Prometheus details
 prometheus_web_listen_address: 0.0.0.0:9090
