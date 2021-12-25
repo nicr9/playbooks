@@ -1,0 +1,6 @@
+---
+- name: install mongodb package
+  package:
+    name:
+    - mongodb
+    state: latest
