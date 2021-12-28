@@ -1,0 +1,6 @@
+---
+- name: install scrcpy package
+  package:
+    name:
+    - scrcpy
+    state: latest
