@@ -1,0 +1,7 @@
+---
+- name: install lynx
+  become: yes
+  package:
+    name:
+    - lynx
+    state: latest
