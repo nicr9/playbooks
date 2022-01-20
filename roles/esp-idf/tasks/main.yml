@@ -1,0 +1,23 @@
+---
+- name: install prerequisites
+  become: yes
+  package:
+    name:
+    - flex
+    - bison
+    - gperf
+    - cmake
+    - ninja-build
+    - ccache
+    - libffi-dev
+    - libssl-dev
+    - dfu-util
+    - libusb-1.0-0
+    state: latest
+
+- name: download ESP IoT Development Framework
+  git:
+    repo: https://github.com/espressif/esp-idf.git
+    recursive: yes
+    dest: "{{ ansible_user_dir }}/src/github.com/espressif/esp-idf"
+    version: master
