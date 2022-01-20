@@ -1,0 +1,5 @@
+---
+bettercap_version: latest
+bettercap_arch:
+  x86_64: 64bit
+  aarch64: ARM64

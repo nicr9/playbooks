@@ -1,0 +1,25 @@
+---
+- name: install bettercap build dependancies
+  package:
+    name:
+    - build-essential
+    - libpcap-dev
+    - libusb-1.0-0-dev
+    state: latest
+
+- name: determine latest bettercap version
+  block:
+  - github_release:
+      user: bettercap
+      repo: bettercap
+      action: latest_release
+    register: bettercap
+  - set_fact:
+      bettercap_version: "{{ bettercap.tag | regex_replace('^v', '') }}"
+  when: bettercap_version in ['', 'latest']
+
+- name: download bettercap release
+  git:
+    repo: "https://github.com/bettercap/bettercap.git"
+    dest: "{{ ansible_user_dir }}/src/github.com/bettercap/bettercap"
+    version: "{{ bettercap_version }}"
