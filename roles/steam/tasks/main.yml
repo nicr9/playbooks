@@ -1,0 +1,7 @@
+---
+- name: install steam
+  become: yes
+  package:
+    name:
+    - steam
+    state: latest
