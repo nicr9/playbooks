@@ -1,0 +1,18 @@
+---
+- name: determine which version is the latest
+  block:
+  - github_release:
+      user: jaegertracing
+      repo: jaeger
+      action: latest_release
+    register: jaeger
+  - set_fact:
+      jaeger_version: "{{ jaeger.tag | regex_replace('^v', '') }}"
+  when: jaeger_version in ['', 'latest']
+
+- name: Download zip, unarchive into /usr/local/bin
+  become: yes
+  unarchive:
+    src: "https://github.com/jaegertracing/jaeger/releases/download/v{{ jaeger_version }}/jaeger-{{ jaeger_version }}-linux-{{ jaeger_arch[ansible_architecture] }}.tar.gz"
+    dest: "/usr/local/bin"
+    remote_src: yes
