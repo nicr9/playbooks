@@ -2,3 +2,7 @@ jaeger_version: latest
 jaeger_arch:
   x86_64: amd64
   aarch64: arm64
+
+jaeger_tmp: /tmp/jaeger
+jaeger_install:
+  - jaeger-all-in-one

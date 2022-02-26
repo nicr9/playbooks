@@ -8,11 +8,49 @@
     register: jaeger
   - set_fact:
       jaeger_version: "{{ jaeger.tag | regex_replace('^v', '') }}"
+  delegate_to: localhost
   when: jaeger_version in ['', 'latest']
 
-- name: Download zip, unarchive into /usr/local/bin
-  become: yes
+- name: temp dir for download
+  file:
+    state: directory
+    path: "{{ jaeger_tmp }}"
+  when: jaeger_tmp is defined and jaeger_tmp != ""
+
+- block:
+  - name: create randomised local temp dir for download
+    tempfile:
+      state: directory
+      suffix: jaeger
+    register: _tmp
+  - set_fact:
+      jaeger_tmp: "{{ _tmp.path }}"
+  when: jaeger_tmp == ""
+
+- name: download release, unarchive
   unarchive:
     src: "https://github.com/jaegertracing/jaeger/releases/download/v{{ jaeger_version }}/jaeger-{{ jaeger_version }}-linux-{{ jaeger_arch[ansible_architecture] }}.tar.gz"
-    dest: "/usr/local/bin"
+    dest: "{{ jaeger_tmp }}"
     remote_src: yes
+    list_files: yes
+    creates: "{{ jaeger_tmp }}/jaeger-{{ jaeger_version }}-linux-{{ jaeger_arch[ansible_architecture] }}"
+  delegate_to: localhost
+
+- name: look for executables to install
+  find:
+    paths: "{{ jaeger_tmp }}"
+    file_type: file
+    recurse: yes
+    patterns: "{{ jaeger_install }}"
+  delegate_to: localhost
+  register: jaeger_exes
+
+- name: copy executables to target
+  become: yes
+  copy:
+    src: "{{ item.path }}"
+    dest: "/usr/local/bin/{{ item.path | basename }}"
+    owner: root
+    group: root
+    mode: 0755
+  loop: "{{ jaeger_exes.files }}"
