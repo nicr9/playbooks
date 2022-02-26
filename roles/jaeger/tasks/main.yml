@@ -1,4 +1,29 @@
 ---
+- name: create jaeger system group
+  become: yes
+  group:
+    name: "{{ jaeger_group }}"
+    system: true
+    state: present
+
+- name: create jaeger system user
+  become: yes
+  user:
+    name: "{{ jaeger_user }}"
+    system: true
+    shell: "/usr/sbin/nologin"
+    group: "{{ jaeger_group }}"
+    groups: "{{ jaeger_user_groups }}"
+    createhome: false
+    home: /opt/jaeger
+
+- name: add user to jaeger group (requires user to log out/in)
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    groups: jaeger
+    append: yes
+
 - name: determine which version is the latest
   block:
   - github_release:

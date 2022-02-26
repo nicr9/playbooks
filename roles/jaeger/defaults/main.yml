@@ -3,6 +3,10 @@ jaeger_arch:
   x86_64: amd64
   aarch64: arm64
 
+jaeger_user: jaeger
+jaeger_group: jaeger
+jaeger_user_groups: []
+
 jaeger_tmp: /tmp/jaeger
 jaeger_install:
   - jaeger-all-in-one
