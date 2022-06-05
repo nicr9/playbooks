@@ -1,0 +1,8 @@
+---
+- name: install monitoring agents
+  gather_facts: yes
+  hosts: all
+  roles:
+  - name: fluentd
+    tags: 
+    - logging

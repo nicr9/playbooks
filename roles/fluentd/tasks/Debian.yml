@@ -1,0 +1,12 @@
+---
+- name: add the treasuredata apt gpg key
+  become: yes
+  apt_key:
+    url: "https://packages.treasuredata.com/GPG-KEY-td-agent"
+    state: present
+
+- name: add the treasuredata apt ppa
+  become: yes
+  apt_repository:
+    repo: 'deb [arch={{ fluentd_arch[ansible_architecture] }}] http://packages.treasuredata.com/4/ubuntu/{{ ansible_distribution_release }}/ {{ ansible_distribution_release }} contrib'
+    state: present

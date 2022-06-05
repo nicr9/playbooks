@@ -1,0 +1,25 @@
+---
+- include_tasks: "Debian.yml"
+
+- name: install td-agent packages
+  become: yes
+  package:
+    name:
+    - td-agent
+    state: latest
+    update_cache: yes
+  notify:
+  - restart td-agent
+
+- name: configure td-agent
+  become: yes
+  template:
+    src: td-agent.conf.j2
+    dest: /etc/td-agent/td-agent.conf
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+  - config
+  notify:
+  - restart td-agent
