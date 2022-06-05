@@ -4,8 +4,22 @@
   hosts: infra
   roles:
   - name: grafana
+    tags:
+      - traces
+      - metrics
+      - logs
   - name: cloudalchemy.prometheus
+    tags:
+      - metrics
   - name: blackbox_exporter
+    tags:
+      - metrics
   - name: jaeger
+    tags:
+      - traces
   - name: loki
+    tags:
+      - logs
   - name: promtail
+    tags:
+      - logs
