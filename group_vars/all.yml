@@ -99,3 +99,4 @@ jupyter_packages:
   - matplotlib
   - pandas
   - sympy
+  - nltk
