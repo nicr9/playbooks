@@ -45,42 +45,6 @@ grafana_plugins:
 - marcusolsson-dynamictext-panel
 - simpod-json-datasource
 
-# Prometheus details
-prometheus_web_listen_address: 0.0.0.0:9090
-prometheus_scrape_configs:
-  - job_name: "prometheus"
-    metrics_path: "{{ prometheus_metrics_path }}"
-    static_configs:
-      - targets:
-          - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:9090"
-  - job_name: "node"
-    static_configs:
-      - targets:
-          - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:9100"
-    file_sd_configs:
-      - files:
-          - "{{ prometheus_config_dir }}/file_sd/node.yml"
-  - job_name: "grafana"
-    metrics_path: "{{ prometheus_metrics_path }}"
-    static_configs:
-      - targets:
-          - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:3000"
-  - job_name: "blackbox"
-    metrics_path: "/probe"
-    params:
-      module:
-        - http_2xx
-    static_configs:
-      - targets:
-          - "localhost:8080"
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: "localhost:9115"
-
 # Blackbox exporter details
 blackbox_exporter_configuration_modules:
   http_2xx:
