@@ -5,4 +5,7 @@
   roles:
   - name: fluentd
     tags: 
-    - logging
+    - logs
+  - name: otelcol
+    tags:
+    - logs

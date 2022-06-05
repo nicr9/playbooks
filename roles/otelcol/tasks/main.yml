@@ -1,0 +1,16 @@
+---
+- name: determine which version is the latest
+  block:
+  - github_release:
+      user: open-telemetry
+      repo: opentelemetry-collector-releases
+      action: latest_release
+    register: otelcol
+  - set_fact:
+      otelcol_version: "{{ otelcol.tag | regex_replace('^v', '') }}"
+  when: otelcol_version in ['', 'latest']
+
+- name: install otelcol package from github
+  become: yes
+  apt:
+    deb: "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{ otelcol_version }}/otelcol_{{ otelcol_version }}_linux_{{ otelcol_arch[ansible_architecture] }}.deb"
