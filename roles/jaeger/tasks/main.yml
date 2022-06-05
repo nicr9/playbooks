@@ -17,13 +17,6 @@
     createhome: false
     home: /opt/jaeger
 
-- name: add user to jaeger group (requires user to log out/in)
-  become: yes
-  user:
-    name: "{{ ansible_user }}"
-    groups: jaeger
-    append: yes
-
 - name: determine which version is the latest
   block:
   - github_release:
