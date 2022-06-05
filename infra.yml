@@ -1,0 +1,11 @@
+---
+- name: install monitoring infra
+  gather_facts: yes
+  hosts: infra
+  roles:
+  - name: grafana
+  - name: cloudalchemy.prometheus
+  - name: blackbox_exporter
+  - name: jaeger
+  - name: loki
+  - name: promtail

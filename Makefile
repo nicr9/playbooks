@@ -13,11 +13,17 @@ export OTEL_EXPORTER_OTLP_INSECURE=true
 all: ~/.playbooks.yml
 	${RUN_PLAYBOOK} setup.yml
 
+monitoring: export OTEL_SERVICE_NAME=playbooks-monitoring
 monitoring:
-	OTEL_SERVICE_NAME=playbooks-monitoring ${RUN_PLAYBOOK} monitoring.yml
+	${RUN_PLAYBOOK} monitoring.yml
 
+infra: export OTEL_SERVICE_NAME=playbooks-infra
+infra:
+	${RUN_PLAYBOOK} infra.yml
+
+roles: export OTEL_SERVICE_NAME=playbooks-roles
 roles: ~/.playbooks.yml
-	OTEL_SERVICE_NAME=playbooks-roles ${RUN_PLAYBOOK} roles.yml
+	${RUN_PLAYBOOK} roles.yml
 
 init:
 	ansible-galaxy install -r requirements.yml --force --ignore-errors
