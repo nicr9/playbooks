@@ -1,0 +1,20 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=jaeger
+After=network-online.target
+StartLimitInterval=0
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User={{ jaeger_user }}
+Group={{ jaeger_group }}
+ExecStart=/usr/local/bin/jaeger-all-in-one
+SyslogIdentifier=jaeger
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+

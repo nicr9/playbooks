@@ -79,3 +79,13 @@
     group: root
     mode: 0755
   loop: "{{ jaeger_exes.files }}"
+
+- name: Copy the jaeger systemd service file
+  become: yes
+  template:
+    src: jaeger.service.j2
+    dest: /etc/systemd/system/jaeger.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart jaeger
