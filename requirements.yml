@@ -1,7 +1,7 @@
 - src: cloudalchemy.prometheus
   name: prometheus
-  version: 2.16.1
-- src: cloudalchemy.node-exporter
+  version: 2.16.2
+- src: cloudalchemy.node_exporter
   name: node_exporter
   version: 0.22.0
 - src: cloudalchemy.blackbox-exporter

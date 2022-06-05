@@ -3,6 +3,9 @@
   gather_facts: yes
   hosts: all
   roles:
+  - name: node_exporter
+    tags:
+    - metrics
   - name: fluentd
     tags: 
     - logs
