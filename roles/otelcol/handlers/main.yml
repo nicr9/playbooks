@@ -1,0 +1,6 @@
+---
+- name: restart otelcol
+  become: yes
+  service:
+    name: otelcol
+    state: restarted

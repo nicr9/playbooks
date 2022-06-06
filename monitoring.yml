@@ -5,10 +5,15 @@
   roles:
   - name: node_exporter
     tags:
+    - node_exporter
     - metrics
   - name: fluentd
-    tags: 
+    tags:
+    - fluentd
     - logs
   - name: otelcol
     tags:
+    - otelcol
+    - traces
+    - metrics
     - logs

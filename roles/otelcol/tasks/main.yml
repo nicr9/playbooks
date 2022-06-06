@@ -9,8 +9,30 @@
   - set_fact:
       otelcol_version: "{{ otelcol.tag | regex_replace('^v', '') }}"
   when: otelcol_version in ['', 'latest']
+  tags:
+    - install
+    - otelcol_install
 
 - name: install otelcol package from github
   become: yes
   apt:
     deb: "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{ otelcol_version }}/otelcol_{{ otelcol_version }}_linux_{{ otelcol_arch[ansible_architecture] }}.deb"
+  notify:
+    - restart otelcol
+  tags:
+    - install
+    - otelcol_install
+
+- name: copy otelcol configuration
+  become: yes
+  template:
+    src: config.yaml.j2
+    dest: /etc/otelcol/config.yaml
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart otelcol
+  tags:
+    - configure
+    - otelcol_configure
