@@ -16,6 +16,14 @@ prometheus_scrape_configs:
     static_configs:
       - targets:
           - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:3000"
+  - job_name: "otelcol"
+    metrics_path: "{{ prometheus_metrics_path }}"
+    static_configs:
+      - targets:
+          - "{{ ansible_fqdn | default(ansible_host) | default('localhost') }}:8889"
+    relabel_configs:
+      - source_labels: [exported_job]
+        target_label: job
   - job_name: "blackbox"
     metrics_path: "/probe"
     params:
