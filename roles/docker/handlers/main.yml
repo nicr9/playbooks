@@ -2,4 +2,5 @@
   become: yes
   service:
     name: docker
+    enabled: yes
     state: restarted
