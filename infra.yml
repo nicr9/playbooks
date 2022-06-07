@@ -9,6 +9,12 @@
       - traces
       - metrics
       - logs
+  - name: otelcol
+    tags:
+    - otelcol
+    - traces
+    - metrics
+    - logs
   - name: cloudalchemy.prometheus
     tags:
       - prometheus
