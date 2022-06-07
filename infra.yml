@@ -5,21 +5,27 @@
   roles:
   - name: grafana
     tags:
+      - grafana
       - traces
       - metrics
       - logs
   - name: cloudalchemy.prometheus
     tags:
+      - prometheus
       - metrics
   - name: blackbox_exporter
     tags:
+      - blackbox_exporter
       - metrics
   - name: jaeger
     tags:
+      - jaeger
       - traces
   - name: loki
     tags:
+      - loki
       - logs
   - name: promtail
     tags:
+      - promtail
       - logs
