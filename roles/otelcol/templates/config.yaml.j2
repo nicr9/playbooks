@@ -1,49 +1,27 @@
 {# vim: set ft=vim: #}
 {{ ansible_managed | comment }}
 
+{% if otelcol_extensions != {} %}
 extensions:
-  health_check:
-    endpoint: 0.0.0.0:13133
-  pprof:
-    endpoint: 0.0.0.0:1777
-  zpages:
-    endpoint: 0.0.0.0:55679
+  {{ otelcol_extensions | to_nice_yaml(indent=2) | indent(2) }}
+{% endif %}
 
+{% if otelcol_receivers != {} %}
 receivers:
-  otlp:
-    protocols:
-      grpc:
-      http:
-  prometheus:
-    config:
-      scrape_configs:
-        - job_name: "otel-collector"
-          scrape_interval: 15s
-          static_configs:
-            - targets: ["localhost:8888"]
+  {{ otelcol_receivers | to_nice_yaml(indent=2) | indent(2) }}
+{% endif %}
 
+{% if otelcol_processors != {} %}
 processors:
-  batch:
+  {{ otelcol_processors | to_nice_yaml(indent=2) | indent(2) }}
+{% endif %}
 
+{% if otelcol_exporters != {} %}
 exporters:
-  prometheus:
-    endpoint: "localhost:8889"
-  jaeger:
-    endpoint: "localhost:14250"
-    tls:
-      insecure: true
+  {{ otelcol_exporters | to_nice_yaml(indent=2) | indent(2) }}
+{% endif %}
 
+{% if otelcol_service != {} %}
 service:
-  pipelines:
-
-    traces:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [jaeger]
-
-    metrics:
-      receivers: [otlp, prometheus]
-      processors: [batch]
-      exporters: [prometheus]
-
-  extensions: [health_check, pprof, zpages]
+  {{ otelcol_service | to_nice_yaml(indent=2) | indent(2) }}
+{% endif %}
