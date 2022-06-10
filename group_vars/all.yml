@@ -45,15 +45,6 @@ grafana_plugins:
 - marcusolsson-dynamictext-panel
 - simpod-json-datasource
 
-# Blackbox exporter details
-blackbox_exporter_configuration_modules:
-  http_2xx:
-    prober: http
-    timeout: 5s
-    http:
-      method: GET
-      valid_status_codes: []
-
 # Jupyter deatils
 jupyter_host: 0.0.0.0
 jupyter_port: 8890

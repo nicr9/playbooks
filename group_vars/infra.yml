@@ -1,3 +1,15 @@
+# Blackbox exporter details
+blackbox_exporter_configuration_modules:
+  http_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      method: GET
+      valid_status_codes: []
+  tcp_connect:
+    prober: tcp
+    timeout: 5s
+
 # OTel Collector details
 otelcol_receivers:
   otlp:
