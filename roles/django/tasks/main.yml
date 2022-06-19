@@ -1,0 +1,8 @@
+---
+- name: install django
+  become: yes
+  pip:
+    name:
+    - Django
+    executable: pip3
+    extra_args: "-U"
