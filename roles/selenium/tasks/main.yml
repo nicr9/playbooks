@@ -1,0 +1,8 @@
+---
+- name: install selenium
+  become: yes
+  pip:
+    name:
+    - selenium
+    executable: pip3
+    extra_args: "-U"
