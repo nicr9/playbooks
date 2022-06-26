@@ -1,4 +1,12 @@
-- name: install jsonnet
+---
+- name: install jsonnet tools
+  go_install:
+    name:
+    - github.com/google/go-jsonnet/cmd/jsonnet@latest
+    - github.com/google/go-jsonnet/cmd/jsonnetfmt@latest
+    - github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb@latest
+
+- name: install jsonnet python lib
   become: yes
   pip:
     name:
