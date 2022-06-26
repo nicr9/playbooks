@@ -23,7 +23,7 @@ infra:
 
 roles: export OTEL_SERVICE_NAME=playbooks-roles
 roles: ~/.playbooks.yml
-	${RUN_PLAYBOOK} roles.yml
+	${RUN_PLAYBOOK} -l localhost roles.yml
 
 init:
 	ansible-galaxy install -r requirements.yml --force --ignore-errors
