@@ -1,5 +1,6 @@
 ---
 - name: install scrcpy package
+  become: yes
   package:
     name:
     - scrcpy
