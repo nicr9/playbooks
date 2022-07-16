@@ -21,3 +21,14 @@
     recursive: yes
     dest: "{{ ansible_user_dir }}/src/github.com/espressif/esp-idf"
     version: master
+
+- name: run install script
+  command:
+    cmd: "./install.sh esp32"
+    chdir: "{{ ansible_user_dir }}/src/github.com/espressif/esp-idf"
+
+- name: create alias for the esp-idf virtual env
+  blockinfile:
+    path: "{{ ansible_user_dir }}/.bashrc"
+    block: alias get_idf='. $HOME/src/github.com/espressif/esp-idf/export.sh'
+    marker: "# {mark} ESP-IDF virtual env"
