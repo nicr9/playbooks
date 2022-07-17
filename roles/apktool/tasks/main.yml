@@ -1,0 +1,26 @@
+---
+- name: install apktool wrapper
+  become: yes
+  get_url:
+    url: "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
+    dest: "{{ apktool_bin }}/apktool"
+    mode: 0755
+
+- name: determine the latest version
+  block:
+  - github_release:
+      user: iBotPeaches
+      repo: Apktool
+      action: latest_release
+    register: apktool
+  - set_fact:
+      apktool_version: "{{ apktool.tag | regex_replace('^v', '') }}"
+  when: apktool_version in ['', 'latest']
+
+- name: install apktool.jar
+  become: yes
+  get_url:
+    url: "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_{{ apktool_version }}.jar"
+    dest: "{{ apktool_bin }}/apktool.jar"
+    mode: 0755
+
