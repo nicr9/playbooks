@@ -2,3 +2,4 @@
 dependencies:
 - role: zip
 - role: github_release
+- role: golang

@@ -1,10 +1,12 @@
 ---
 - name: install bettercap build dependancies
+  become: yes
   package:
     name:
     - build-essential
     - libpcap-dev
     - libusb-1.0-0-dev
+    - libnetfilter-queue-dev
     state: latest
 
 - name: determine latest bettercap version
@@ -22,4 +24,15 @@
   git:
     repo: "https://github.com/bettercap/bettercap.git"
     dest: "{{ ansible_user_dir }}/src/github.com/bettercap/bettercap"
-    version: "{{ bettercap_version }}"
+    version: "v{{ bettercap_version }}"
+
+- name: build bettercap from source
+  command:
+    cmd: make build
+    chdir: "{{ ansible_user_dir }}/src/github.com/bettercap/bettercap"
+
+- name: install bettercap
+  become: yes
+  command:
+    cmd: make install
+    chdir: "{{ ansible_user_dir }}/src/github.com/bettercap/bettercap"
