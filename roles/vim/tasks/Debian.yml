@@ -1,6 +1,6 @@
 ---
-- name: install_w_apt
-  apt:
-    name: vim
-    state: present
-    update_cache: yes
+- name: install vim
+  package:
+    name:
+    - vim
+    state: latest
