@@ -1,7 +1,7 @@
 ---
 - name: execute one/more/all roles
   gather_facts: yes
-  hosts: all
+  hosts: localhost
   pre_tasks:
   - name: "load vars from ~/.playbooks.yml"
     include_vars: "{{ ansible_user_dir }}/.playbooks.yml"

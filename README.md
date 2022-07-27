@@ -2,28 +2,18 @@
 
 ## Instructions
 
-### Prerequisites
-
-Assuming you're starting from a blank slate, you'll need the following to get started:
-
-* set a strong user password
-* install `git`
-* clone this repo
+Assuming you're starting from a blank slate, you'll need to set a strong user password:
 
 ```bash
 $ passwd $USER
-$ sudo apt-get install -y git # sudo yum install -y git
-$ mkdir -p ~/src/github.com/nicr9; cd !$
-$ git clone https://github.com/nicr9/playbooks
 ```
 
-### Bootstraping
+Then you'll need to run the bootstrap script:
 
-This script installs some dependancies manually that you'll need to actually run
-ansible:
+This script installs some dependancies and downloads the playbooks in this repo
 
 ```bash
-$ ./scripts/bootstrap.sh
+$ curl https://raw.githubusercontent.com/nicr9/playbooks/rewrite/scripts/bootstrap.sh | bash
 ```
 
 ### Running the playbook
