@@ -2,6 +2,8 @@
     excludesfile = {{ ansible_user_dir }}/.gitignore_global
 [color]
     ui = true
+[init]
+    defaultBranch = main
 
 {% if git_config_aliases is defined and git_config_aliases != {} %}
 [alias]
