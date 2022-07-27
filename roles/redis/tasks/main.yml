@@ -1,0 +1,7 @@
+---
+- name: install redis
+  become: yes
+  package:
+    name:
+    - redis
+    state: latest
