@@ -1,0 +1,16 @@
+---
+- name: determine which version is the latest
+  block:
+  - github_release:
+      user: koreader
+      repo: koreader
+      action: latest_release
+    register: koreader
+  - set_fact:
+      koreader_version: "{{ koreader.tag | regex_replace('^v', '') }}"
+  when: koreader_version in ['', 'latest']
+
+- name: install remote deb from github release
+  become: yes
+  apt:
+    deb: "https://github.com/koreader/koreader/releases/download/v{{ koreader_version }}/koreader-{{ koreader_version }}-{{ koreader_arch[ansible_architecture] }}.deb"
