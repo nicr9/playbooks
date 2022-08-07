@@ -1,0 +1,7 @@
+---
+- name: install sway
+  become: yes
+  package:
+    name:
+    - sway
+    state: latest
