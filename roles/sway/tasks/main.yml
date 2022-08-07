@@ -1,9 +1,11 @@
 ---
-- name: install sway
+- name: install sway packages
   become: yes
   package:
     name:
     - sway
+    - swaylock
+    - swayidle
     state: latest
 
 - name: create sway config directory
