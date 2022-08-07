@@ -5,3 +5,14 @@
     name:
     - sway
     state: latest
+
+- name: create sway config directory
+  file:
+    state: directory
+    path: "{{ ansible_user_dir }}/.config/sway"
+
+- name: install sway config
+  template:
+    src: sway.config.j2
+    dest: "{{ ansible_user_dir }}/.config/sway/config"
+    mode: 0644

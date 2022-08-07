@@ -1,0 +1,13 @@
+---
+sway_mod: Mod4
+sway_term: foot
+sway_app_launcher: dmenu_path | dmenu | xargs swaymsg exec --
+sway_wallpaper: /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
+
+sway_outputs: []
+# - target: HDMI-A-1
+#   cmd: resolution
+#   args:
+#   - 1920x1080
+#   - position
+#   - 1920,0
