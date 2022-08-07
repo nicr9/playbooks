@@ -1,0 +1,7 @@
+---
+- name: install feh
+  become: yes
+  package:
+    name:
+    - feh
+    state: latest
