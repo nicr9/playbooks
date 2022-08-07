@@ -32,6 +32,8 @@ otelcol_receivers:
         static_configs:
           - targets:
               - "localhost:8080"
+            labels:
+              probe: calibre
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
