@@ -178,16 +178,20 @@ bindsym $mod+r mode "resize"
 #
 # Status Bar:
 #
+{% if sway_bar is defined and sway_bar != {} %}
 bar {
-    position top
-
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+{% for k, v in sway_bar.items() %}
+{% if v is mapping %}
+    {{ k }} {
+{% for sk, sv in v.items() %}
+        {{ sk }} {{ sv }}
+{% endfor %}
     }
+{% else %}
+    {{ k }} {{ v }}
+{% endif %}
+{% endfor %}
 }
+{% endif %}
 
 include /etc/sway/config.d/*

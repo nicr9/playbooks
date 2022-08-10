@@ -11,3 +11,11 @@ sway_outputs: []
 #   - 1920x1080
 #   - position
 #   - 1920,0
+
+sway_bar:
+  position: top
+  status_command: while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+  colors:
+    statusline: #ffffff
+    background: #323232
+    inactive_workspace: #32323200 #32323200 #5c5c5c
