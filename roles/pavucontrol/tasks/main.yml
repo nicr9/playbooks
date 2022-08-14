@@ -1,0 +1,7 @@
+---
+- name: install pavucontrol
+  become: yes
+  package:
+    name:
+    - pavucontrol
+    state: latest
