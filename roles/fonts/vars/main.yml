@@ -4,5 +4,7 @@ fonts_git:
     file: 'Monoisome/Monoisome-Regular.ttf'
   - repo: 'chrissimpkins/Hack'
     file: 'build/ttf/Hack-Regular.ttf'
+  - repo: 'FortAwesome/Font-Awesome'
+    file: 'webfonts/fa-regular-400.ttf'
 
 fonts_install_path: /usr/share/fonts/truetype/user_fonts
