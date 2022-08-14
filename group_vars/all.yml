@@ -61,7 +61,7 @@ sway_term: terminator
 sway_wallpaper: /usr/share/backgrounds/0esdbxjsi3g91.jpg
 sway_execs:
 - waybar
-sway_bar: null
+sway_bar: {}
 
 # Waybar details
 waybar_options:
