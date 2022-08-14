@@ -59,10 +59,26 @@ jupyter_packages:
 # Sway details
 sway_term: terminator
 sway_wallpaper: /usr/share/backgrounds/0esdbxjsi3g91.jpg
-sway_bar:
+sway_execs:
+- waybar
+
+# Waybar details
+waybar_options:
+  layer: top
   position: bottom
-  status_command:  while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-  colors:
-    statusline: '#ffffff'
-    background: '#323232'
-    inactive_workspace: '#32323200 #32323200 #5c5c5c'
+
+waybar_layout:
+  left:
+  - sway/workspaces
+  - sway/mode
+  - custom/arrow#left",
+  right:
+  - custom/arrow#right",
+  - pulseaudio
+  - network
+  - memory
+  - cpu
+  - temperature
+  - sway/language
+  - battery
+  - clock
