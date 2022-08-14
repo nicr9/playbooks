@@ -14,6 +14,12 @@ set $menu {{ sway_app_launcher }}
 
 include /etc/sway/config-vars.d/*
 
+### Exec other daemons
+#
+{% for daemon in sway_execs %}
+exec {{ daemon }}
+{% endfor %}
+
 ### Output configuration
 #
 output * bg {{ sway_wallpaper }} fill
