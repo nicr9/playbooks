@@ -16,3 +16,11 @@
     content: "{{ waybar_config }}"
     dest: "{{ ansible_user_dir }}/.config/waybar/config"
     mode: 0644
+
+- name: install waybar style files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_user_dir }}/.config/waybar/{{ item | basename }}"
+    mode: 0644
+  with_fileglob:
+  - waybar/*.css
