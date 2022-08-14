@@ -1,0 +1,7 @@
+---
+_layout:
+  modules-left: "{{ waybar_layout.left | default([]) }}"
+  modules-center: "{{ waybar_layout.center | default([]) }}"
+  modules-right: "{{ waybar_layout.right | default([]) }}"
+
+waybar_config: "{{ waybar_options | combine(_layout) | combine(waybar_modules) }}"

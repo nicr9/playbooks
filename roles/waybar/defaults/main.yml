@@ -1,0 +1,16 @@
+---
+waybar_options:
+  layer: top
+  position: top
+
+waybar_layout:
+  left:
+  - sway/workspaces
+  - sway/mode
+  center:
+  - sway/window
+  right:
+  - battery
+  - clock
+
+waybar_modules: {}

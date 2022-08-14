@@ -1,0 +1,18 @@
+---
+- name: install waybar via package
+  become: yes
+  package:
+    name:
+    - waybar
+    state: latest
+
+- name: create waybar config directory
+  file:
+    state: directory
+    path: "{{ ansible_user_dir }}/.config/waybar"
+
+- name: install waybar config
+  copy:
+    content: "{{ waybar_config }}"
+    dest: "{{ ansible_user_dir }}/.config/waybar/config"
+    mode: 0644
