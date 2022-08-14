@@ -3,6 +3,8 @@
     repo: "https://github.com/{{ item.repo }}.git"
     dest: "{{ ansible_user_dir }}/src/github.com/{{ item.repo }}"
   loop: "{{ fonts_git }}"
+  loop_control:
+    label: "{{ item.repo }}"
 
 - name: "copy git repo fonts to {{ fonts_install_path }}"
   become: yes
@@ -11,6 +13,8 @@
     dest: "{{ fonts_install_path }}"
     mode: 0755
   loop: "{{ fonts_git }}"
+  loop_control:
+    label: "{{ item.repo }}/{{ item.file }}"
 
 - name: install bundled fonts
   become: yes
