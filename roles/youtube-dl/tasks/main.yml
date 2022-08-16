@@ -1,0 +1,8 @@
+---
+- name: install youtube-dl via pip
+  become: yes
+  pip:
+    name:
+    - youtube-dl
+    executable: pip3
+    extra_args: "-U"
