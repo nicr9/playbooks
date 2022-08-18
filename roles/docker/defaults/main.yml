@@ -5,3 +5,4 @@ docker_arch:
   aarch64: arm64
 docker_aliases:
   dc: docker-compose
+  dm: docker-machine
