@@ -22,6 +22,7 @@
     name: "{{ ansible_user }}"
     groups: docker
     append: yes
+  when: ansible_user is defined
 
 - block:
   - name: determine latest version of docker-machine
