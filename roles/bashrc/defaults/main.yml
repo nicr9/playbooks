@@ -2,6 +2,7 @@
 bashrc_path: []
 bashrc_cdpath: []
 bashrc_variables: {}
+bashrc_aliases: {}
 
 _bashrc_path_prepends: ['$PATH']
 _bashrc_cdpath_prepends: ['.']

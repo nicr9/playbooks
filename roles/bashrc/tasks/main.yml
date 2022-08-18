@@ -8,4 +8,7 @@
       {% for key, val in bashrc_variables.items() %}
       export {{ key }}={{ val }}
       {% endfor %}
+      {% for key, val in bashrc_aliases.items() %}
+      alias {{ key }}='{{ val }}'
+      {% endfor %}
     marker: "# {mark} misc environment variables"
