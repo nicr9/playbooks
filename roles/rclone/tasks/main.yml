@@ -1,0 +1,7 @@
+---
+- name: install rclone
+  become: yes
+  package:
+    name:
+    - rclone
+    state: latest
