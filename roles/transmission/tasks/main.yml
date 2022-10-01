@@ -1,0 +1,7 @@
+---
+- name: install transmission
+  become: yes
+  package:
+    name:
+    - transmission
+    state: latest
