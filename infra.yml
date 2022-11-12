@@ -35,3 +35,7 @@
     tags:
       - promtail
       - logs
+  - name: jellyfin
+    tags:
+    - jellyfin
+    - media
