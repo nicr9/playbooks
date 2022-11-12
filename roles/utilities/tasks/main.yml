@@ -12,4 +12,5 @@
     - telnet
     - make
     - net-tools
+    - sshpass
     state: latest

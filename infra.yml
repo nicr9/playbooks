@@ -15,7 +15,7 @@
     - traces
     - metrics
     - logs
-  - name: cloudalchemy.prometheus
+  - name: prometheus
     tags:
       - prometheus
       - metrics

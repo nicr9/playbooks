@@ -19,7 +19,7 @@ monitoring:
 
 infra: export OTEL_SERVICE_NAME=playbooks-infra
 infra:
-	${RUN_PLAYBOOK} infra.yml
+	${RUN_PLAYBOOK} --ask-pass infra.yml
 
 roles: export OTEL_SERVICE_NAME=playbooks-roles
 roles: ~/.playbooks.yml
