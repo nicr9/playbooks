@@ -1,3 +1,8 @@
+collections:
+- name: git@github.com:nicr9/anisible-firefox.git
+  type: git
+  version: main
+roles:
 - src: cloudalchemy.prometheus
   name: prometheus
   version: 2.16.2

@@ -2,6 +2,8 @@
 - name: execute one/more/all roles
   gather_facts: yes
   hosts: localhost
+  collections:
+  - nicr9.firefox
   pre_tasks:
   - name: "load vars from ~/.playbooks.yml"
     include_vars: "{{ ansible_user_dir }}/.playbooks.yml"
@@ -60,3 +62,4 @@
   - {'name': 'poetry', 'tags': ['poetry', 'development']}
   - {'name': 'java8', 'tags': ['java8', 'development']}
   - {'name': 'skopeo', 'tags': ['skopeo', 'development']}
+  - {'name': 'nicr9.firefox.browser', 'tags': ['firefox', 'desktop']}
