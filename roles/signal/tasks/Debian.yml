@@ -1,13 +1,14 @@
 ---
 - name: add Signal's apt key
   apt_key:
-    url: https://updates.signal.org/desktop/apt/keys.asc
+    url: "https://updates.signal.org/desktop/apt/keys.asc"
 
 - name: add Signal's apt repository
   apt_repository:
-    repo: deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main
-    filename: signal-xenial
+    repo: "deb [arch={{ signal_arch[ansible_architecture] }}] https://updates.signal.org/desktop/apt {{ ansible_distribution_release }} main"
+    filename: "signal-{{ ansible_distribution_release }}"
 
 - name: install Signal Desktop
   apt:
     name: signal-desktop
+    update_cache: yes
