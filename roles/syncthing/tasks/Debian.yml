@@ -1,0 +1,15 @@
+---
+- name: download Syncthing's gpg key
+  get_url:
+    url: https://syncthing.net/release-key.gpg
+    dest: /usr/share/keyrings/syncthing-archive-keyring.gpg
+
+- name: add Syncthing's apt repository
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable
+    filename: signal-xenial
+
+- name: install Syncthing
+  apt:
+    name: syncthing
+    update_cache: yes
