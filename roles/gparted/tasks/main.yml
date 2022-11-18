@@ -1,0 +1,7 @@
+---
+- name: install gparted
+  become: yes
+  package:
+    name:
+    - gparted
+    state: latest
