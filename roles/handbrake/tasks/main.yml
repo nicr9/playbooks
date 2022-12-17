@@ -1,0 +1,8 @@
+---
+- name: install handbrake + cli
+  become: yes
+  package:
+    name:
+    - handbrake
+    - handbrake-cli
+    state: latest
