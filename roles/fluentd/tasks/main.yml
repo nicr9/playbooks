@@ -23,3 +23,28 @@
   - config
   notify:
   - restart td-agent
+
+- name: create conf.d/
+  become: yes
+  file:
+    path: /etc/td-agent/conf.d
+    state: directory
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+  - config
+
+- name: copy custom config to conf.d/
+  become: yes
+  template:
+    src: "{{ item }}"
+    dest: "/etc/td-agent/conf.d/{{ item | basename | regex_replace('.j2$', '') }}"
+    mode: 0644
+    owner: root
+    group: root
+  with_fileglob: "{{ fluentd_config_paths }}"
+  tags:
+  - config
+  notify:
+  - restart td-agent
