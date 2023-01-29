@@ -56,6 +56,24 @@ jupyter_packages:
   - sympy
   - nltk
 
+otelcol_exporters:
+  otlp:
+    endpoint: bespin.co:4317
+    tls:
+      insecure: true
+
+otelcol_service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
+    metrics:
+      receivers: [otlp, prometheus]
+      processors: [batch]
+      exporters: [otlp]
+  extensions: [health_check, pprof, zpages]
+
 # Sway details
 sway_term: terminator
 sway_wallpaper: /usr/share/backgrounds/0esdbxjsi3g91.jpg

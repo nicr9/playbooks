@@ -28,21 +28,5 @@ otelcol_processors:
   batch:
 
 otelcol_exporters:
-  prometheus:
-    endpoint: "localhost:8889"
-  jaeger:
-    endpoint: "localhost:14250"
-    tls:
-      insecure: true
 
 otelcol_service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      processors: [batch]
-      exporters: [jaeger]
-    metrics:
-      receivers: [otlp, prometheus]
-      processors: [batch]
-      exporters: [prometheus]
-  extensions: [health_check, pprof, zpages]

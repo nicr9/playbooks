@@ -60,6 +60,26 @@ otelcol_receivers:
           - targets:
               - "localhost:9090"
 
+otelcol_exporters:
+  prometheus:
+    endpoint: "localhost:8889"
+  jaeger:
+    endpoint: "localhost:14250"
+    tls:
+      insecure: true
+
+otelcol_service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [jaeger]
+    metrics:
+      receivers: [otlp, prometheus]
+      processors: [batch]
+      exporters: [prometheus]
+  extensions: [health_check, pprof, zpages]
+
 # Prometheus details
 prometheus_web_listen_address: 0.0.0.0:9090
 prometheus_scrape_configs:
