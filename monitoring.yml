@@ -11,9 +11,13 @@
     tags:
     - fluentd
     - logs
+  - name: otel
+    tags:
+    - otel
+    - traces
   - name: otelcol
     tags:
-    - otelcol
+    - otel
     - traces
     - metrics
     - logs

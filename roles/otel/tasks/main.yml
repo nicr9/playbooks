@@ -1,0 +1,6 @@
+---
+- name: install otel python packages
+  become: yes
+  pip:
+    name: "{{ otel_packages }}"
+    state: latest

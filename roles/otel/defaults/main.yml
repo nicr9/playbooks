@@ -1,0 +1,4 @@
+otel_packages:
+- opentelemetry-api
+- opentelemetry-sdk
+- opentelemetry-exporter-otlp
