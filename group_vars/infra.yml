@@ -1,4 +1,5 @@
 # Blackbox exporter details
+blackbox_exporter_version: 0.23.0
 blackbox_exporter_configuration_modules:
   http_2xx:
     prober: http
@@ -9,6 +10,10 @@ blackbox_exporter_configuration_modules:
   tcp_connect:
     prober: tcp
     timeout: 5s
+  grpc_plain:
+    prober: grpc
+    grpc:
+      tls: false
 
 # OTel Collector details
 otelcol_receivers:
@@ -24,23 +29,6 @@ otelcol_receivers:
         scrape_timeout: 10s
 
       scrape_configs:
-      - job_name: "blackbox"
-        metrics_path: "/probe"
-        params:
-          module:
-            - http_2xx
-        static_configs:
-          - targets:
-              - "localhost:8080"
-            labels:
-              probe: calibre
-        relabel_configs:
-          - source_labels: [__address__]
-            target_label: __param_target
-          - source_labels: [__param_target]
-            target_label: instance
-          - target_label: __address__
-            replacement: "localhost:9115"
       - job_name: "grafana"
         metrics_path: "/metrics"
         static_configs:
@@ -59,6 +47,11 @@ otelcol_receivers:
         static_configs:
           - targets:
               - "localhost:9090"
+      - job_name: "blackbox"
+        metrics_path: "/metrics"
+        static_configs:
+          - targets:
+              - "localhost:9115"
 
 otelcol_exporters:
   prometheus:
@@ -91,3 +84,49 @@ prometheus_scrape_configs:
     relabel_configs:
       - source_labels: [exported_job]
         target_label: job
+  - job_name: "blackbox-http"
+    metrics_path: "/probe"
+    params:
+      module:
+        - http_2xx
+    static_configs:
+      - targets:
+          - "localhost:8080"
+        labels:
+          probe: calibre
+      - targets:
+          - "127.0.0.1:3000"
+        labels:
+          probe: grafana
+      - targets:
+          - "127.0.0.1:9090"
+        labels:
+          probe: prometheus
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: "localhost:9115"
+  - job_name: "blackbox-grpc"
+    metrics_path: "/probe"
+    params:
+      module:
+        - grpc_plain
+    static_configs:
+      - targets:
+          - "127.0.0.1:14250"
+        labels:
+          probe: jaeger
+      - targets:
+          - "127.0.0.1:4317"
+        labels:
+          probe: otelcol
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: "localhost:9115"
