@@ -1,0 +1,13 @@
+---
+- name: install qbittorrent
+  become: yes
+  package:
+    name:
+    - qbittorrent
+    state: latest
+
+- name: install qbittorrent exporter
+  pip:
+    name:
+    - prometheus-qbittorrent-exporter
+    state: latest
