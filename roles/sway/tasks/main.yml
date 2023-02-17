@@ -12,9 +12,24 @@
   file:
     state: directory
     path: "{{ ansible_user_dir }}/.config/sway"
+    mode: 0775
 
 - name: install sway config
   template:
     src: sway.config.j2
     dest: "{{ ansible_user_dir }}/.config/sway/config"
     mode: 0644
+
+- name: create directory for systemd user units
+  file:
+    state: directory
+    path: "{{ ansible_user_dir }}/.config/systemd/user/"
+    mode: 0755
+
+- name: install sway config
+  template:
+    src: swayidle.service.j2
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/swayidle.service"
+    mode: 0664
+  notify:
+    - restart swayidle

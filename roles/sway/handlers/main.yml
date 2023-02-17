@@ -1,0 +1,9 @@
+---
+- name: restart swayidle
+  systemd:
+    name: swayidle.service
+    daemon_reload: yes
+    enabled: yes
+    state: restarted
+    scope: user
+
