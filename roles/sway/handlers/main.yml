@@ -1,9 +1,17 @@
 ---
-- name: restart swayidle
+- name: restart swayidle.service
   systemd:
     name: swayidle.service
     daemon_reload: yes
+    enabled: no
+    state: stopped
+    scope: user
+
+- name: restart swayidle.timer
+  systemd:
+    name: swayidle.timer
+    daemon_reload: yes
     enabled: yes
-    state: restarted
+    state: stopped
     scope: user
 
