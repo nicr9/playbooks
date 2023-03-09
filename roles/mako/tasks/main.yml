@@ -1,0 +1,7 @@
+---
+- name: install mako
+  become: yes
+  package:
+    name:
+    - mako-notifier
+    state: latest
