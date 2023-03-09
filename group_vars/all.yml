@@ -7,6 +7,10 @@
 #  value: false
 
 # Bashrc details
+bashrc_aliases:
+  sc: sudo systemctl
+  scu: systemctl --user
+  jc: journalctl
 bashrc_cdpath:
   - .
   - ~/src/github.com/nicr9
