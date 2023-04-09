@@ -6,6 +6,13 @@
   loop_control:
     label: "{{ item.repo }}"
 
+- name: make folder for custom user fonts
+  become: yes
+  file:
+    path: "{{ fonts_install_path }}"
+    mode: 0755
+    state: directory
+
 - name: "copy git repo fonts to {{ fonts_install_path }}"
   become: yes
   copy:
