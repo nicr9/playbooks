@@ -22,5 +22,4 @@
     src: "{{ item }}"
     dest: "{{ ansible_user_dir }}/.config/waybar/{{ item | basename }}"
     mode: 0644
-  with_fileglob:
-  - waybar/*.css
+  with_fileglob: "{{ waybar_css_paths }}"

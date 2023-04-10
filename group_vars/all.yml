@@ -86,6 +86,8 @@ sway_execs:
 sway_bar: {}
 
 # Waybar details
+waybar_css_paths:
+- waybar/style.css
 waybar_options:
   layer: top
   position: bottom

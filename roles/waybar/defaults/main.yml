@@ -1,4 +1,5 @@
 ---
+waybar_css_paths: []
 waybar_options:
   layer: top
   position: top
