@@ -1,30 +1,8 @@
-@keyframes blink-warning {
-	70% {
-		color: @light;
-	}
-
-	to {
-		color: @light;
-		background-color: @warning;
-	}
-}
-
-@keyframes blink-critical {
-	70% {
-		color: @light;
-	}
-
-	to {
-		color: @light;
-		background-color: @critical;
-	}
-}
-
 /* Nord */
 @define-color light #eceff4;
 @define-color dark #2e3440;
-@define-color warning #ebcb8b;
-@define-color critical #d08770;
+@define-color warning #ffaa00;
+@define-color critical #ff3d00;
 @define-color mode #4c566a;
 @define-color workspaces #5e81ac;
 @define-color workspacesfocused #81a1c1;
@@ -73,31 +51,13 @@
 	padding-right: 10px;
 }
 
-/* Each module that should blink */
-#mode,
-#memory,
-#temperature,
-#battery {
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-}
-
 /* Each critical module */
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
 #battery.critical {
-	color: @critical;
-}
-
-/* Each critical that should blink */
-#mode,
-#memory.critical,
-#temperature.critical,
-#battery.critical.discharging {
-	animation-name: blink-critical;
-	animation-duration: 2s;
+	color: @dark;
+	background: @critical;
 }
 
 /* Each warning */
@@ -106,13 +66,8 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning {
-	color: @warning;
-}
-
-/* Each warning that should blink */
-#battery.warning.discharging {
-	animation-name: blink-warning;
-	animation-duration: 3s;
+	color: @dark;
+	background: @warning;
 }
 
 /* And now modules themselves in their respective order */
