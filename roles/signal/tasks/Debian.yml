@@ -1,12 +1,13 @@
 ---
 - name: add Signal's apt key
-  apt_key:
+  get_url:
     url: "https://updates.signal.org/desktop/apt/keys.asc"
+    dest: "/etc/apt/trusted.gpg.d/signal-desktop-keyring.gpg"
 
 - name: add Signal's apt repository
   apt_repository:
-    repo: "deb [arch={{ signal_arch[ansible_architecture] }}] https://updates.signal.org/desktop/apt {{ ansible_distribution_release }} main"
-    filename: "signal-{{ ansible_distribution_release }}"
+    repo: "deb [arch={{ signal_arch[ansible_architecture] }} signed-by=/etc/apt/trusted.gpg.d/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt {{ signal_distribution_release }} main"
+    filename: "signal-{{ signal_distribution_release }}.list"
 
 - name: install Signal Desktop
   apt:
