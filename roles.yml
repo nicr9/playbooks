@@ -62,4 +62,35 @@
   - {'name': 'poetry', 'tags': ['poetry', 'development']}
   - {'name': 'java8', 'tags': ['java8', 'development']}
   - {'name': 'skopeo', 'tags': ['skopeo', 'development']}
+  - {'name': 'steam', 'tags': ['steam', 'games']}
+  - {'name': 'terminator', 'tags': ['terminator', 'development']}
+  - {'name': 'esp-idf', 'tags': ['esp-idf', 'esp', 'development']}
+  - {'name': 'scrcpy', 'tags': ['scrcpy']}
+  - {'name': 'bettercap', 'tags': ['bettercap']}
+  - {'name': 'apktool', 'tags': ['apktool']}
+  - {'name': 'jadx', 'tags': ['jadx']}
+  - {'name': 'ghidra', 'tags': ['ghidra']}
+  - {'name': 'koreader', 'tags': ['koreader']}
+  - {'name': 'redis', 'tags': ['redis']}
+  - {'name': 'wireshark', 'tags': ['wireshark']}
+  - {'name': 'sway', 'tags': ['sway']}
+  - {'name': 'mako', 'tags': ['mako']}
+  - {'name': 'waybar', 'tags': ['waybar']}
+  - {'name': 'feh', 'tags': ['feh']}
+  - {'name': 'fonts', 'tags': ['fonts', 'system']}
+  - {'name': 'youtube-dl', 'tags': ['youtube-dl']}
+  - {'name': 'hugo', 'tags': ['hugo']}
+  - {'name': 'rclone', 'tags': ['rclone']}
+  - {'name': 'jq', 'tags': ['jq']}
+  - {'name': 'vlc', 'tags': ['vlc']}
+  - {'name': 'kicad', 'tags': ['kicad', 'engineering']}
+  - {'name': 'gimp', 'tags': ['gimp', 'desktop']}
+  - {'name': 'inkscape', 'tags': ['inkscape', 'desktop']}
+  - {'name': 'libreoffice', 'tags': ['libreoffice', 'desktop']}
+  - {'name': 'transmission', 'tags': ['transmission', 'desktop']}
+  - {'name': 'signal', 'tags': ['signal', 'desktop'], 'vars': {'signal_distribution_release': 'xenial'}}
+  - {'name': 'handbrake', 'tags': ['handbrake', 'media']}
   - {'name': 'nicr9.firefox.browser', 'tags': ['firefox', 'desktop']}
+  - {'name': 'syncthing', 'tags': ['syncthing', 'storage']}
+  - {'name': 'gparted', 'tags': ['gparted', 'storage']}
+  - {'name': 'packer', 'tags': ['packer']}
