@@ -5,3 +5,17 @@
     name:
     - mako-notifier
     state: latest
+
+- name: create local systemd directory
+  file:
+    mode: 0755
+    path: "{{ ansible_user_dir }}/.config/systemd/user"
+    state: directory
+
+- name: install mako.service
+  copy:
+    src: mako.service
+    dest: "{{ ansible_user_dir }}/.config/systemd/user/mako.service"
+    mode: 0644
+  notify:
+    - enable mako
