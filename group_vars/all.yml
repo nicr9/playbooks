@@ -94,14 +94,44 @@ waybar_css_paths:
 waybar_options:
   layer: top
   position: bottom
+  battery:
+    interval: 5
+    states:
+      warning: 30
+      critical: 15
+    format: "⚡ {capacity}%"
+    format-discharging: "{icon} {capacity}%"
+    format-icons:
+    - "🪫" # Icon: battery-empty
+    - "🪫"  # Icon: battery-quarter
+    - "🔋" # Icon: battery-half
+    - "🔋" # Icon: battery-three-quarters
+    - "🔋" # Icon: battery-full
+    tooltip: false
+  pulseaudio:
+    scroll-step: 1
+    format: "{icon} {volume}%"
+    format-bluetooth: "{icon} {volume}% {desc}"
+    format-muted: "🔇"
+    format-icons:
+      headphones: "🎧"
+      handsfree: "🎧"
+      headset: "🎧"
+      phone: "📞"
+      portable: "📻"
+      car: "🚗"
+      default: ["🔈", "🔊"]
+    on-click: "pavucontrol"
+  clock:
+    interval: 5
+    format: "{:%H:%M:%S}"
+    tooltip-format: "{:%e %B %Y}"
 
 waybar_layout:
   left:
   - sway/workspaces
   - sway/mode
-  - custom/arrow#left",
   right:
-  - custom/arrow#right",
   - pulseaudio
   - network
   - memory

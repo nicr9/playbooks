@@ -13,7 +13,7 @@
 
 - name: install waybar config
   copy:
-    content: "{{ waybar_config }}"
+    content: "{{ waybar_config | to_nice_json }}"
     dest: "{{ ansible_user_dir }}/.config/waybar/config"
     mode: 0644
 
