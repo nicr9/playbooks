@@ -29,8 +29,8 @@
 #waybar {
 	background: transparent;
 	color: @light;
-	font-family: monofur for Powerline;
-	font-size: 12pt;
+	font-family: Hack;
+	font-size: 11pt;
 	/*font-weight: bold;*/
 }
 
@@ -153,14 +153,14 @@
 	/* No styles */
 }
 
-#custom-arrow.left {
+#custom-arrowlight {
 	font-size: 16px;
-	color: @sound;
+	color: @light;
 	background: transparent;
 }
 
-#custom-arrow.right {
+#custom-arrowdark {
 	font-size: 16px;
-	color: @workspaces;
+	color: @dark;
 	background: transparent;
 }
