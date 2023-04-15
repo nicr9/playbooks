@@ -122,6 +122,9 @@ waybar_options:
       car: "🚗"
       default: ["🔈", "🔊"]
     on-click: "pavucontrol"
+  custom/arrowlight:
+    format: ""
+    tooltip: false
   clock:
     interval: 5
     format: "{:%H:%M:%S}"
@@ -132,6 +135,7 @@ waybar_layout:
   - sway/workspaces
   - sway/mode
   right:
+  - custom/arrowlight
   - pulseaudio
   - network
   - memory
