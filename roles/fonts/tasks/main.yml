@@ -31,8 +31,6 @@
     src: "{{ item }}"
     dest: "{{ fonts_install_path }}"
     mode: 0755
-  loop:
-  - monofur.otf
+  with_fileglob: "{{ fonts_bundled_paths }}"
   notify:
   - reload font cache
-

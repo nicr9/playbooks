@@ -8,3 +8,5 @@ fonts_git:
     file: 'webfonts/fa-regular-400.ttf'
 
 fonts_install_path: /usr/share/fonts/truetype/user_fonts
+fonts_bundled_paths:
+  - monofur.otf
