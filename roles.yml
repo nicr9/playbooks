@@ -94,3 +94,4 @@
   - {'name': 'syncthing', 'tags': ['syncthing', 'storage']}
   - {'name': 'gparted', 'tags': ['gparted', 'storage']}
   - {'name': 'packer', 'tags': ['packer']}
+  - {'name': 'dconf', 'tags': ['dconf', 'system']}

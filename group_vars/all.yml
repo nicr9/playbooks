@@ -1,10 +1,9 @@
 ---
 # Dconf updates
-#dconf_config:
-#- key: "/org/gnome/desktop/background/draw-background"
-#  value: false
-#- key: "/org/gnome/desktop/background/show-desktop-icons"
-#  value: false
+dconf_config:
+  /org/gnome/desktop/media-handling/automount: "false"
+  /org/gnome/desktop/media-handling/automount-open: "false"
+  /org/gnome/desktop/media-handling/autorun-never: "true"
 
 # Bashrc details
 bashrc_aliases:

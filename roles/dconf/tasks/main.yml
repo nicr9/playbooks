@@ -1,5 +1,6 @@
 ---
 - name: install dconf-editor
+  become: yes
   package:
     name:
     - dconf-service
@@ -11,4 +12,6 @@
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
-  loop: "{{ dconf_config }}"
+  loop: "{{ dconf_config | dict2items }}"
+  loop_control:
+    label: "{{ item.key }} = {{ item.value }}"
