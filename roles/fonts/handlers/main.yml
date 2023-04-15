@@ -1,0 +1,4 @@
+---
+- name: reload font cache
+  become: yes
+  command: fc-cache -f -v

@@ -22,6 +22,8 @@
   loop: "{{ fonts_git }}"
   loop_control:
     label: "{{ item.repo }}/{{ item.file }}"
+  notify:
+  - reload font cache
 
 - name: install bundled fonts
   become: yes
@@ -31,7 +33,6 @@
     mode: 0755
   loop:
   - monofur.otf
+  notify:
+  - reload font cache
 
-- name: reload font cache
-  become: yes
-  command: fc-cache -f -v
