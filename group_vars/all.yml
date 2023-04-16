@@ -124,6 +124,13 @@ waybar_options:
   custom/arrowlight:
     format: ""
     tooltip: false
+  custom/swayidle:
+    exec: "python3 $HOME/scripts/swayidle_manager.py -s"
+    exec-on-event: false
+    format: "{}"
+    interval: 5
+    return-type: "json"
+    on-click: "python3 $HOME/scripts/swayidle_manager.py -t"
   clock:
     interval: 5
     format: "{:%H:%M:%S}"
@@ -137,6 +144,7 @@ waybar_layout:
   - custom/arrowlight
   - pulseaudio
   - network
+  - custom/swayidle
   - memory
   - cpu
   - temperature
