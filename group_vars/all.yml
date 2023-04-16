@@ -89,7 +89,7 @@ sway_bar: {}
 
 # Waybar details
 waybar_css_paths:
-- waybar/style.css
+- waybar/css/*.css
 waybar_options:
   layer: top
   position: bottom
