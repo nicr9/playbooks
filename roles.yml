@@ -95,3 +95,4 @@
   - {'name': 'gparted', 'tags': ['gparted', 'storage']}
   - {'name': 'packer', 'tags': ['packer']}
   - {'name': 'dconf', 'tags': ['dconf', 'system']}
+  - {'name': 'tensorflow', 'tags': ['tensorflow', 'development']}

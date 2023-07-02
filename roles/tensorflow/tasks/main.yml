@@ -1,0 +1,8 @@
+---
+- name: install tensorflow package
+  become: yes
+  pip:
+    name:
+    - tensorflow
+    executable: pip3
+    extra_args: "-U"
