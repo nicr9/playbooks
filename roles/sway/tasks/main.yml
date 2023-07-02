@@ -41,3 +41,12 @@
     mode: 0664
   notify:
     - restart swayidle.timer
+
+- name: enable nonreparenting for java applications
+  become: yes
+  copy:
+    content: _JAVA_AWT_WM_NONREPARENTING=1
+    dest: "/etc/environment.d/90sway-java-nonreparenting.conf"
+    mode: 0644
+    owner: root
+    group: root
