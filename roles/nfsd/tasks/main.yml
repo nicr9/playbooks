@@ -1,0 +1,20 @@
+---
+- name: install nfs-kernel-server
+  become: yes
+  package:
+    name:
+    - nfs-kernel-server
+    state: latest
+
+- name: create share directory
+  file:
+    path: /srv/nfs
+    mode: 0777
+    owner: nobody
+    group: nogroup
+
+- name: add folder to exports
+  lineinfile:
+    path: /etc/exports
+    regexp: '^/srv/nfs.*$'
+    line: '/srv/nfs 10.0.0.0/24(rw,sync,no_subtree_check)'

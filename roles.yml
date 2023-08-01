@@ -96,3 +96,4 @@
   - {'name': 'packer', 'tags': ['packer']}
   - {'name': 'dconf', 'tags': ['dconf', 'system']}
   - {'name': 'tensorflow', 'tags': ['tensorflow', 'development']}
+  - {'name': 'nfsd', 'tags': ['nfsd', 'system']}
