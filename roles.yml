@@ -99,3 +99,4 @@
   - {'name': 'nfsd', 'tags': ['nfsd', 'system']}
   - {'name': 'dotnetsdk', 'tags': ['dotnetsdk', 'development']}
   - {'name': 'synapse', 'tags': ['synapse', 'matrix', 'messaging']}
+  - {'name': 'jellyfin', 'tags': ['jellyfin', 'media']}
