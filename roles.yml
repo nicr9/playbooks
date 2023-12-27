@@ -78,7 +78,7 @@
   - {'name': 'waybar', 'tags': ['waybar']}
   - {'name': 'feh', 'tags': ['feh']}
   - {'name': 'fonts', 'tags': ['fonts', 'system']}
-  - {'name': 'youtube-dl', 'tags': ['youtube-dl']}
+  - {'name': 'yt-dlp', 'tags': ['yt-dlp']}
   - {'name': 'hugo', 'tags': ['hugo']}
   - {'name': 'rclone', 'tags': ['rclone']}
   - {'name': 'jq', 'tags': ['jq']}
