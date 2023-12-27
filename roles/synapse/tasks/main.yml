@@ -1,0 +1,21 @@
+---
+- name: add the matrix.org apt gpg key
+  become: yes
+  apt_key:
+    url: "https://packages.matrix.org/debian/matrix-org-archive-keyring.gpg"
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/matrix.org.gpg
+
+- name: add the matrix.org apt ppa
+  become: yes
+  apt_repository:
+    repo: 'deb [arch={{ docker_arch[ansible_architecture] }} signed-by=/etc/apt/trusted.gpg.d/matrix.org.gpg] https://matrix.org/packages/debian/ kinetic main'
+    state: present
+
+- name: install latest synapse packages
+  become: yes
+  apt:
+    name:
+    - matrix-synapse
+    state: latest
+    update_cache: yes

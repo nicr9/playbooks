@@ -1,0 +1,19 @@
+---
+- name: Download the Microsoft package repository
+  get_url:
+    url: "https://packages.microsoft.com/config/ubuntu/{{ ansible_distribution_version }}/packages-microsoft-prod.deb"
+    dest: "/tmp/packages-microsoft-prod.deb"
+
+- name: Register the Microsoft package repository
+  become: yes
+  apt:
+    deb: "/tmp/packages-microsoft-prod.deb"
+    state: present
+    update_cache: yes
+
+- name: Install .NET
+  become: yes
+  package:
+    name: dotnet-sdk-7.0
+    state: latest
+    update_cache: yes
