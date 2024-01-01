@@ -17,6 +17,10 @@ monitoring: export OTEL_SERVICE_NAME=playbooks-monitoring
 monitoring:
 	${RUN_PLAYBOOK} monitoring.yml
 
+homelab: export OTEL_SERVICE_NAME=playbooks-homelab
+homelab:
+	${RUN_PLAYBOOK} -k -i inventory -l homelab homelab.yml
+
 infra: export OTEL_SERVICE_NAME=playbooks-infra
 infra:
 	${RUN_PLAYBOOK} --ask-pass infra.yml

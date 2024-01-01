@@ -1,0 +1,9 @@
+---
+- name: install microk8s via snap
+  become: yes
+  snap:
+    name:
+      - microk8s
+    state: present
+    classic: yes
+    channel: 1.27

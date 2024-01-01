@@ -1,0 +1,32 @@
+---
+- name: install microk8s
+  gather_facts: yes
+  hosts: all
+  roles:
+  - name: microk8s
+    tags:
+      - microk8s
+  tasks:
+  - name: add $USER to microk8s group
+    become: yes
+    user:
+      name: "{{ ansible_user }}"
+      groups: microk8s
+      append: yes
+
+  - meta: reset_connection
+
+  - name: chown ~/.kube
+    become: yes
+    file:
+      path: '{{ ansible_user_dir }}/.kube'
+      owner: "{{ lookup('env', 'USER') }}"
+      recurse: yes
+
+  - name: enable microk8s addons
+    command:
+      cmd: "microk8s.enable {{ item.name }} {{ ' '.join(item.args | default([])) }}"
+    loop:
+      - name: ingress
+    loop_control:
+      label: item.name
