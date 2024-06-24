@@ -30,5 +30,5 @@
 - name: create alias for the esp-idf virtual env
   blockinfile:
     path: "{{ ansible_user_dir }}/.bashrc"
-    block: alias get_idf='. $HOME/src/github.com/espressif/esp-idf/export.sh'
+    block: alias esp32='. $HOME/src/github.com/espressif/esp-idf/export.sh'
     marker: "# {mark} ESP-IDF virtual env"
