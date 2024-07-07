@@ -13,4 +13,5 @@
     - make
     - net-tools
     - sshpass
+    - xz-utils
     state: latest
