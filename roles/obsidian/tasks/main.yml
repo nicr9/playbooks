@@ -1,0 +1,5 @@
+---
+- name: install obsidian
+  become: yes
+  apt:
+    deb: "https://github.com/obsidianmd/obsidian-releases/releases/download/v{{ obsidian_version }}/obsidian_{{ obsidian_version }}_{{ obsidian_arch }}.deb"

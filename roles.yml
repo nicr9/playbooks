@@ -100,3 +100,5 @@
   - {'name': 'dotnetsdk', 'tags': ['dotnetsdk', 'development']}
   - {'name': 'synapse', 'tags': ['synapse', 'matrix', 'messaging']}
   - {'name': 'jellyfin', 'tags': ['jellyfin', 'media']}
+  - {'name': 'jsonnet', 'tags': ['jsonnet', 'development']}
+  - {'name': 'obsidian', 'tags': ['obsidian', 'development']}
