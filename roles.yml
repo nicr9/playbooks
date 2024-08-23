@@ -102,3 +102,4 @@
   - {'name': 'jellyfin', 'tags': ['jellyfin', 'media']}
   - {'name': 'jsonnet', 'tags': ['jsonnet', 'development']}
   - {'name': 'obsidian', 'tags': ['obsidian', 'development']}
+  - {'name': 'freecad', 'tags': ['freecad', 'engineering']}

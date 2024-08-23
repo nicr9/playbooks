@@ -1,0 +1,7 @@
+---
+- name: install freecad
+  become: yes
+  package:
+    name:
+    - freecad
+    state: present
