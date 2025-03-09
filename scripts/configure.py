@@ -1,14 +1,17 @@
 import yaml
+
+from os import environ
 from os.path import isfile
 
-config_path = '~/.playbooks.yml'
+user_home = environ['HOME']
+config_path = f'{user_home}/.playbooks.yml'
 if not isfile(config_path):
     with open(config_path, 'w') as outp:
         outp.write('{}')
 
 config = None
 with open(config_path, 'r') as inp:
-    config = yaml.load(inp)
+    config = yaml.safe_load(inp)
 
 questions = {
         'personal_full_name': 'What is your full name?',
