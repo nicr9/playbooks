@@ -9,14 +9,17 @@
   - restart nfsd
 
 - name: create share directory
+  become: yes
   file:
     path: /srv/nfs
-    mode: 0777
-    owner: nobody
+    state: directory
+    mode: 2770
+    owner: 1000
     group: nogroup
 
 - name: add folder to exports
+  become: yes
   lineinfile:
     path: /etc/exports
     regexp: '^/srv/nfs.*$'
-    line: '/srv/nfs 10.0.0.0/24(rw,sync,no_subtree_check)'
+    line: '/srv/nfs 10.0.0.0/24(rw,sync,anonuid=1000,anongid=65534,root_squash)'
