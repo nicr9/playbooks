@@ -35,6 +35,9 @@ init:
 facts:
 	@ansible -m setup localhost | less
 
+configure: ~/.playbooks.yml
+	@echo Done
+
 ~/.playbooks.yml:
 	python3 scripts/configure.py
 	chmod 600 ~/.playbooks.yml
