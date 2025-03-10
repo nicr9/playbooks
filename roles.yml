@@ -103,3 +103,4 @@
   - {'name': 'jsonnet', 'tags': ['jsonnet', 'development']}
   - {'name': 'obsidian', 'tags': ['obsidian', 'development']}
   - {'name': 'freecad', 'tags': ['freecad', 'engineering']}
+  - {'name': 'opentofu', 'tags': ['opentofu', 'development']}

@@ -1,0 +1,26 @@
+---
+- name: add the opentofu apt gpg keys
+  become: yes
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  loop:
+  - "https://get.opentofu.org/opentofu.gpg"
+  - "https://packages.opentofu.org/opentofu/tofu/gpgkey"
+
+- name: the opentofu apt ppa and src ppa
+  become: yes
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  loop:
+  - "deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main"
+  - "deb-src [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main"
+
+- name: install opentofu package
+  become: yes
+  package:
+    name:
+    - tofu
+    state: latest
+    update_cache: yes
