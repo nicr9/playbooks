@@ -4,7 +4,7 @@ FLAGS_ENV= ${if ${ENV},-l ${ENV}}
 TAGS?=
 FLAGS_TAGS= ${if ${TAGS},--tags ${TAGS}}
 
-RUN_PLAYBOOK=ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS_TAGS}
+RUN_PLAYBOOK=./.venv/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS_TAGS}
 
 # Send playbook traces to local otelcol (OTEL/gRPC)
 export OTEL_EXPORTER_OTLP_ENDPOINT=localhost:4317
@@ -29,9 +29,6 @@ roles: export OTEL_SERVICE_NAME=playbooks-roles
 roles: ~/.playbooks.yml
 	${RUN_PLAYBOOK} -l localhost roles.yml
 
-init:
-	ansible-galaxy install -r requirements.yml --force --ignore-errors
-
 facts:
 	@ansible -m setup localhost | less
 
@@ -42,4 +39,11 @@ configure: ~/.playbooks.yml
 	python3 scripts/configure.py
 	chmod 600 ~/.playbooks.yml
 
-.PHONY: facts roles
+./.venv:
+	python3 -m venv ./.venv
+
+latest: ./.venv
+	./.venv/bin/pip3 install -U -r requirements.txt
+	./.venv/bin/ansible-galaxy install -r requirements.yml --force --ignore-errors
+
+.PHONY: facts setup

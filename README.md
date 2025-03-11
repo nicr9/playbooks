@@ -13,7 +13,7 @@ Then you'll need to run the bootstrap script:
 This script installs some dependancies and downloads the playbooks in this repo
 
 ```bash
-$ curl https://raw.githubusercontent.com/nicr9/playbooks/rewrite/scripts/bootstrap.sh | bash
+$ curl https://raw.githubusercontent.com/nicr9/playbooks/master/scripts/bootstrap.sh | bash
 ```
 
 ### Running the playbook
