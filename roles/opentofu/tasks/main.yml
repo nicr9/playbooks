@@ -1,12 +1,17 @@
 ---
-- name: add the opentofu apt gpg keys
+- name: add the opentofu apt gpg key
   become: yes
   apt_key:
-    url: "{{ item }}"
+    url: "https://get.opentofu.org/opentofu.gpg"
     state: present
-  loop:
-  - "https://get.opentofu.org/opentofu.gpg"
-  - "https://packages.opentofu.org/opentofu/tofu/gpgkey"
+    keyring: /etc/apt/trusted.gpg.d/opentofu.gpg
+
+- name: add the opentofu-repo apt gpg key
+  become: yes
+  apt_key:
+    url: "https://packages.opentofu.org/opentofu/tofu/gpgkey"
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/opentofu-repo.gpg
 
 - name: the opentofu apt ppa and src ppa
   become: yes
@@ -14,8 +19,8 @@
     repo: "{{ item }}"
     state: present
   loop:
-  - "deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main"
-  - "deb-src [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main"
+  - "deb [signed-by=/etc/apt/trusted.gpg.d/opentofu.gpg,/etc/apt/trusted.gpg.d/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main"
+  - "deb-src [signed-by=/etc/apt/trusted.gpg.d/opentofu.gpg,/etc/apt/trusted.gpg.d/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main"
 
 - name: install opentofu package
   become: yes
