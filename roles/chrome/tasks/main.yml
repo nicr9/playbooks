@@ -1,5 +1,5 @@
 ---
-- include: "RedHat.yml"
+- import_tasks: "RedHat.yml"
   when: ansible_os_family == "RedHat"
-- include: "Debian.yml"
+- import_tasks: "Debian.yml"
   when: ansible_os_family == "Debian"

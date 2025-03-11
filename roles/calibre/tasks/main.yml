@@ -64,7 +64,7 @@
   notify:
   - restart calibre.service
 
-- include: "import-system.yml"
+- import_tasks: "import-system.yml"
   when: calibre_system_user
-- include: "import-user.yml"
+- import_tasks: "import-user.yml"
   when: not calibre_system_user
