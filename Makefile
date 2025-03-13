@@ -10,8 +10,9 @@ RUN_PLAYBOOK=./.venv/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS
 export OTEL_EXPORTER_OTLP_ENDPOINT=localhost:4317
 export OTEL_EXPORTER_OTLP_INSECURE=true
 
+all: export OTEL_SERVICE_NAME=playbooks-roles
 all: ~/.playbooks.yml
-	${RUN_PLAYBOOK} setup.yml
+	@ls roles | tofi | xargs ${RUN_PLAYBOOK} -l localhost roles.yml --tags
 
 monitoring: export OTEL_SERVICE_NAME=playbooks-monitoring
 monitoring:
@@ -25,9 +26,9 @@ infra: export OTEL_SERVICE_NAME=playbooks-infra
 infra:
 	${RUN_PLAYBOOK} --ask-pass infra.yml
 
-roles: export OTEL_SERVICE_NAME=playbooks-roles
-roles: ~/.playbooks.yml
-	${RUN_PLAYBOOK} -l localhost roles.yml
+setup: export OTEL_SERVICE_NAME=playbooks-setup
+setup: ~/.playbooks.yml
+	${RUN_PLAYBOOK} setup.yml
 
 facts:
 	@ansible -m setup localhost | less
