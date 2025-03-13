@@ -8,5 +8,5 @@ mkdir -p ~/src/github.com/nicr9
 git clone https://github.com/nicr9/playbooks ~/src/github.com/nicr9/playbooks
 cd ~/src/github.com/nicr9/playbooks
 
-# Set up venv with ansible and all other required packages
-make latest
+# Set up venv with ansible, install all basic requirements
+make init setup

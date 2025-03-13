@@ -4,7 +4,10 @@ FLAGS_ENV= ${if ${ENV},-l ${ENV}}
 TAGS?=
 FLAGS_TAGS= ${if ${TAGS},--tags ${TAGS}}
 
+RUN_ANSIBLE=./.venv/bin/ansible
+RUN_PIP=./.venv/bin/pip3
 RUN_PLAYBOOK=./.venv/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS_TAGS}
+RUN_PYTHON=./.venv/bin/python3
 
 # Send playbook traces to local otelcol (OTEL/gRPC)
 export OTEL_EXPORTER_OTLP_ENDPOINT=localhost:4317
@@ -31,20 +34,18 @@ setup: ~/.playbooks.yml
 	${RUN_PLAYBOOK} setup.yml
 
 facts:
-	@ansible -m setup localhost | less
+	@${RUN_ANSIBLE} -m setup localhost | less
 
-configure: ~/.playbooks.yml
-	@echo Done
-
-~/.playbooks.yml:
-	python3 scripts/configure.py
+~/.playbooks.yml: ./.venv
+	${RUN_PYTHON} scripts/configure.py
 	chmod 600 ~/.playbooks.yml
 
 ./.venv:
+	# Using system python to initialise the venv
 	python3 -m venv ./.venv
 
-latest: ./.venv
-	./.venv/bin/pip3 install -U -r requirements.txt
-	./.venv/bin/ansible-galaxy install -r requirements.yml --force --ignore-errors
+init: ./.venv
+	${RUN_PIP} install -U -r requirements.txt
+	${RUN_GALAXY} install -r requirements.yml --force --ignore-errors
 
 .PHONY: facts setup

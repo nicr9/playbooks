@@ -11,90 +11,39 @@
 - name: system setup; prepare ansible environment
   become: yes
   hosts: all
-  pre_tasks:
-  - name: install yum packages required by Ansible modules
-    yum:
-      name: "{{ item }}"
-    loop:
-    - zip
-    - unzip
-    when: ansible_os_family == "RedHat"
-  - name: install apt packages required by Ansible modules
-    apt:
-      name: "{{ item }}"
-    loop:
-    - zip
-    - unzip
-    when: ansible_os_family == "Debian"
   roles:
   - bashrc
   - inputrc
   - utilities
-  #- ansible
+  - fzf
+  - tmux
+  - dconf
+  - fonts
   tags:
   - system
 
-- name: set up development tools
-  hosts: all
-  roles:
-  - pip
-  - awscli
-  - fzf
-  - nvim
-  - name: ssh
-    vars:
-      ssh_keypair:
-        comment: "{{ personal_email }}"
-  - name: git
-    vars:
-      git_config_user:
-        name: "{{ personal_full_name }}"
-        email: "{{ personal_email }}"
-  - name: github
-    vars:
-      github_keypair:
-        comment: "{{ personal_email }}"
-  - terraform
-  - tmux
-  - golang
-  - pandoc
-  - nodejs
-  - docker
-  - semgrep
-  tags:
-  - development
-
-- name: set up monitoring tool
+- name: set up monitoring agents
   hosts: all
   roles:
   - role: cloudalchemy.node-exporter
-  - role: cloudalchemy.prometheus
-  - role: cloudalchemy.grafana
   - role: ansible-promtail
-  - role: ansible-loki
   tags:
   - monitoring
 
-- name: Install privacy tools
+- name: Install desktop environment
   hosts: all
   roles:
-  - keepass
-  #- signal
-  tags:
-  - privacy
-
-- name: Install desktop environment + applications
-  hosts: all
-  roles:
-  - dconf
-  - calibre
-  - fonts
-  - terminator
-  - firefox
-  #- { role: common, tags: ["common"] }
-  #- { role: chrome, tags: ["chrome"] }
-  #- { role: spotify, tags: ["spotify"] }
-  #- { role: i3, tags: ["i3"] }
-  #- { role: xmind, tags: ["xmind"] }
+  - sway
+  - tofi
+  - waybar
   tags:
   - desktop
+
+- name: Install applications
+  hosts: all
+  roles:
+  - terminator
+  - firefox
+  #- signal
+  tags:
+  - apps

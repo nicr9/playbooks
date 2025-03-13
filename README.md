@@ -18,8 +18,15 @@ $ curl https://raw.githubusercontent.com/nicr9/playbooks/master/scripts/bootstra
 
 ### Running the playbook
 
-Getting started is as simple as running `make`:
+If you want to install any role, it's as simple as running `make`:
 
 ```bash
 $ make
 ```
+
+Certain playbooks are available for installing collections of related software in one pass:
+
+* `make monitoring`
+* `make homelab`
+* `make infra`
+* `make devel`
