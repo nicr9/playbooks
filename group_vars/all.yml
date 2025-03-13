@@ -11,7 +11,6 @@ bashrc_aliases:
   scu: systemctl --user
   jc: journalctl
 bashrc_cdpath:
-  - .
   - ~/src/github.com/nicr9
 bashrc_variables:
   TERM: screen-256color
