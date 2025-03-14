@@ -29,24 +29,6 @@ git_config_aliases:
 github_repos_https:
 - 'ansible/ansible'
 
-# Grafana details
-grafana_security:
-  admin_user: admin
-  admin_password: admin
-grafana_datasources:
-- name: prometheus
-  type: prometheus
-  access: proxy
-  url: 'http://{{ prometheus_web_listen_address }}'
-  basicAuth: false
-grafana_dashboards:
-- dashboard_id: 6014
-  revision_id: 1
-  datasource: prometheus
-grafana_plugins:
-- marcusolsson-dynamictext-panel
-- simpod-json-datasource
-
 # Jupyter deatils
 jupyter_host: 0.0.0.0
 jupyter_port: 8890
@@ -75,9 +57,6 @@ otelcol_service:
       processors: [batch]
       exporters: [otlp]
   extensions: [health_check, pprof, zpages]
-
-# Prometheus details
-prometheus_version: 2.42.0
 
 # Sway details
 sway_term: terminator
