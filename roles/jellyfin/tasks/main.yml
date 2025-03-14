@@ -1,3 +1,0 @@
----
-- name: install jellyfin
-  include_tasks: install.yml

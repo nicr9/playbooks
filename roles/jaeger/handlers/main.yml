@@ -1,7 +1,0 @@
----
-- name: restart jaeger
-  become: true
-  systemd:
-    name: jaeger
-    enabled: yes
-    state: restarted

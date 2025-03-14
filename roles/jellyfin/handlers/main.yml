@@ -1,6 +1,0 @@
----
-- name: restart jellyfin
-  become: yes
-  service:
-    name: jellyfin
-    state: restarted
