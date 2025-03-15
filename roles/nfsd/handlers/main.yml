@@ -4,3 +4,8 @@
   service:
     name: nfs-kernel-server
     state: restarted
+
+- name: exportfs
+  become: yes
+  command:
+    cmd: exportfs -ra
