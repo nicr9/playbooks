@@ -102,4 +102,5 @@
   - {'name': 'jsonnet', 'tags': ['jsonnet', 'development']}
   - {'name': 'obsidian', 'tags': ['obsidian', 'development']}
   - {'name': 'freecad', 'tags': ['freecad', 'engineering']}
-  - {'name': 'opentofu', 'tags': ['opentofu', 'development']}
+  - {'name': 'opentofu', 'tags': ['opentofu', 'cicd']}
+  - {'name': 'flux', 'tags': ['flux', 'cicd']}
