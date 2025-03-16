@@ -4,10 +4,11 @@ FLAGS_ENV= ${if ${ENV},-l ${ENV}}
 TAGS?=
 FLAGS_TAGS= ${if ${TAGS},--tags ${TAGS}}
 
-RUN_ANSIBLE=./.venv/bin/ansible
-RUN_PIP=./.venv/bin/pip3
-RUN_PLAYBOOK=./.venv/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS_TAGS}
-RUN_PYTHON=./.venv/bin/python3
+RUN_ANSIBLE=/opt/ansible/bin/ansible
+RUN_GALAXY=/opt/ansible/bin/ansible-galaxy
+RUN_PIP=/opt/ansible/bin/pip3
+RUN_PLAYBOOK=/opt/ansible/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS_TAGS}
+RUN_PYTHON=/opt/ansible/bin/python3
 
 # Send playbook traces to local otelcol (OTEL/gRPC)
 export OTEL_EXPORTER_OTLP_ENDPOINT=localhost:4317
@@ -36,15 +37,16 @@ setup: ~/.playbooks.yml
 facts:
 	@${RUN_ANSIBLE} -m setup localhost | less
 
-~/.playbooks.yml: ./.venv
+~/.playbooks.yml: /opt/ansible/
 	${RUN_PYTHON} scripts/configure.py
 	chmod 600 ~/.playbooks.yml
 
-./.venv:
-	# Using system python to initialise the venv
-	python3 -m venv ./.venv
+/opt/ansible/:
+	sudo mkdir /opt/ansible
+	sudo chown ${USER}:${USER} /opt/ansible
+	python3 -m venv /opt/ansible
 
-init: ./.venv
+init: /opt/ansible/
 	${RUN_PIP} install -U -r requirements.txt
 	${RUN_GALAXY} install -r requirements.yml --force --ignore-errors
 
