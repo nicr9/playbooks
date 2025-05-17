@@ -1,0 +1,21 @@
+---
+- name: add the tailscale apt gpg key
+  become: yes
+  apt_key:
+    url: "https://pkgs.tailscale.com/stable/ubuntu/{{ ansible_distribution_release }}.noarmor.gpg"
+    state: present
+    keyring: /usr/share/keyrings/tailscale-archive-keyring.gpg
+
+- name: the tailscale apt ppa and src ppa
+  become: yes
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/tailscale-archive-keyring.gpg] https://pkgs.tailscale.com/stable/ubuntu {{ ansible_distribution_release }} main"
+    state: present
+
+- name: install tailscale package
+  become: yes
+  package:
+    name:
+    - tailscale
+    state: latest
+    update_cache: yes
