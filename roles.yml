@@ -104,3 +104,4 @@
   - {'name': 'freecad', 'tags': ['freecad', 'engineering']}
   - {'name': 'opentofu', 'tags': ['opentofu', 'cicd']}
   - {'name': 'flux', 'tags': ['flux', 'cicd']}
+  - {'name': 'orcaslicer', 'tags': ['orcaslicer', 'engineering']}

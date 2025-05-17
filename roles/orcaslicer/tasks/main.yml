@@ -1,0 +1,30 @@
+---
+- name: determine which version is the latest
+  block:
+  - github_release:
+      user: SoftFever
+      repo: OrcaSlicer
+      action: latest_release
+    register: orca
+  - set_fact:
+      orca_version: "{{ orca.tag | regex_replace('^v', '') }}"
+  when: orca_version in ['', 'latest']
+
+- name: Download zip, unarchive into /usr/local/bin
+  become: yes
+  get_url:
+    url: "https://github.com/SoftFever/OrcaSlicer/releases/download/v{{ orca_version }}/OrcaSlicer_Linux_AppImage_Ubuntu2404_V{{ orca_version }}.AppImage"
+    dest: "/usr/local/bin/orcaslicer"
+    mode: 0755
+
+- name: setup desktop app
+  copy:
+    src: orcaslicer.desktop
+    dest: "{{ ansible_user_dir }}/.local/share/applications/"
+    mode: 0775
+
+- name: setup desktop app
+  copy:
+    src: OrcaSlicer.ico
+    dest: "{{ ansible_user_dir }}/.local/share/icons/hicolor/512x512/apps/"
+    mode: 0554
