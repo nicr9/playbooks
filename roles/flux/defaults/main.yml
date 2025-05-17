@@ -1,0 +1,4 @@
+flux_version: latest
+flux_arch:
+  x86_64: amd64
+  aarch64: arm64

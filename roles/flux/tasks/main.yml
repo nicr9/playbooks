@@ -1,0 +1,18 @@
+---
+- name: determine which version is the latest
+  block:
+  - github_release:
+      user: fluxcd
+      repo: flux2
+      action: latest_release
+    register: flux
+  - set_fact:
+      flux_version: "{{ flux.tag | regex_replace('^v', '') }}"
+  when: flux_version in ['', 'latest']
+
+- name: Download zip, unarchive into /usr/local/bin
+  become: yes
+  unarchive:
+    src: "https://github.com/fluxcd/flux2/releases/download/v{{ flux_version }}/flux_{{ flux_version }}_linux_{{ flux_arch[ansible_architecture] }}.tar.gz"
+    dest: "/usr/local/bin"
+    remote_src: yes
