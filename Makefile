@@ -6,7 +6,7 @@ RUN_W_TAGS= ${if ${TAGS},${RUN_PLAYBOOK} --tags ${TAGS},ls roles | tofi | xargs 
 
 RUN_ANSIBLE=/opt/ansible/bin/ansible
 RUN_GALAXY=/opt/ansible/bin/ansible-galaxy
-RUN_PIP=/opt/ansible/bin/pip3
+RUN_PIP=/opt/ansible/bin/python3 -m pip
 RUN_PLAYBOOK=/opt/ansible/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV}
 RUN_PYTHON=/opt/ansible/bin/python3
 
@@ -45,6 +45,9 @@ facts:
 	sudo mkdir /opt/ansible
 	sudo chown ${USER}:${USER} /opt/ansible
 	python3 -m venv /opt/ansible
+
+clean:
+	rm -rf /opt/ansible
 
 init: /opt/ansible/
 	${RUN_PIP} install -U -r requirements.txt
