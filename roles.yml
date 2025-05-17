@@ -104,6 +104,7 @@
   - {'name': 'freecad', 'tags': ['freecad', 'engineering']}
   - {'name': 'opentofu', 'tags': ['opentofu', 'cicd']}
   - {'name': 'flux', 'tags': ['flux', 'cicd']}
+  - {'name': 'mgba', 'tags': ['mgba', 'games']}
   - {'name': 'orcaslicer', 'tags': ['orcaslicer', 'engineering']}
   - {'name': 'beets', 'tags': ['beets', 'music']}
   - {'name': 'tailscale', 'tags': ['tailscale', 'network']}

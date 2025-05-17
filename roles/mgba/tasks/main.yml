@@ -1,0 +1,7 @@
+---
+- name: install mGBA
+  become: yes
+  package:
+    name:
+    - mgba-sdl
+    state: latest
