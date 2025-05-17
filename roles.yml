@@ -105,4 +105,5 @@
   - {'name': 'opentofu', 'tags': ['opentofu', 'cicd']}
   - {'name': 'flux', 'tags': ['flux', 'cicd']}
   - {'name': 'orcaslicer', 'tags': ['orcaslicer', 'engineering']}
+  - {'name': 'beets', 'tags': ['beets', 'music']}
   - {'name': 'tailscale', 'tags': ['tailscale', 'network']}

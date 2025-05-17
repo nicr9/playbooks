@@ -1,0 +1,6 @@
+---
+- name: install beets
+  pip:
+    name:
+    - beets
+    extra_args: "-U"
