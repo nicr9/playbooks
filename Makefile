@@ -2,12 +2,12 @@ ENV?=
 FLAGS_ENV= ${if ${ENV},-l ${ENV}}
 
 TAGS?=
-FLAGS_TAGS= ${if ${TAGS},--tags ${TAGS}}
+RUN_W_TAGS= ${if ${TAGS},${RUN_PLAYBOOK} --tags ${TAGS},ls roles | tofi | xargs -I% ${RUN_PLAYBOOK} --tags %}
 
 RUN_ANSIBLE=/opt/ansible/bin/ansible
 RUN_GALAXY=/opt/ansible/bin/ansible-galaxy
 RUN_PIP=/opt/ansible/bin/pip3
-RUN_PLAYBOOK=/opt/ansible/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV} ${FLAGS_TAGS}
+RUN_PLAYBOOK=/opt/ansible/bin/ansible-playbook --ask-become-pass ${FLAGS_ENV}
 RUN_PYTHON=/opt/ansible/bin/python3
 
 # Send playbook traces to local otelcol (OTEL/gRPC)
@@ -16,7 +16,7 @@ export OTEL_EXPORTER_OTLP_INSECURE=true
 
 all: export OTEL_SERVICE_NAME=playbooks-roles
 all: ~/.playbooks.yml
-	@ls roles | tofi | xargs ${RUN_PLAYBOOK} -l localhost roles.yml --tags
+	${RUN_W_TAGS} -l localhost roles.yml
 
 monitoring: export OTEL_SERVICE_NAME=playbooks-monitoring
 monitoring:
