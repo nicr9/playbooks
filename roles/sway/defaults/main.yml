@@ -1,7 +1,7 @@
 ---
 sway_mod: Mod4
 sway_term: foot
-sway_app_launcher: dmenu_path | dmenu | xargs swaymsg exec --
+sway_app_launcher: tofi-drun --drun-launch=true
 sway_wallpaper: /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png
 
 sway_execs: []
@@ -13,11 +13,3 @@ sway_outputs: []
 #   - 1920x1080
 #   - position
 #   - 1920,0
-
-sway_bar:
-  position: top
-  status_command: while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-  colors:
-    statusline: '#ffffff'
-    background: '#323232'
-    inactive_workspace: '#32323200 #32323200 #5c5c5c'

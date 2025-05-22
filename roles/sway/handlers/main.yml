@@ -6,12 +6,3 @@
     enabled: no
     state: stopped
     scope: user
-
-- name: restart swayidle.timer
-  systemd:
-    name: swayidle.timer
-    daemon_reload: yes
-    enabled: yes
-    state: stopped
-    scope: user
-

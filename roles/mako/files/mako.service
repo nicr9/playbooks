@@ -8,3 +8,6 @@ BusName=org.freedesktop.Notifications
 ExecCondition=/bin/sh -c '[ -n "$WAYLAND_DISPLAY" ]'
 ExecStart=/usr/bin/mako
 ExecReload=/usr/bin/makoctl reload
+
+[Install]
+WantedBy=sway-session.target

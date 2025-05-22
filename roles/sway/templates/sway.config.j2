@@ -14,6 +14,8 @@ set $menu {{ sway_app_launcher }}
 
 include /etc/sway/config-vars.d/*
 
+exec_always systemctl --user start sway-session.target
+
 ### Exec other daemons
 #
 {% for daemon in sway_execs %}
@@ -173,24 +175,5 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-#
-# Status Bar:
-#
-{% if sway_bar is defined and sway_bar != {} %}
-bar {
-{% for k, v in sway_bar.items() %}
-{% if v is mapping %}
-    {{ k }} {
-{% for sk, sv in v.items() %}
-        {{ sk }} {{ sv }}
-{% endfor %}
-    }
-{% else %}
-    {{ k }} {{ v }}
-{% endif %}
-{% endfor %}
-}
-{% endif %}
 
 include /etc/sway/config.d/*
