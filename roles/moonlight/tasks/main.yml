@@ -1,0 +1,7 @@
+---
+- name: install moonlight via snap
+  become: yes
+  snap:
+    name:
+      - moonlight
+    state: present
