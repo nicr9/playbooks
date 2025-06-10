@@ -109,3 +109,4 @@
   - {'name': 'beets', 'tags': ['beets', 'music']}
   - {'name': 'tailscale', 'tags': ['tailscale', 'network']}
   - {'name': 'moonlight', 'tags': ['moonlight', 'games']}
+  - {'name': 'vscode', 'tags': ['vscode', 'development']}
