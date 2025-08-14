@@ -18,15 +18,6 @@
   - {'name': 'awscli', 'tags': ['awscli', 'development']}
   - {'name': 'fzf', 'tags': ['fzf', 'development']}
   - {'name': 'nvim', 'tags': ['nvim', 'development']}
-  - name: nvim-plugin
-    vars:
-      repo: python-mode/python-mode
-      options:
-        for: python
-        branch: develop
-    tags:
-    - development
-    - nvim_python
   - name: ssh
     vars:
       ssh_keypair:
