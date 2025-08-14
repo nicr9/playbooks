@@ -1,0 +1,36 @@
+---
+- name: determine which version is the latest
+  block:
+  - github_release:
+      user: neovim
+      repo: neovim
+      action: latest_release
+    register: neovim
+  - set_fact:
+      nvim_version: "{{ neovim.tag }}"
+  when: nvim_version in ['', 'latest']
+
+- name: Download zip, unarchive into /usr/local/bin
+  become: yes
+  unarchive:
+    src: "https://github.com/neovim/neovim/releases/download/{{ nvim_version }}/nvim-linux-x86_64.tar.gz"
+    dest: "/tmp/nvim"
+    remote_src: yes
+
+- name: install executable
+  copy:
+    src: "/tmp/nvim/nvim-linux-x86_64/bin/nvim"
+    dest: "/usr/local/bin/"
+    remote_src: yes
+
+- name: install lib files
+  copy:
+    src: "/tmp/nvim/nvim-linux-x86_64/lib/nvim"
+    dest: "/usr/lib/"
+    remote_src: yes
+
+- name: install shared files
+  copy:
+    src: "/tmp/nvim/nvim-linux-x86_64/share/nvim"
+    dest: "/usr/share/"
+    remote_src: yes
