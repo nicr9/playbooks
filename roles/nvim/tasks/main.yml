@@ -27,10 +27,13 @@
     src: init.vim.j2
     dest: "{{ nvim_config_path }}/init.vim"
 
-- name: touch decoupled declarations config for vim-plug
-  file:
-    path: "{{ nvim_config_path }}/plug.vim"
-    state: touch
+- name: copy plugin specific configs
+  copy:
+    src: '{{ item }}'
+    dest: "{{ nvim_config_path }}/plug/{{ item | basename }}"
+  with_fileglob:
+  - 'plug/*.vim'
+  - 'nvim/plug/*.vim'
 
 - name: copy nvim ftplugin config
   copy:

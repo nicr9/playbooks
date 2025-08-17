@@ -11,28 +11,12 @@
   when: nvim_version in ['', 'latest']
 
 - name: Download release, unarchive into /tmp/nvim
+  become: yes
   unarchive:
     src: "https://github.com/neovim/neovim/releases/download/{{ nvim_version }}/nvim-linux-x86_64.tar.gz"
-    dest: "/tmp/nvim"
-    remote_src: yes
-
-- name: install executable
-  become: yes
-  copy:
-    src: "/tmp/nvim/nvim-linux-x86_64/bin/nvim"
-    dest: "/usr/bin/"
-    remote_src: yes
-
-- name: install lib files
-  become: yes
-  copy:
-    src: "/tmp/nvim/nvim-linux-x86_64/lib/nvim"
-    dest: "/usr/lib/"
-    remote_src: yes
-
-- name: install shared files
-  become: yes
-  copy:
-    src: "/tmp/nvim/nvim-linux-x86_64/share/nvim"
-    dest: "/usr/share/"
+    extra_opts:
+    - --strip-components=1
+    dest: "/usr/"
+    owner: root
+    group: root
     remote_src: yes
