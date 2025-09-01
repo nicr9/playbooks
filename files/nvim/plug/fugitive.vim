@@ -1,5 +1,3 @@
-Plug 'tpope/vim-fugitive'
-
 " Configure tpope/vim-fugitive
 command! Gadd exec "Git add -p"
 command! -nargs=* Ggraph exec "vs term://git graph " . <q-args>

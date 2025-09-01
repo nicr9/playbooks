@@ -40,6 +40,26 @@ jupyter_packages:
   - sympy
   - nltk
 
+# Nvim details
+nvim_plugins:
+- vim-airline/vim-airline
+- nvim-lua/plenary.nvim
+- nvim-treesitter/nvim-treesitter
+- olimorris/codecompanion.nvim
+- MeanderingProgrammer/render-markdown.nvim
+- ctrlpvim/ctrlp.vim
+- tpope/vim-fugitive
+- ludovicchabant/vim-gutentags
+- scrooloose/nerdtree
+- name: python-mode/python-mode
+  options:
+    for: python
+    branch: develop
+- ervandew/supertab
+- name: fatih/vim-go
+  options:
+    do: ':GoInstallBinaries'
+
 otelcol_exporters:
   otlp:
     endpoint: bespin.co:4317

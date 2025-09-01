@@ -1,5 +1,3 @@
-Plug 'scrooloose/nerdtree'
-
 " Configure scrooloose/nerdtree
 let NERDTreeIgnore = ['\.pyc$', '\.retry$']
 nmap <C-n> :NERDTreeToggle<CR>

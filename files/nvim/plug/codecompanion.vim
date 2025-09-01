@@ -1,5 +1,3 @@
-Plug 'olimorris/codecompanion.nvim'
-
 lua << EOF
   require("codecompanion").setup({
     adapters = {

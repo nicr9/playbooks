@@ -2,12 +2,17 @@
 {{ ansible_managed | comment(decoration='"') }}
 call plug#begin(stdpath('data') . '/plugged')
 
-{# Add plugins with custom settings #}
+{% for plugin in nvim_plugins %}
+Plug {% if plugin is string %}'{{ plugin }}'{% elif plugin is mapping %}'{{ plugin.name }}', {{ plugin.options | to_json | regex_replace("\"", "'") }}{% endif %}
+
+{% endfor %}
+
+call plug#end()
+
+{# Add plugin specific settings #}
 for fpath in split(globpath('{{ nvim_config_path }}/plug/', '*.vim'), '\n')
   exe 'source' fpath
 endfor
-
-call plug#end()
 
 " Terminal mappings
 tnoremap <Esc> <C-\><C-n>
