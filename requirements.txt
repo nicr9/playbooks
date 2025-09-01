@@ -1,6 +1,7 @@
 ansible
 PyYAML
 jmespath
+python-debian
 opentelemetry-api
 opentelemetry-exporter-otlp
 opentelemetry-sdk

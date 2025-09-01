@@ -1,0 +1,20 @@
+---
+# sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/tektoncd.gpg --keyserver keyserver.ubuntu.com --recv-keys 3EFE0E0A2F2F60AA
+# echo "deb [signed-by=/etc/apt/keyrings/tektoncd.gpg] http://ppa.launchpad.net/tektoncd/cli/ubuntu eoan main"|sudo tee /etc/apt/sources.list.d/tektoncd-ubuntu-cli.list
+- name: Add tekton repo
+  become: yes
+  deb822_repository:
+    name: tekton
+    types: deb
+    uris: http://ppa.launchpad.net/tektoncd/cli/ubuntu
+    suites: '{{ ansible_distribution_release }}'
+    components:
+      - main
+    signed_by: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3efe0e0a2f2f60aa
+
+- name: install tekton cli
+  become: yes
+  apt:
+    name:
+    - tektoncd-cli
+    update_cache: yes
