@@ -40,3 +40,5 @@ lua << EOF
     },
   })
 EOF
+
+nmap <leader>a :CodeCompanionChat Toggle<CR>
