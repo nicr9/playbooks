@@ -20,7 +20,7 @@
   loop:
   - '{{ nvim_config_path }}'
   - '{{ nvim_config_path }}/ftplugin'
-  - '{{ nvim_config_path }}/ansible-managed'
+  - '{{ nvim_config_path }}/plug'
 
 - name: copy nvim config file
   template:
